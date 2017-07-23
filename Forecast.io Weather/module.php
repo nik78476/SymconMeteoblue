@@ -37,7 +37,7 @@ class SymconForecast extends IPSModule
     
     public function SetGeoData(){
         
-        $address = $this->ReadPropertyString("YWHTemperature");
+        $address = $this->ReadPropertyString("SFC_City");
         $prepAddr = str_replace(' ','+',$address);
         $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
         $output= json_decode($geocode);
