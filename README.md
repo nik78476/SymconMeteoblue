@@ -27,6 +27,7 @@ einzelne Wetterdaten.
 
 `https://github.com/nik78476/SymconForecast.io.git`
 
+
 Die neue Instanz findet ihr dort, wo ihr sie angelegt habt.
 
 ## 4. Befehlsreferenz
