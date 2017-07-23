@@ -13,6 +13,7 @@ class SymconForecast extends IPSModule
 	$this->RegisterPropertyString("SFC_City", "Konstanz");
         $this->RegisterPropertyString("SFC_longitude", "");
         $this->RegisterPropertyString("SFC_latitude", "");
+        $this->RegisterPropertyInteger("SFC_Intervall", 1440);
 		
         $this->RegisterTimer("UpdateSymconForecastIoWeather", 14400, 'SFC_Update($_IPS[\'TARGET\']);');
 		
@@ -32,7 +33,7 @@ class SymconForecast extends IPSModule
         // Inspired by module SymconTest/HookServe
 	//$this->RegisterHook("/hook/SymconYahooWeather");
 		
-	//$this->SetTimerInterval("UpdateSymconYahooWeather", $this->ReadPropertyInteger("YWHIntervall"));
+	$this->SetTimerInterval("UpdateSymconForecastIoWeather", $this->ReadPropertyInteger("SFC_Intervall"));
     }
     
     public function SetGeoData(){
