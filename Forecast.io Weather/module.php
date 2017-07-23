@@ -13,7 +13,7 @@ class SymconForecast extends IPSModule
 	$this->RegisterPropertyString("SFC_City", "Konstanz");
         $this->RegisterPropertyString("SFC_longitude", "");
         $this->RegisterPropertyString("SFC_latitude", "");
-        $this->RegisterPropertyInteger("SFC_Intervall", 1440);
+        $this->RegisterPropertyInteger("SFC_Intervall", 14400);
 		
         $this->RegisterTimer("UpdateSymconForecastIoWeather", 14400, 'SFC_Update($_IPS[\'TARGET\']);');
 		
@@ -33,7 +33,7 @@ class SymconForecast extends IPSModule
         // Inspired by module SymconTest/HookServe
 	//$this->RegisterHook("/hook/SymconYahooWeather");
 		
-	$this->SetTimerInterval("UpdateSymconForecastIoWeather", $this->ReadPropertyInteger("SFC_Intervall"));
+	//$this->SetTimerInterval("UpdateSymconForecastIoWeather", $this->ReadPropertyInteger("SFC_Intervall"));
     }
     
     public function SetGeoData(){
@@ -43,13 +43,15 @@ class SymconForecast extends IPSModule
         $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
         $output= json_decode($geocode);
  
+        IPS_LogMessage("SymconForecast.IO", "SFC_longitude: ". $output->results[0]->geometry->location->lat);
+        IPS_LogMessage("SymconForecast.IO", "SFC_latitude: ". $output->results[0]->geometry->location->lng);
+
         
         IPS_SetProperty($this->InstanceID, "SFC_longitude", $output->results[0]->geometry->location->lat); 
         IPS_SetProperty($this->InstanceID, "SFC_latitude", $output->results[0]->geometry->location->lng); 
-        IPS_ApplyChanges($this->InstanceID); //Neue Konfiguration übernehmen
         
-        IPS_LogMessage("SymconForecast.IO", "SFC_longitude: ". $output->results[0]->geometry->location->lat);
-        IPS_LogMessage("SymconForecast.IO", "SFC_latitude: ". $output->results[0]->geometry->location->lng);
+        //IPS_ApplyChanges($this->InstanceID); //Neue Konfiguration übernehmen
+        
         
         //$this->SetValueString("SFC_longitude", $output->results[0]->geometry->location->lat );
         //$this->SetValueString("SFC_latitude", $output->results[0]->geometry->location->lng );
