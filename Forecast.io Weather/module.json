@@ -1,0 +1,14 @@
+{
+    "id": "{5FB8D3C2-2233-4981-A58B-B65AC4867DCE}",
+    "name": "SymconForecast",
+    "type": 3,
+    "vendor": "",
+    "aliases": 
+    [
+        "Wetteranzeige Forecast.io"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "SFW"
+}
