@@ -4,7 +4,7 @@
     { "type": "ValidationTextBox", "name": "SFC_City", "caption": "Name der Stadt" },
     { "type": "ValidationTextBox", "name": "SFC_longitude", "caption": "Longitude" },
     { "type": "ValidationTextBox", "name": "SFC_latitude", "caption": "Latitude" },
-    { "type": "IntervalBox", "name": "YWHIntervall", "caption": "Millisekunden" }
+    { "type": "IntervalBox", "name": "SFC_Intervall", "caption": "Millisekunden" }
   ], 
   "actions":
   [
