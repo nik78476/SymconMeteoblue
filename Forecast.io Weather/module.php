@@ -42,11 +42,10 @@ class SymconForecast extends IPSModule
         $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
         $output= json_decode($geocode);
  
-        $myInstanceID = IPS_GetInstanceListByModuleID("{5FB8D3C2-2233-4981-A58B-B65AC4867DCE}");
         
-        IPS_SetProperty($myInstanceID, "SFC_longitude", $output->results[0]->geometry->location->lat); //I/O Instanz soll aktiviert sein.
-        IPS_SetProperty($myInstanceID, "SFC_latitude", $output->results[0]->geometry->location->lng); //I/O Instanz soll aktiviert sein.
-        IPS_ApplyChanges($myInstanceID); //Neue Konfiguration übernehmen
+        IPS_SetProperty($this->InstanceID, "SFC_longitude", $output->results[0]->geometry->location->lat); 
+        IPS_SetProperty($this->InstanceID, "SFC_latitude", $output->results[0]->geometry->location->lng); 
+        IPS_ApplyChanges($this->InstanceID); //Neue Konfiguration übernehmen
         
         IPS_LogMessage("SymconForecast.IO", "SFC_longitude: ". $output->results[0]->geometry->location->lat);
         IPS_LogMessage("SymconForecast.IO", "SFC_latitude: ". $output->results[0]->geometry->location->lng);
