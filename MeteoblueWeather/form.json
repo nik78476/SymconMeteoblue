@@ -8,7 +8,6 @@
     { "type": "IntervalBox", "name": "MBW_UPDATEINTERVALL", "caption": "T_UPDATEINTERVALL" },
 	{ "type": "Select", "name": "MBW_LANGUAGE", "caption": "T_LANGSELECT",
 		"options": [
-            iso2 code: es, de, fr, it, es, pt, tr, ro, ru, nl, hu
 			{ "label": "T_LANG_DE", "value":"de" },
 			{ "label": "T_LANG_EN", "value":"en" },
             { "label": "T_LANG_ES", "value":"es" },
