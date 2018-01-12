@@ -234,7 +234,7 @@ class SymconMeteoblue extends IPSModule
         $url .= "&lon=" .$this->ReadPropertyString("MBW_LONGITUDE");
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
-        $url .= "&temperature=" ..$this->ReadPropertyString("MBW_TEMPERATURE");
+        $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
         
         IPS_LogMessage($_IPS['SELF'], "URL: ". $url);
         
