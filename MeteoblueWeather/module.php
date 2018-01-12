@@ -33,7 +33,7 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableString("YWH_Sonnenuntergang", "Sonnenuntergang (heute)");
 		
 		$this->RegisterVariableString("YWH_Luftfeuchtigkeit", "Luftfeuchtigkeit (heute)");
-		//$this->RegisterVariableString("YWH_Luftdruck", "Luftdruck (heute)");
+		$this->RegisterVariableString("YWH_Luftdruck", "Luftdruck (heute)");
 		$this->RegisterVariableString("YWH_Sichtweite", "Sichtweite (heute)");
 		$this->RegisterVariableString("YWH_WindGeschwindigkeit", "Windgeschwindigkeit (heute)");
 		
@@ -54,19 +54,16 @@ class SymconMeteoblue extends IPSModule
         parent::ApplyChanges();
         
         $this->Update();
-        // Inspired by module SymconTest/HookServe
-		//$this->RegisterHook("/hook/SymconMeteoblue");
-		
+		$this->RegisterHook("/hook/SymconMeteoblue");
 		$this->SetTimerInterval("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000);
     }
     public function Update()
     {
-		// get Data from Yahoo Weather
 		$weatherDataJSON = $this->QueryWeatherData();
 		if ($weatherDataJSON == NULL)
 		{
 			$this->SetStatus(202);
-            echo 'Error reading external Data';
+            IPS_LogMessage($_IPS['SELF'], "Error reading external data");
 			return;
 		}
         $date = new DateTime('now');
@@ -219,15 +216,7 @@ class SymconMeteoblue extends IPSModule
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
-        /*
-        $this->RegisterPropertyString("MBW_APIKEAY", "1234567890");
-		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
-        $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
-		$this->RegisterPropertyString("MBW_ASL","402");
-		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 100);
-		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
-        $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
-        */
+        
         $url  = "http://my.meteoblue.com/packages/basic-day?";
         $url .= "apikey=" .$this->ReadPropertyString("MBW_LATITUDE");
         $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
