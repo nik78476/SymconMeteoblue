@@ -10,7 +10,7 @@ class SymconMeteoblue extends IPSModule
         //These lines are parsed on Symcon Startup or Instance creation
         //You cannot use variables here. Just static values.
         
-        $this->RegisterPropertyString("MBW_APIKEAY", "1234567890");
+        $this->RegisterPropertyString("MBW_APIKEAY", "41f2dd49fb6a");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
@@ -65,12 +65,15 @@ class SymconMeteoblue extends IPSModule
 		$weatherDataJSON = $this->QueryWeatherData();
 		if ($weatherDataJSON == NULL)
 		{
-			echo 'Error reading external Data';
+			$this->SetStatus(202);
+            echo 'Error reading external Data';
 			return;
 		}
         $date = new DateTime('now');
         $last_update = $date->format('Y-m-d H:i:s');
 		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
+        $this->SetStatus(102);
+        
 		//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
     }
 
@@ -216,13 +219,25 @@ class SymconMeteoblue extends IPSModule
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
+        /*
+        $this->RegisterPropertyString("MBW_APIKEAY", "1234567890");
+		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
+        $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
+		$this->RegisterPropertyString("MBW_ASL","402");
+		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 100);
+		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
+        $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
+        */
         $url  = "http://my.meteoblue.com/packages/basic-day?";
-        $url .= "apikey=41f2dd49fb6a";
-        $url .= "&lat=47.5584";
-        $url .= "&lon=7.5733";
-        $url .= "&asl=279";
-        $url .= "&tz=Europe%2FZurich";
-        $url .= "&lang=de";
+        $url .= "apikey=" .$this->ReadPropertyString("MBW_LATITUDE");
+        $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
+        $url .= "&lon=" .$this->ReadPropertyString("MBW_LONGITUDE");
+        $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
+        $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
+        $url .= "&temperature=" ..$this->ReadPropertyString("MBW_TEMPERATURE");
+        
+        IPS_LogMessage($_IPS['SELF'], "URL: ". $url);
+        
         $rawWeatherData = file_get_contents($url);
         
         //$weather = json_decode($raw);
