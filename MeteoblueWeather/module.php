@@ -71,6 +71,17 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
         $this->SetStatus(102);
         
+        //$weather = json_decode($raw);
+ 
+        /* Print current temperature in Basel */
+        $DATA_DAY_TIME = {$weatherDataJSON->data_day->time}";
+        IPS_LogMessage($_IPS['SELF'], "DATA_DAY_TIME" .$DATA_DAY_TIME);
+ 
+        /* Print 7 day max temperature forecast */
+        //foreach($weather->forecast as $day) {
+        //    echo "Temperature on {$day->date} = {$day->temperature_max}";
+        //}
+		
 		//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
     }
 
@@ -228,17 +239,6 @@ class SymconMeteoblue extends IPSModule
         IPS_LogMessage($_IPS['SELF'], "URL: ". $url);
         
         $rawWeatherData = file_get_contents($url);
-        
-        //$weather = json_decode($raw);
- 
-        /* Print current temperature in Basel */
-        //echo "Current temperature in Basel: {$weather->current->temperature}";
- 
-        /* Print 7 day max temperature forecast */
-        //foreach($weather->forecast as $day) {
-        //    echo "Temperature on {$day->date} = {$day->temperature_max}";
-        //}
-		
         return json_decode($rawWeatherData);
   	}
 	
