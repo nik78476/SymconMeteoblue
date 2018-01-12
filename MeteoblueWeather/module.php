@@ -111,7 +111,7 @@ class SymconMeteoblue extends IPSModule
 
 		 }
 	}
-	
+	*/
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
