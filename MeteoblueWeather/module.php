@@ -20,6 +20,7 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
         
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
+        $this->RegisterVariableString("MBW_V_UVINDEX", "UV Index");
         /*
 		$this->RegisterVariableString("Wetter", "Wetter","~HTMLBox",1);
 		$this->RegisterVariableString("YWH_IPS_Wetter", "Wetterdarstellung IPSView","~HTMLBox",1);
@@ -66,23 +67,20 @@ class SymconMeteoblue extends IPSModule
             IPS_LogMessage($_IPS['SELF'], "Error reading external data");
 			return;
 		}
-        $date = new DateTime('now');
-        $last_update = $date->format('Y-m-d H:i:s');
-		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
-        $this->SetStatus(102);
         
         //$weather = json_decode($raw);
  
         /* Print current temperature in Basel */
-        $DATA_DAY_TIME = $weatherDataJSON->{'data_day'}->{'time'};
-        IPS_LogMessage($_IPS['SELF'], "DATA_DAY_TIME" .$DATA_DAY_TIME[0]);
- 
-        /* Print 7 day max temperature forecast */
-        //foreach($weather->forecast as $day) {
-        //    echo "Temperature on {$day->date} = {$day->temperature_max}";
-        //}
-		
-		//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
+        $ARRAY_DATA_DAY_TIME = $weatherDataJSON->{'data_day'}->{'time'};
+        $ARRAY_DATA_DAY_PICTOCODE = $weatherDataJSON->{'data_day'}->{'pictocode'};
+        $ARRAY_DATA_DAY_UVINDEX = $weatherDataJSON->{'data_day'}->{'uvindex'};
+        
+		$this->SetValueString("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0], "");
+
+        $date = new DateTime('now');
+        $last_update = $date->format('Y-m-d H:i:s');
+		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
+        $this->SetStatus(102);
     }
 
     private function SetValueInt($Ident, $Value){
@@ -114,116 +112,6 @@ class SymconMeteoblue extends IPSModule
 		 }
 	}
 	
-	private function CreateVarProfileYWHTime() {
-		if (!IPS_VariableProfileExists("YHW.Time")) {
-			IPS_CreateVariableProfile("YHW.Time", 1);
-			IPS_SetVariableProfileText("YHW.Time", "", " Uhr");
-			IPS_SetVariableProfileAssociation("YHW.Time", "", "%1f", "", -1);
-		 }
-	}
-    */
-	
-    /*
-	private function GenerateWeatherTable($Value, $filler){
-    	$weekdays = array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"); 
-		$forecast = $Value->{'query'}->{'results'}->{'channel'}->{'item'}->{'forecast'};
-		
-		$sonnenAufgang = $Value->{'query'}->{'results'}->{'channel'}->{'astronomy'}->{'sunrise'};
-		$sonnenUntergang = $Value->{'query'}->{'results'}->{'channel'}->{'astronomy'}->{'sunset'};
-		
-		$luftFeuchtigkeit = $Value->{'query'}->{'results'}->{'channel'}->{'atmosphere'}->{'humidity'} ." %";
-		$luftDruck = $Value->{'query'}->{'results'}->{'channel'}->{'atmosphere'}->{'pressure'} ." " .$Value->{'query'}->{'results'}->{'channel'}->{'units'}->{'pressure'};
-		$sichtweite = $Value->{'query'}->{'results'}->{'channel'}->{'atmosphere'}->{'visibility'} ." " .$Value->{'query'}->{'results'}->{'channel'}->{'units'}->{'distance'};
-		$windGeschwindigkeit = $Value->{'query'}->{'results'}->{'channel'}->{'wind'}->{'speed'} ." " .$Value->{'query'}->{'results'}->{'channel'}->{'units'}->{'speed'};
-		
-		
-		$this->setValueString("YWH_Sonnenaufgang", date("H:i",strtotime($sonnenAufgang)) ." Uhr");
-		$this->setValueString("YWH_Sonnenuntergang", date("H:i",strtotime($sonnenUntergang)) ." Uhr");
-		
-		$this->setValueString("YWH_Luftfeuchtigkeit", $luftFeuchtigkeit );
-		//$this->setValueString("YWH_Luftdruck", $luftDruck );
-		$this->setValueString("YWH_Sichtweite", $sichtweite );
-		$this->setValueString("YWH_WindGeschwindigkeit", $windGeschwindigkeit );
-		
-		$this->setValueString("YWH_WetterImage", $forecast[0]->code );
-		
-		
-		$temperature = strtoupper($this->ReadPropertyString("YWHTemperature"));
-		
-		
-		
-    	if( $Value->query->count > 0 ){
-			$date=new DateTime('now'); 
-			
-			$vorhersage_heute = "";
-			$vorhersage_heute = $this->getWeatherCondition($forecast[0]->code);
-			
-			$variableString = html_entity_decode($vorhersage_heute,ENT_QUOTES ,"ISO-8859-15");
-			$this->SetValueString("YWH_Wetter_heute", $variableString);
-			$this->SetValueFloat("YWH_Heute_temp_min", $forecast[0]->low );
-			$this->SetValueFloat("YWH_Heute_temp_max", $forecast[0]->high );
-			
-			$HTMLBoxType = $this->ReadPropertyInteger("YWHDisplay");
-			
-			// build table
-			$weatherstring = '<table width="100%">';
-			// build header with weekdays
-
-
-
-			if( $HTMLBoxType == 1 ){	
-				$weatherstring .= '<tr>';
-				for( $i = 0; $i < $this->ReadPropertyInteger("YWHDays"); $i++ ){
-					$weatherstring .= '<td align="center">'; 
-					$day = date("w")+$i;
-					$weatherstring .= $weekdays[$day];
-					$weatherstring .= '</td>';
-				}
-				$weatherstring .= '</tr>';
-			}
-			
-				
-			// row with weather infos (image + description)	
-			$weatherstring .= '<tr>';
-			
-
-			for( $i = 0; $i < $this->ReadPropertyInteger("YWHDays"); $i++ ){
-				$weatherstring .= '<td align="center">';
-				$weatherstring .= $filler;
-				$weatherstring .= '<img src="/hook/SymconYahooWeather/' .$forecast[$i]->code .'.png" style="height:' .$this->ReadPropertyInteger("YWHImageZoom") .'%;width:auto;">';
-
-				if( $HTMLBoxType == 1 ){
-					$weatherstring .= '<br>';
-					$weatherstring .= $this->getWeatherCondition($forecast[$i]->code);
-				}
-				$weatherstring .= '</td>';
-			}
-
-			$weatherstring .= '</tr>';
-			
-			if( $HTMLBoxType == 1 ){
-				// row with weather temperature			
-				$weatherstring .= '<tr>';
-				for( $i = 0; $i < $this->ReadPropertyInteger("YWHDays"); $i++ ){
-					$weatherstring .= '<td align="center">';
-					$weatherstring .= 'min ' .$forecast[$i]->low .' &deg;' .$temperature;
-					$weatherstring .= '<br>';
-					$weatherstring .= 'max ' .$forecast[$i]->high .' &deg;' .$temperature;
-					$weatherstring .= '</td>';
-				}
-				$weatherstring .= '</tr>';
-			}
-			
-			
-			// finish table
-			$weatherstring .= '</table>';
-			
-			//IPS_LogMessage("SymconYahooWeather", "weatherstring: ". $weatherstring);
-			return $weatherstring;
-		} 
-		else return "Weather is not available";
-  	}
-    */
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
@@ -236,7 +124,7 @@ class SymconMeteoblue extends IPSModule
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
         
-        IPS_LogMessage($_IPS['SELF'], "URL: ". $url);
+        //IPS_LogMessage($_IPS['SELF'], "URL: ". $url);
         
         $rawWeatherData = file_get_contents($url);
         return json_decode($rawWeatherData);
