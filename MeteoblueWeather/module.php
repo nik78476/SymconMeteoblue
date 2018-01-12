@@ -213,9 +213,9 @@ class SymconMeteoblue extends IPSModule
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
-        $url = "http://my.meteoblue.com/dataApi/...&lat=47.5667&lon=7.6&asl=263";
-        $raw = file_get_contents($url);
-        $weather = json_decode($raw);
+        //$url = "http://my.meteoblue.com/dataApi/...&lat=47.5667&lon=7.6&asl=263";
+        //$raw = file_get_contents($url);
+        //$weather = json_decode($raw);
  
         /* Print current temperature in Basel */
         //echo "Current temperature in Basel: {$weather->current->temperature}";
