@@ -1,5 +1,5 @@
 <?
-class SymconYahooWeather extends IPSModule
+class SymconMeteoblue extends IPSModule
 {
 	
 	public function Create()
