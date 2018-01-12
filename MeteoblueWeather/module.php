@@ -70,7 +70,7 @@ class SymconMeteoblue extends IPSModule
 		}
         $date = new DateTime('now');
         $last_update = $date->format('Y-m-d H:i:s');
-		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "") );
+		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
 		//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
     }
 
