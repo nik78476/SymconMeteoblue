@@ -1,0 +1,45 @@
+{
+  "elements":
+  [
+    { "type": "ValidationTextBox", "name": "MBW_APIKEAY", "caption": "T_APIKEY" },
+    { "type": "ValidationTextBox", "name": "MBW_LATITUDE", "caption": "T_LATITUDE" },
+    { "type": "ValidationTextBox", "name": "MBW_LONGITUDE", "caption": "T_LONGITUDE" },
+    { "type": "ValidationTextBox", "name": "MBW_AZL", "caption": "T_AZL" },
+    { "type": "IntervalBox", "name": "MBW_UPDATEINTERVALL", "caption": "T_UPDATEINTERVALL" },
+	{ "type": "Select", "name": "MBW_LANGUAGE", "caption": "T_LANGSELECT",
+		"options": [
+            iso2 code: es, de, fr, it, es, pt, tr, ro, ru, nl, hu
+			{ "label": "T_LANG_DE", "value":"de" },
+			{ "label": "T_LANG_EN", "value":"en" },
+            { "label": "T_LANG_ES", "value":"es" },
+            { "label": "T_LANG_IT", "value":"it" },
+            { "label": "T_LANG_FR", "value":"fr" }
+		]
+	},{ "type": "Select", "name": "MBW_TEMPERATURE", "caption": "T_TEMPERATURE",
+		"options": [
+			{ "label": "T_TEMPERATURE_C", "value":"C" },
+			{ "label": "T_TEMPERATURE_F", "value":"F" }
+		]
+	},
+	{ "type": "Select", "name": "MBW_FORECASTDAYS", "caption": "T_FORECASTDAYS",
+		"options": [
+			{ "label": "T_FORECASTDAYS_1", "value":"1" },
+			{ "label": "T_FORECASTDAYS_2", "value":"2" },
+			{ "label": "T_FORECASTDAYS_3", "value":"3" }
+		]
+	}
+  ], 
+  "actions":
+  [
+
+    { "type": "Button", "label": "T_UPDATESETTINGS", "onClick": "MBW_Update($id);" }
+
+  ],
+    "status":
+    [
+        { "code": 101, "icon": "error", "caption": "T_ICON_101" },
+        { "code": 102, "icon": "active", "caption": "T_ICON_102" },
+        { "code": 104, "icon": "inactive", "caption": "T_ICON_104" },
+        { "code": 202, "icon": "error", "caption": "T_ICON_202" }
+    ]
+}

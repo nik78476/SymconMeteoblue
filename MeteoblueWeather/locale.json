@@ -1,0 +1,29 @@
+{
+    "translations": {
+        "de": { 
+            "T_APIKEY": "API Key",
+            "T_LATITUDE": "Latitude",
+            "T_LONGITUDE": "Longitude",
+            "T_AZL": "AZL Code",
+            "T_UPDATEINTERVALL": "Aktualisierungsintervall (sek.)",
+            "T_LANGSELECT": "Sprache",
+            "T_LANG_DE": "Deutsch",
+            "T_LANG_EN": "Englisch",
+            "T_LANG_ES": "Spanisch",
+            "T_LANG_IT": "Italienisch",
+            "T_LANG_FR": "Franzoesisch",
+            "T_TEMPERATURE": "Temperatureinheit",
+            "T_TEMPERATURE_C": "Celsius",
+            "T_TEMPERATURE_F": "Fahrenheit",
+            "T_FORECASTDAYS": "Anzahl Tage",
+            "T_FORECASTDAYS_1": "1 Tag anzeigen (min)",
+            "T_FORECASTDAYS_2": "2 Tage anzeigen",
+            "T_FORECASTDAYS_3": "3 Tage anzeigen (max)",
+            "T_UPDATESETTINGS": "Einstellungen speichern",
+            "T_ICON_101": "Instanz erzeugt",
+            "T_ICON_102": "Einstellungen OK",
+            "T_ICON_104": "Instanz wurde geändert - bitte speichern",
+            "T_ICON_202": "Einstellungen fehlerhaft oder unvollständig" 
+        }
+    }
+}

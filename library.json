@@ -1,9 +1,12 @@
 {
-    "id": "{5FB8D3C2-2233-4981-A58B-B65AC4867DCE}",
+    "id": "{351DDB8A-8A18-4604-943D-6BA4BEE026C2}",
     "author": "nik78476",
-    "name": "SymconForecast",
-    "url": "https://github.com/nik78476/SymconForecast.io",
-    "version": "1.0",
+    "name": "SymconMeteoblue",
+    "url": "https://github.com/nik78476/SymconMeteoblue.git",
+    "compatibility": {
+        "version": "4.2",
+    },
+    "version": "0.1",
     "build": 0,
     "date": 0
 }

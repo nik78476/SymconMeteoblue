@@ -1,5 +1,5 @@
 <?
-class SymconForecast extends IPSModule
+class SymconYahooWeather extends IPSModule
 {
 	
 	public function Create()
@@ -10,12 +10,35 @@ class SymconForecast extends IPSModule
         //These lines are parsed on Symcon Startup or Instance creation
         //You cannot use variables here. Just static values.
         
-	$this->RegisterPropertyString("SFC_City", "Konstanz");
-        $this->RegisterPropertyString("SFC_longitude", "");
-        $this->RegisterPropertyString("SFC_latitude", "");
-        $this->RegisterPropertyInteger("SFC_Intervall", 14400);
+		/*
+        $this->RegisterPropertyString("YWHTown", "Konstanz");
+		$this->RegisterPropertyInteger("YWHDays", 2);
+        $this->RegisterPropertyInteger("YWHIntervall", 14400);
+		$this->RegisterPropertyString("YWHTemperature","c");
+		$this->RegisterPropertyInteger("YWHImageZoom", 100);
+		$this->RegisterPropertyInteger("YWHDisplay", 1);
 		
-        $this->RegisterTimer("UpdateSymconForecastIoWeather", 14400, 'SFC_Update($_IPS[\'TARGET\']);');
+		
+		$this->RegisterVariableString("Wetter", "Wetter","~HTMLBox",1);
+		$this->RegisterVariableString("YWH_IPS_Wetter", "Wetterdarstellung IPSView","~HTMLBox",1);
+		
+		// Vorhersage für heute als Variablen
+		$this->RegisterVariableString("YWH_Wetter_heute", "Wettervorhersage (heute)");
+		$this->RegisterVariableFloat("YWH_Heute_temp_min", "Temp (min)","~Temperature");
+		$this->RegisterVariableFloat("YWH_Heute_temp_max", "Temp (max)","~Temperature");
+		
+		$this->RegisterVariableString("YWH_Sonnenaufgang", "Sonnenaufgang (heute)");
+		$this->RegisterVariableString("YWH_Sonnenuntergang", "Sonnenuntergang (heute)");
+		
+		$this->RegisterVariableString("YWH_Luftfeuchtigkeit", "Luftfeuchtigkeit (heute)");
+		//$this->RegisterVariableString("YWH_Luftdruck", "Luftdruck (heute)");
+		$this->RegisterVariableString("YWH_Sichtweite", "Sichtweite (heute)");
+		$this->RegisterVariableString("YWH_WindGeschwindigkeit", "Windgeschwindigkeit (heute)");
+		
+		$this->RegisterVariableString("YWH_WetterImage", "WetterImage (heute)");
+		
+        $this->RegisterTimer("UpdateSymconYahooWeather", 14400, 'YWH_Update($_IPS[\'TARGET\']);');
+        */
 		
     }
     public function Destroy()
@@ -29,66 +52,44 @@ class SymconForecast extends IPSModule
         parent::ApplyChanges();
         
         $this->Update();
-
         // Inspired by module SymconTest/HookServe
-	//$this->RegisterHook("/hook/SymconYahooWeather");
+		//$this->RegisterHook("/hook/SymconMeteoblue");
 		
-	//$this->SetTimerInterval("UpdateSymconForecastIoWeather", $this->ReadPropertyInteger("SFC_Intervall"));
+		//$this->SetTimerInterval("UpdateSymconMeteoblue", $this->ReadPropertyInteger("YWHIntervall"));
     }
-    
-    public function SetGeoData(){
-        
-        $address = $this->ReadPropertyString("SFC_City");
-        $prepAddr = str_replace(' ','+',$address);
-        $geocode=file_get_contents('https://maps.google.com/maps/api/geocode/json?address='.$prepAddr.'&sensor=false');
-        $output= json_decode($geocode);
- 
-        IPS_LogMessage("SymconForecast.IO", "SFC_longitude: ". $output->results[0]->geometry->location->lat);
-        IPS_LogMessage("SymconForecast.IO", "SFC_latitude: ". $output->results[0]->geometry->location->lng);
-
-        
-        IPS_SetProperty($this->InstanceID, "SFC_longitude", $output->results[0]->geometry->location->lat); 
-        IPS_SetProperty($this->InstanceID, "SFC_latitude", $output->results[0]->geometry->location->lng); 
-        
-        //IPS_ApplyChanges($this->InstanceID); //Neue Konfiguration übernehmen
-        
-        
-        //$this->SetValueString("SFC_longitude", $output->results[0]->geometry->location->lat );
-        //$this->SetValueString("SFC_latitude", $output->results[0]->geometry->location->lng );
-    }
-    
     public function Update()
     {
-	// if isset setGeoData each time 
-        
-        // get Data from Yahoo Weather
-	//$weatherDataJSON = $this->QueryWeatherData();
-		
-	// build nice layout
-	//$this->SetValueString("Wetter", $this->GenerateWeatherTable($weatherDataJSON, "") );
-	//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
+		// get Data from Yahoo Weather
+		$weatherDataJSON = $this->QueryWeatherData();
+		if ($weatherDataJSON == NULL)
+		{
+			echo 'Error reading external Data';
+			return;
+		}
+		// build nice layout
+		//$this->SetValueString("Wetter", $this->GenerateWeatherTable($weatherDataJSON, "") );
+		//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
     }
 
     private function SetValueInt($Ident, $Value){
     	$id = $this->GetIDforIdent($Ident);
     	SetValueInteger($id, $Value);
     	return true;	
-    }
+  	}
 	
-    private function SetValueFloat($Ident, $Value)
-	{
+	private function SetValueFloat($Ident, $Value){
     	$id = $this->GetIDforIdent($Ident);
     	SetValueFloat($id, $Value);
     	return true;
-    }
+  	}
    
-    private function SetValueString($Ident, $Value)
-    {
+    private function SetValueString($Ident, $Value){
     	$id = $this->GetIDforIdent($Ident);
     	SetValueString($id, $Value);
     	return true;
-    }
+  	}
 	
+    /*
 	private function CreateVarProfileYWHTemp() {
 		if (!IPS_VariableProfileExists("YHW.Temp")) {
 			IPS_CreateVariableProfile("YHW.Temp", 1);
@@ -106,7 +107,9 @@ class SymconForecast extends IPSModule
 			IPS_SetVariableProfileAssociation("YHW.Time", "", "%1f", "", -1);
 		 }
 	}
+    */
 	
+    /*
 	private function GenerateWeatherTable($Value, $filler){
     	$weekdays = array("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"); 
 		$forecast = $Value->{'query'}->{'results'}->{'channel'}->{'item'}->{'forecast'};
@@ -124,11 +127,11 @@ class SymconForecast extends IPSModule
 		$this->setValueString("YWH_Sonnenuntergang", date("H:i",strtotime($sonnenUntergang)) ." Uhr");
 		
 		$this->setValueString("YWH_Luftfeuchtigkeit", $luftFeuchtigkeit );
-		$this->setValueString("YWH_Luftdruck", $luftDruck );
+		//$this->setValueString("YWH_Luftdruck", $luftDruck );
 		$this->setValueString("YWH_Sichtweite", $sichtweite );
 		$this->setValueString("YWH_WindGeschwindigkeit", $windGeschwindigkeit );
 		
-		$this->setValueString("YWH_WetterImage", "/hook/SymconYahooWeather/" .$forecast[0]->code .".png" );
+		$this->setValueString("YWH_WetterImage", $forecast[0]->code );
 		
 		
 		$temperature = strtoupper($this->ReadPropertyString("YWHTemperature"));
@@ -201,18 +204,26 @@ class SymconForecast extends IPSModule
 			// finish table
 			$weatherstring .= '</table>';
 			
-			IPS_LogMessage("SymconYahooWeather", "weatherstring: ". $weatherstring);
+			//IPS_LogMessage("SymconYahooWeather", "weatherstring: ". $weatherstring);
 			return $weatherstring;
 		} 
 		else return "Weather is not available";
   	}
+    */
 		
 	private function QueryWeatherData(){
-    	$BASE_URL = "http://query.yahooapis.com/v1/public/yql"; 
-		$yql_query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' .$this->ReadPropertyString("YWHTown") .'") and u="' .$this->ReadPropertyString("YWHTemperature") .'"'; 
-		$yql_query_url = $BASE_URL . "?q=" . urlencode($yql_query) . "&format=json"; 
-
-		$jsonDataFromURL = @file_get_contents($yql_query_url);
+        /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
+        $url = "http://my.meteoblue.com/dataApi/...&lat=47.5667&lon=7.6&asl=263";
+        $raw = file_get_contents($url);
+        $weather = json_decode($raw);
+ 
+        /* Print current temperature in Basel */
+        //echo "Current temperature in Basel: {$weather->current->temperature}";
+ 
+        /* Print 7 day max temperature forecast */
+        //foreach($weather->forecast as $day) {
+        //    echo "Temperature on {$day->date} = {$day->temperature_max}";
+        //}
 		return json_decode($jsonDataFromURL);
   	}
 	
@@ -249,7 +260,7 @@ class SymconForecast extends IPSModule
 						
 			//reduce any relative paths. this also checks for file existance
 			$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/SymconYahooWeather/")));
-			IPS_LogMessage("WebHook path: ", $path);
+			//IPS_LogMessage("WebHook path: ", $path);
 			if($path === false) {
 				http_response_code(404);
 				die("File not found!");
