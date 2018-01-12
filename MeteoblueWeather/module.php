@@ -74,7 +74,7 @@ class SymconMeteoblue extends IPSModule
         //$weather = json_decode($raw);
  
         /* Print current temperature in Basel */
-        $DATA_DAY_TIME = {$weatherDataJSON->data_day->time}";
+        $DATA_DAY_TIME = $weatherDataJSON->{'data_day'}->{'time'};
         IPS_LogMessage($_IPS['SELF'], "DATA_DAY_TIME" .$DATA_DAY_TIME);
  
         /* Print 7 day max temperature forecast */
