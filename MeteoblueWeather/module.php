@@ -38,9 +38,9 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableString("YWH_WindGeschwindigkeit", "Windgeschwindigkeit (heute)");
 		
 		$this->RegisterVariableString("YWH_WetterImage", "WetterImage (heute)");
-		
-        $this->RegisterTimer("UpdateSymconMeteoblue", 14400, 'YWH_Update($_IPS[\'TARGET\']);');
         */
+        
+        $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
     }
     public function Destroy()
