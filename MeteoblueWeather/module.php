@@ -224,7 +224,7 @@ class SymconMeteoblue extends IPSModule
         //foreach($weather->forecast as $day) {
         //    echo "Temperature on {$day->date} = {$day->temperature_max}";
         //}
-		return json_decode($jsonDataFromURL);
+		//return json_decode($jsonDataFromURL);
   	}
 	
 	private function RegisterHook($WebHook) {
