@@ -11,12 +11,12 @@ class SymconMeteoblue extends IPSModule
         //You cannot use variables here. Just static values.
         
         $this->RegisterPropertyString("MBW_APIKEAY", "1234567890");
-		$this->RegisterPropertyInteger("MBW_LATITUDE", "47.660" );
-        $this->RegisterPropertyInteger("MBW_LONGITUDE", "9.176");
+		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
+        $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
 		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 100);
-		$this->RegisterPropertyInteger("MBW_LANGUAGE", "de");
-        $this->RegisterPropertyInteger("MBW_TEMPERATURE", "C");
+		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
+        $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
         
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
