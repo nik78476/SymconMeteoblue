@@ -21,6 +21,9 @@ class SymconMeteoblue extends IPSModule
         
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
         $this->RegisterVariableString("MBW_V_UVINDEX", "UV Index");
+        $this->RegisterVariableString("MBW_V_TEMPERATURE_MAX", "Temp (max)");
+        $this->RegisterVariableString("MBW_V_TEMPERATURE_MIN", "Temp (min)");
+        
         /*
 		$this->RegisterVariableString("Wetter", "Wetter","~HTMLBox",1);
 		$this->RegisterVariableString("YWH_IPS_Wetter", "Wetterdarstellung IPSView","~HTMLBox",1);
@@ -75,7 +78,12 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_PICTOCODE = $weatherDataJSON->{'data_day'}->{'pictocode'};
         $ARRAY_DATA_DAY_UVINDEX = $weatherDataJSON->{'data_day'}->{'uvindex'};
         
+        $ARRAY_DATA_DAY_TEMPMAX = $weatherDataJSON->{'data_day'}->{'temperature_max'};
+        $ARRAY_DATA_DAY_TEMPMIN = $weatherDataJSON->{'data_day'}->{'temperature_min'};
+        
 		$this->SetValueString("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0], "");
+        $this->SetValueString("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0], "");
+        $this->SetValueString("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0], "");
 
         $date = new DateTime('now');
         $last_update = $date->format('Y-m-d H:i:s');
