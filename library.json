@@ -4,9 +4,9 @@
     "name": "SymconMeteoblue",
     "url": "https://github.com/nik78476/SymconMeteoblue.git",
     "compatibility": {
-        "version": "4.2",
+        "version": "4.2"
     },
-    "version": "0.1",
+    "version": "0.2",
     "build": 0,
     "date": 0
 }
