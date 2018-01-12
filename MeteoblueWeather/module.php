@@ -10,7 +10,7 @@ class SymconMeteoblue extends IPSModule
         //These lines are parsed on Symcon Startup or Instance creation
         //You cannot use variables here. Just static values.
         
-        $this->RegisterPropertyString("MBW_APIKEAY", "41f2dd49fb6a");
+        $this->RegisterPropertyString("MBW_APIKEY", "41f2dd49fb6a");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
@@ -218,7 +218,7 @@ class SymconMeteoblue extends IPSModule
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
         
         $url  = "http://my.meteoblue.com/packages/basic-day?";
-        $url .= "apikey=" .$this->ReadPropertyString("MBW_LATITUDE");
+        $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
         $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
         $url .= "&lon=" .$this->ReadPropertyString("MBW_LONGITUDE");
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");

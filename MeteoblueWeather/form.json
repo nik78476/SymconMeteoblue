@@ -1,7 +1,7 @@
 {
   "elements":
   [
-    { "type": "ValidationTextBox", "name": "MBW_APIKEAY", "caption": "T_APIKEY" },
+    { "type": "ValidationTextBox", "name": "MBW_APIKEY", "caption": "T_APIKEY" },
     { "type": "ValidationTextBox", "name": "MBW_LATITUDE", "caption": "T_LATITUDE" },
     { "type": "ValidationTextBox", "name": "MBW_LONGITUDE", "caption": "T_LONGITUDE" },
     { "type": "ValidationTextBox", "name": "MBW_ASL", "caption": "T_ASL" },
