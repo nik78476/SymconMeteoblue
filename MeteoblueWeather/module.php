@@ -10,15 +10,17 @@ class SymconMeteoblue extends IPSModule
         //These lines are parsed on Symcon Startup or Instance creation
         //You cannot use variables here. Just static values.
         
-		/*
-        $this->RegisterPropertyString("YWHTown", "Konstanz");
-		$this->RegisterPropertyInteger("YWHDays", 2);
-        $this->RegisterPropertyInteger("YWHIntervall", 14400);
-		$this->RegisterPropertyString("YWHTemperature","c");
-		$this->RegisterPropertyInteger("YWHImageZoom", 100);
-		$this->RegisterPropertyInteger("YWHDisplay", 1);
-		
-		
+        $this->RegisterPropertyString("MBW_APIKEAY", "1234567890");
+		$this->RegisterPropertyInteger("MBW_LATITUDE", "47.660" );
+        $this->RegisterPropertyInteger("MBW_LONGITUDE", "9.176");
+		$this->RegisterPropertyString("MBW_ASL","402");
+		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 100);
+		$this->RegisterPropertyInteger("MBW_LANGUAGE", "de");
+        $this->RegisterPropertyInteger("MBW_TEMPERATURE", "C");
+        $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
+        
+		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
+        /*
 		$this->RegisterVariableString("Wetter", "Wetter","~HTMLBox",1);
 		$this->RegisterVariableString("YWH_IPS_Wetter", "Wetterdarstellung IPSView","~HTMLBox",1);
 		
@@ -37,7 +39,7 @@ class SymconMeteoblue extends IPSModule
 		
 		$this->RegisterVariableString("YWH_WetterImage", "WetterImage (heute)");
 		
-        $this->RegisterTimer("UpdateSymconYahooWeather", 14400, 'YWH_Update($_IPS[\'TARGET\']);');
+        $this->RegisterTimer("UpdateSymconMeteoblue", 14400, 'YWH_Update($_IPS[\'TARGET\']);');
         */
 		
     }
@@ -55,7 +57,7 @@ class SymconMeteoblue extends IPSModule
         // Inspired by module SymconTest/HookServe
 		//$this->RegisterHook("/hook/SymconMeteoblue");
 		
-		//$this->SetTimerInterval("UpdateSymconMeteoblue", $this->ReadPropertyInteger("YWHIntervall"));
+		$this->SetTimerInterval("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000);
     }
     public function Update()
     {
@@ -66,8 +68,9 @@ class SymconMeteoblue extends IPSModule
 			echo 'Error reading external Data';
 			return;
 		}
-		// build nice layout
-		//$this->SetValueString("Wetter", $this->GenerateWeatherTable($weatherDataJSON, "") );
+        $date = new DateTime('now');
+        $last_update = $date->format('Y-m-d H:i:s');
+		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "") );
 		//$this->SetValueString("YWH_IPS_Wetter", $this->GenerateWeatherTable($weatherDataJSON, "<br>") );
     }
 
@@ -213,8 +216,15 @@ class SymconMeteoblue extends IPSModule
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
-        //$url = "http://my.meteoblue.com/dataApi/...&lat=47.5667&lon=7.6&asl=263";
-        //$raw = file_get_contents($url);
+        $url  = "http://my.meteoblue.com/packages/basic-day?";
+        $url .= "apikey=41f2dd49fb6a";
+        $url .= "&lat=47.5584";
+        $url .= "&lon=7.5733";
+        $url .= "&asl=279";
+        $url .= "&tz=Europe%2FZurich";
+        $url .= "&lang=de";
+        $rawWeatherData = file_get_contents($url);
+        
         //$weather = json_decode($raw);
  
         /* Print current temperature in Basel */
@@ -224,7 +234,8 @@ class SymconMeteoblue extends IPSModule
         //foreach($weather->forecast as $day) {
         //    echo "Temperature on {$day->date} = {$day->temperature_max}";
         //}
-		//return json_decode($jsonDataFromURL);
+		
+        return json_decode($rawWeatherData);
   	}
 	
 	private function RegisterHook($WebHook) {
@@ -259,7 +270,7 @@ class SymconMeteoblue extends IPSModule
 			}
 						
 			//reduce any relative paths. this also checks for file existance
-			$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/SymconYahooWeather/")));
+			$path = realpath($root . "/" . substr($_SERVER['REQUEST_URI'], strlen("/hook/SymconMeteoblue/")));
 			//IPS_LogMessage("WebHook path: ", $path);
 			if($path === false) {
 				http_response_code(404);

@@ -4,7 +4,7 @@
             "T_APIKEY": "API Key",
             "T_LATITUDE": "Latitude",
             "T_LONGITUDE": "Longitude",
-            "T_AZL": "AZL Code",
+            "T_ASL": "ASL Code",
             "T_UPDATEINTERVALL": "Aktualisierungsintervall (sek.)",
             "T_LANGSELECT": "Sprache",
             "T_LANG_DE": "Deutsch",
