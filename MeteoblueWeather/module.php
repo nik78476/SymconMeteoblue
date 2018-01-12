@@ -20,9 +20,9 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
         
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
-        $this->RegisterVariableString("MBW_V_UVINDEX", "UV Index");
-        $this->RegisterVariableString("MBW_V_TEMPERATURE_MAX", "Temp (max)");
-        $this->RegisterVariableString("MBW_V_TEMPERATURE_MIN", "Temp (min)");
+        $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index");
+        $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MAX", "Temp (max)", "~Temperature");
+        $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MIN", "Temp (min)", "~Temperature");
         
         /*
 		$this->RegisterVariableString("Wetter", "Wetter","~HTMLBox",1);
@@ -81,9 +81,9 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_TEMPMAX = $weatherDataJSON->{'data_day'}->{'temperature_max'};
         $ARRAY_DATA_DAY_TEMPMIN = $weatherDataJSON->{'data_day'}->{'temperature_min'};
         
-		$this->SetValueString("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0], "");
-        $this->SetValueString("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0], "");
-        $this->SetValueString("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0], "");
+		$this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
+        $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
+        $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
 
         $date = new DateTime('now');
         $last_update = $date->format('Y-m-d H:i:s');
@@ -109,17 +109,6 @@ class SymconMeteoblue extends IPSModule
     	return true;
   	}
 	
-    /*
-	private function CreateVarProfileYWHTemp() {
-		if (!IPS_VariableProfileExists("YHW.Temp")) {
-			IPS_CreateVariableProfile("YHW.Temp", 1);
-			IPS_SetVariableProfileValues("YHW.Temp", "-100,0", "100,0", "1,0");
-			IPS_SetVariableProfileText("YHW.Temp", "", " °");
-			IPS_SetVariableProfileAssociation("YHW.Temp", "-100,0", "%1f", "", -1);
-
-		 }
-	}
-	*/
 		
 	private function QueryWeatherData(){
         /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
@@ -131,9 +120,7 @@ class SymconMeteoblue extends IPSModule
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
-        
-        //IPS_LogMessage($_IPS['SELF'], "URL: ". $url);
-        
+  
         $rawWeatherData = file_get_contents($url);
         return json_decode($rawWeatherData);
   	}
