@@ -77,7 +77,7 @@ class SymconMeteoblue extends IPSModule
         $weatherDataJSON = json_decode($rawWeatherData);
 		if ($weatherDataJSON == NULL)
 		{
-			$this->SetStatus(202);
+			$this->SetStatus(104);
             IPS_LogMessage($_IPS['SELF'], "Error reading external data");
 			return;
 		}

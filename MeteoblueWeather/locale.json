@@ -22,7 +22,7 @@
             "T_UPDATESETTINGS": "Einstellungen speichern",
             "T_ICON_101": "Instanz erzeugt",
             "T_ICON_102": "Einstellungen OK",
-            "T_ICON_104": "Instanz wurde geändert - bitte speichern",
+            "T_ICON_104": "Update fehlerhaft, Einstellungen kontrollieren",
             "T_ICON_202": "Einstellungen fehlerhaft oder unvollständig" 
         }
     }
