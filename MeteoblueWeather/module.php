@@ -57,13 +57,24 @@ class SymconMeteoblue extends IPSModule
         //Never delete this line!
         parent::ApplyChanges();
         
-        $this->Update();
-		$this->RegisterHook("/hook/SymconMeteoblue");
+        $this->RegisterHook("/hook/SymconMeteoblue");
 		$this->SetTimerInterval("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000);
+        
+        $this->Update();
+		
     }
     public function Update()
     {
-		$weatherDataJSON = $this->QueryWeatherData();
+        $url  = "http://my.meteoblue.com/packages/basic-day?";
+        $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
+        $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
+        $url .= "&lon=" .$this->ReadPropertyString("MBW_LONGITUDE");
+        $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
+        $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
+        $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
+  
+        $rawWeatherData = file_get_contents($url);
+        $weatherDataJSON = json_decode($rawWeatherData);
 		if ($weatherDataJSON == NULL)
 		{
 			$this->SetStatus(202);
@@ -71,8 +82,6 @@ class SymconMeteoblue extends IPSModule
 			return;
 		}
         
-        //$weather = json_decode($raw);
- 
         /* Print current temperature in Basel */
         $ARRAY_DATA_DAY_TIME = $weatherDataJSON->{'data_day'}->{'time'};
         $ARRAY_DATA_DAY_PICTOCODE = $weatherDataJSON->{'data_day'}->{'pictocode'};
@@ -109,21 +118,6 @@ class SymconMeteoblue extends IPSModule
     	return true;
   	}
 	
-		
-	private function QueryWeatherData(){
-        /* Download and parse data for Basel (47.5667°/7.6° 263m asl) */
-        
-        $url  = "http://my.meteoblue.com/packages/basic-day?";
-        $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
-        $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
-        $url .= "&lon=" .$this->ReadPropertyString("MBW_LONGITUDE");
-        $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
-        $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
-        $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
-  
-        $rawWeatherData = file_get_contents($url);
-        return json_decode($rawWeatherData);
-  	}
 	
 	private function RegisterHook($WebHook) {
 		// Inspired from module SymconTest/HookServe
@@ -171,9 +165,9 @@ class SymconMeteoblue extends IPSModule
 			}
 			header("Content-Type: ".$this->GetMimeType(pathinfo($path, PATHINFO_EXTENSION)));
 			readfile($path);
-		}
+    }
 		
-		private function GetMimeType($extension) {
+    private function GetMimeType($extension) {
 			// Inspired from module SymconTest/HookServe
 			$lines = file(IPS_GetKernelDirEx()."mime.types");
 			foreach($lines as $line) {
@@ -188,9 +182,9 @@ class SymconMeteoblue extends IPSModule
 				}
 			}
 			return "text/plain";
-		}
+    }
 		
-		private function getWeatherCondition( $condition ){
+    private function getWeatherCondition( $condition ){
 			
 			$weathercondition = array (
 				"0" => "Tornado",
