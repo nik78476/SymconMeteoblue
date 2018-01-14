@@ -14,7 +14,7 @@
 8. [Lizenz](#8-lizenz) 
 9. [Changelog](#9-changelog) 
 
-
+---
 ## 1. Funktionsumfang
 
 IP-Symcon Modul zur graphischen Anzeige der Wettervorhersage
@@ -23,14 +23,14 @@ sowie Einzelwerten von meteoblue.
 Diese Implementierung basiert auf:
 http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api 
 
-
+---
 ## 2. Systemanforderungen
 - IP-Symcon ab Version 4.2
 
-
+---
 ## 3. Installation
-###### Mach' ein Backup. 
-###### Die Installation erfolgt auf eigene Verantwortung!
+###### **Mach' ein Backup!** 
+###### *Die Installation erfolgt auf eigene Verantwortung!*
 
 Über die Kern-Instanz "Module Control" folgende URL hinzufügen:
 
@@ -40,6 +40,7 @@ Nach erfolgreicher Installation an dem Ort eurer Wahl eine neue Instanz
 anlegen (Hersteller: Sonstige, Gerät: MeteoblueWetter). 
 Die neue Instanz findet ihr dort, wo ihr sie angelegt habt.
 
+---
 ## 4. Konfiguration:
 
 Die Konfiguration ist eigentlich selbsterklärend. Über die Homepage von Meteoblue
@@ -58,7 +59,7 @@ Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Anzahl Tage | noch nicht unterstützt (Standard: 1 Tag)
 
-
+---
 ## 5. Profile
 
 Das Modul legt folgende Profile an:
@@ -68,7 +69,7 @@ Name | Typ | Verwendung
 MBW.WindDirection | Integer | Darstellung der Gradzahlen in Himmelsrichtungen
 MBW.UVIndex | Integer | Farbkodierung des UVIndex (Transparent, Grün, Rot, Lila) - angelehnt an Warnstufen
 
-
+---
 ## 6. Variablen
 
 Das Modul legt folgende Variablen an:
@@ -79,16 +80,19 @@ Variable | Typ | Variable | Beschreibung
 Wetter |Wetter | String | HTML Darstellung der Vorhersage gem. Einstellungen
 
 
-
-
+---
 ## 7. Befehlsreferenz
 
-Das Module hat eine öffentliche Funktion: MBW_Update()
+Das Module hat eine öffentliche Funktion: 
+```php
+MBW_Update();
 
+---
 ## 8. Lizenz
 
 [![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
+---
 ## 9. Changelog
 
 v1.0 first release
