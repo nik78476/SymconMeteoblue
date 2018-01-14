@@ -11,7 +11,8 @@
 5. [Profile](#5-profile)
 6. [Variablen](#6-variablen)
 7. [Befehlsreferenz](#7-befehlsreferenz)
-8. [Changelog](#8-changelog) 
+8. [Lizenz](#8-lizenz) 
+9. [Changelog](#9-changelog) 
 
 
 ## 1. Funktionsumfang
@@ -83,7 +84,11 @@ Wetter |Wetter | String | HTML Darstellung der Vorhersage gem. Einstellungen
 
 Das Module hat eine öffentliche Funktion: MBW_Update()
 
-## 8. Changelog
+## 9. Changelog
+
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
+## 9. Changelog
 
 v1.0 first release
 
