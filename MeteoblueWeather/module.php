@@ -10,6 +10,11 @@ class SymconMeteoblue extends IPSModule
         //These lines are parsed on Symcon Startup or Instance creation
         //You cannot use variables here. Just static values.
         
+        // VariableProfiles
+        $this->createVariableProfileWindDirection();
+        $this->createVariableProfileUVIndex();
+        
+        // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "41f2dd49fb6a");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
@@ -19,13 +24,14 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
         
+        // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
-        $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index");
+        $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index", "MBW.UVIndex");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MAX", "Temp (max)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MIN", "Temp (min)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_FELTTEMPERATURE_MIN", "Gef. Temp (min)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_FELTTEMPERATURE_MAX", "Gef. Temp (max)", "~Temperature");
-        $this->RegisterVariableInteger("MBW_V_WINDDIRECTION", "Windrichtung");
+        $this->RegisterVariableInteger("MBW_V_WINDDIRECTION", "Windrichtung","MBW.WindDirection");
         
         
         /*
@@ -99,14 +105,12 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_TEMPFELTMIN = $weatherDataJSON->{'data_day'}->{'felttemperature_min'};
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         
-        
-        
-        
 		$this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[0]);
+        
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
         $date = new DateTime('now');
@@ -132,7 +136,6 @@ class SymconMeteoblue extends IPSModule
     	SetValueString($id, $Value);
     	return true;
   	}
-	
 	
 	private function RegisterHook($WebHook) {
 		// Inspired from module SymconTest/HookServe
@@ -253,5 +256,43 @@ class SymconMeteoblue extends IPSModule
 				);
 			return $weathercondition[$condition];
 		}
+    
+    private function createVariableProfileWindDirection(){
+        $profile = IPS_GetVariableProfile("MBW.WindDirection");
+        if ($profile == false){
+            IPS_CreateVariableProfile("MBW.WindDirection", 1);
+            IPS_SetVariableProfileText("MBW.WindDirection", "", "");
+            IPS_SetVariableProfileValues("MBW.WindDirection", 0, 360, 30);
+            IPS_SetVariableProfileDigits("MBW.WindDirection", 0);
+            IPS_SetVariableProfileIcon("MBW.WindDirection", "WindDirection");
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 0, "N", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 45, "NO", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 90, "O", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 135, "SO", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 180, "S", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 225, "SW", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 270, "W", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 315, "NW", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.WindDirection", 360, "n", "", -1);
+            
+        }
+    }
+    
+    private function createVariableProfileUVIndex(){
+        $profile = IPS_GetVariableProfile("MBW.UVIndex");
+        if ($profile == false){
+            IPS_CreateVariableProfile("MBW.UVIndex", 1);
+            IPS_SetVariableProfileText("MBW.UVIndex", "", "");
+            IPS_SetVariableProfileValues("MBW.UVIndex", 0, 12, 0);
+            IPS_SetVariableProfileDigits("MBW.UVIndex", 0);
+            IPS_SetVariableProfileIcon("MBW.UVIndex", "Sun");
+            IPS_SetVariableProfileAssociation("MBW.UVIndex", 0, "%.1f", "", -1);
+            IPS_SetVariableProfileAssociation("MBW.UVIndex", 3, "%.1f", "", 16314432);
+            IPS_SetVariableProfileAssociation("MBW.UVIndex", 6, "%.1f", "", 16283680);
+            IPS_SetVariableProfileAssociation("MBW.UVIndex", 8, "%.1f", "", 14155808);
+            IPS_SetVariableProfileAssociation("MBW.UVIndex", 11, "%.1f", "", 11010176);
+            
+        }
+    }
 }
 ?>
