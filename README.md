@@ -7,10 +7,11 @@
 1. [Funktionsumfang](#1-funktionsumfang) 
 2. [Systemanforderungen](#2-systemanforderungen)
 3. [Installation](#3-installation)
-4. [Profile](#4-profile)
-5. [Variablen](#4-variablen)
-6. [Befehlsreferenz](#5-befehlsreferenz)
-7. [Changelog](#6-changelog) 
+4. [Konfiguration](#4-konfiguration)
+5. [Profile](#5-profile)
+6. [Variablen](#6-variablen)
+7. [Befehlsreferenz](#7-befehlsreferenz)
+8. [Changelog](#8-changelog) 
 
 
 ## 1. Funktionsumfang
@@ -37,7 +38,7 @@ Nach erfolgreicher Installation an dem Ort eurer Wahl eine neue Instanz
 anlegen (Hersteller: Sonstige, Gerät: MeteoblueWetter). 
 Die neue Instanz findet ihr dort, wo ihr sie angelegt habt.
 
-Konfiguration:
+## 4. Konfiguration:
 
 Die Konfiguration ist eigentlich selbsterklärend. Über die Homepage von Meteoblue
 muss ein API-Key beantragt werden, dieser ist dann 1 Jahr gültig. Die Homepage bietet
@@ -56,7 +57,7 @@ Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Anzahl Tage | noch nicht unterstützt (Standard: 1 Tag)
 
 
-## 4. Profile
+## 5. Profile
 
 Das Modul legt folgende Profile an:
 
@@ -66,7 +67,7 @@ MBW.WindDirection | Integer | Darstellung der Gradzahlen in Himmelsrichtungen
 MBW.UVIndex | Integer | Farbkodierung des UVIndex (Transparent, Grün, Rot, Lila) - angelehnt an Warnstufen
 
 
-## 5. Variablen
+## 6. Variablen
 
 Das Modul legt folgende Variablen an:
 
@@ -78,16 +79,11 @@ Wetter |Wetter | String | HTML Darstellung der Vorhersage gem. Einstellungen
 
 
 
-## 6. Befehlsreferenz
+## 7. Befehlsreferenz
 
 Das Module hat eine öffentliche Funktion: MBW_Update()
 
-## 6. Changelog
+## 8. Changelog
 
 v1.0 first release
 
-v1.1 update image zoom
-
-v1.2 update Variables and Single-Image-Mode
-
-v1.3 Luftdruck entfernt, WetterImage zeigt nun den OriginalCode von Yahoo 
