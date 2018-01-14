@@ -238,8 +238,6 @@ class SymconMeteoblue extends IPSModule
 				);
 			return $weathercondition[$condition];
 		}
-}
-
 
     private function getDEMOWeatherData()
         $demodata = "{\"metadata\": 
@@ -298,4 +296,5 @@ class SymconMeteoblue extends IPSModule
     }";
     return $demodata;
     }
+}
 ?>
