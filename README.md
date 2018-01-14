@@ -74,11 +74,15 @@ MBW.UVIndex | Integer | Farbkodierung des UVIndex (Transparent, Grün, Rot, Lila
 
 Das Modul legt folgende Variablen an:
 
-
-Variable | Typ | Variable | Beschreibung
------- | ------ |------ | ---------------------------------
-Wetter |Wetter | String | HTML Darstellung der Vorhersage gem. Einstellungen
-
+VariablenID | Typ | Variablenbezeichnung (sichtbar) | Profil| Beschreibung
+------ | ------ |------|------ | ---------------------------------
+MBW_V_LASTUPDATE|String | Last Update | | Letzte Datenaktualisierung
+MBW_V_UVINDEX|Integer | UV Index | MBW.UVIndex| UV Index
+MBW_V_TEMPERATURE_MAX|Float | Temp (max) | ~Temperature | Maximale Temperatur 
+MBW_V_TEMPERATURE_MIN|Float | Temp (min) | ~Temperature | Minimale Temperatur 
+MBW_V_FELTTEMPERATURE_MIN|Float | Gef. Temp (min) | ~Temperature | Gefühlte Minimaltemperatur 
+MBW_V_FELTTEMPERATURE_Max|Float | Gef. Temp (max) | ~Temperature | Gefühlte Maximaltemperatur 
+MBW_V_WINDDIRECTION|Integer | Windrichtung | MBW.WindDirection | Windrichtung 
 
 ---
 ## 7. Befehlsreferenz
