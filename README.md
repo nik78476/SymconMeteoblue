@@ -29,7 +29,8 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 
 
 ## 3. Installation
-Mach' ein Backup. Die Installation erfolgt auf eigene Verantwortung!
+###### Mach' ein Backup. 
+###### Die Installation erfolgt auf eigene Verantwortung!
 
 Über die Kern-Instanz "Module Control" folgende URL hinzufügen:
 
@@ -84,7 +85,7 @@ Wetter |Wetter | String | HTML Darstellung der Vorhersage gem. Einstellungen
 
 Das Module hat eine öffentliche Funktion: MBW_Update()
 
-## 9. Changelog
+## 8. Lizenz
 
 [![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
