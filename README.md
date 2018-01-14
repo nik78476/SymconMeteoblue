@@ -86,7 +86,7 @@ Wetter |Wetter | String | HTML Darstellung der Vorhersage gem. Einstellungen
 Das Module hat eine öffentliche Funktion: 
 ```php
 MBW_Update();
-
+```
 ---
 ## 8. Lizenz
 
