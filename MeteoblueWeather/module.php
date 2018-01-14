@@ -65,6 +65,7 @@ class SymconMeteoblue extends IPSModule
     }
     public function Update()
     {
+        /*
         $url  = "http://my.meteoblue.com/packages/basic-day?";
         $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
         $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
@@ -72,6 +73,8 @@ class SymconMeteoblue extends IPSModule
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
+        */
+        $url = "http://ip-symcon.familie-froehlich.org/data.json";
   
         $rawWeatherData = file_get_contents($url);
         $weatherDataJSON = json_decode($rawWeatherData);
@@ -238,63 +241,5 @@ class SymconMeteoblue extends IPSModule
 				);
 			return $weathercondition[$condition];
 		}
-
-    private function getDEMOWeatherData()
-        $demodata = "{\"metadata\": 
-        {
-            \"name\": \"\", 
-            \"latitude\": 47.56, 
-            \"longitude\": 7.57, 
-            \"height\": 279, 
-            \"timezone_abbrevation\": \"CET\", 
-            \"utc_timeoffset\": 1.00, 
-            \"modelrun_utc\": \"2018-01-12 12:00\", 
-            \"modelrun_updatetime_utc\": \"2018-01-12 20:01\"
-        }, 
-        \"units\": 
-        {
-            \"time\": \"YYYY-MM-DD hh:mm\", 
-            \"predictability\": \"percent\", 
-            \"precipitation_probability\": \"percent\", 
-            \"pressure\": \"hPa\", 
-            \"relativehumidity\": \"percent\", 
-            \"temperature\": \"C\", 
-            \"winddirection\": \"degree\", 
-            \"precipitation\": \"mm\", 
-            \"windspeed\": \"ms-1\"
-        }, 
-        \"data_day\": 
-        {
-            \"time\": [\"2018-01-13\", \"2018-01-14\", \"2018-01-15\", \"2018-01-16\", \"2018-01-17\", \"2018-01-18\", \"2018-01-19\"], 
-            \"pictocode\": [4, 1, 4, 6, 8, 12, 11], 
-            \"uvindex\": [1, 1, 1, 1, 1, null, null], 
-            \"temperature_max\": [3.88, 4.27, 6.87, 7.40, 6.29, 9.17, 3.90], 
-            \"temperature_min\": [-0.63, -1.16, -1.55, 5.86, 3.13, 3.29, 0.60], 
-            \"temperature_mean\": [1.19, 0.70, 2.49, 6.61, 4.27, 5.82, 2.38], 
-            \"felttemperature_max\": [-0.46, 0.54, 2.44, 1.38, 0.17, 2.10, -1.01], 
-            \"felttemperature_min\": [-4.71, -6.08, -5.51, -1.39, -2.42, -1.77, -3.77], 
-            \"winddirection\": [90, 135, 90, 225, 270, 270, 270], 
-            \"precipitation_probability\": [0, 0, 32, 89, 100, 88, 87], 
-            \"rainspot\": [\"0000000000000000000000000000000000000000000000000\", \"0000000000000000000000000000000000000000000000000\", \"1190000000000000000000100000001000011110012110111\", \"3333333333333333333333333333333333333333333333333\", \"3333333333333333333333333333333333333333333333333\", \"3333333333333333333333333333333333333333333333333\", \"3333333333333333333333333333333333333233333323333\"], 
-            \"predictability_class\": [4, 5, 3, 3, 3, 2, 1], 
-            \"predictability\": [78, 88, 56, 42, 43, 34, 17], 
-            \"precipitation\": [0.00, 0.00, 0.00, 14.02, 13.29, 9.11, 13.35], 
-            \"snowfraction\": [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.51], 
-            \"sealevelpressure_max\": [1026, 1022, 1022, 1008, 1009, 1010, 1010], 
-            \"sealevelpressure_min\": [1020, 1019, 1009, 996, 995, 999, 1004], 
-            \"sealevelpressure_mean\": [1023, 1020, 1017, 1002, 1001, 1003, 1006], 
-            \"windspeed_max\": [3.91, 3.82, 5.12, 8.44, 6.82, 9.19, 4.98], 
-            \"windspeed_mean\": [2.43, 2.57, 2.61, 6.65, 5.65, 6.28, 3.95], 
-            \"windspeed_min\": [0.67, 1.18, 1.34, 5.44, 4.47, 4.36, 3.04], 
-            \"relativehumidity_max\": [92, 91, 91, 84, 90, 93, 93], 
-            \"relativehumidity_min\": [64, 59, 60, 67, 76, 75, 76], 
-            \"relativehumidity_mean\": [81, 77, 77, 78, 85, 83, 88], 
-            \"convective_precipitation\": [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
-            \"precipitation_hours\": [0.00, 0.00, 0.00, 14.00, 14.00, 10.00, 10.00], 
-            \"humiditygreater90_hours\": [2.00, 1.00, 1.00, 0.00, 0.00, 2.00, 8.00]
-        }
-    }";
-    return $demodata;
-    }
 }
 ?>
