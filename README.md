@@ -7,9 +7,10 @@
 1. [Funktionsumfang](#1-funktionsumfang) 
 2. [Systemanforderungen](#2-systemanforderungen)
 3. [Installation](#3-installation)
-4. [Variablen](#4-variablen)
-5. [Befehlsreferenz](#5-befehlsreferenz)
-6. [Changelog](#6-changelog) 
+4. [Profile](#4-profile)
+5. [Variablen](#4-variablen)
+6. [Befehlsreferenz](#5-befehlsreferenz)
+7. [Changelog](#6-changelog) 
 
 
 ## 1. Funktionsumfang
