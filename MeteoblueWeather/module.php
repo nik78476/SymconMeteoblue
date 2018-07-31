@@ -24,6 +24,7 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyString("MBW_DATE_FORMAT", "d.m.Y");
         $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
+        $this->RegisterPropertyBoolean("MBW_DEBUG", false);
         
         // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
@@ -85,10 +86,16 @@ class SymconMeteoblue extends IPSModule
     public function Update()
     {
         $myAPIKey = $this->ReadPropertyString("MBW_APIKEY");
+        $loggingActive = $this->ReadPropertyBoolean("MBW_DEBUG");
+        
         if($myAPIKey == NULL || $myAPIKey == "Your API-Key"){
-            IPS_LogMessage($_IPS['SELF'], "Set your API Key first to aquire data.");
+            IPS_LogMessage("SymconMeteoblue", "Set your API Key first to aquire data.");
             return;
         }
+        
+        if ($loggingActive){
+            IPS_LogMessage("SymconMeteoblue", "API-Key: " $myAPIKey);
+		}
         
         //http://my.meteoblue.com/packages/basic-day?//apikey=936c81471c23&lat=47.7154&lon=9.0715&asl=403&tz=Europe%2FBerlin&city=Allensbach
         
@@ -107,7 +114,7 @@ class SymconMeteoblue extends IPSModule
 		if ($weatherDataJSON == NULL)
 		{
 			$this->SetStatus(104);
-            IPS_LogMessage($_IPS['SELF'], "Error reading external data");
+            IPS_LogMessage("SymconMeteoblue", "Error reading external data");
 			return;
 		}
         

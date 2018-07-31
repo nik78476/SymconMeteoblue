@@ -29,7 +29,8 @@
 			{ "label": "T_FORECASTDAYS_2", "value":"2" },
 			{ "label": "T_FORECASTDAYS_3", "value":"3" }
 		]
-	}
+	},
+    { "type": "CheckBox", "name": "MBW_DEBUG", "caption": "Debug-Ausgaben im Log aktivieren" }
   ], 
   "actions":
   [
