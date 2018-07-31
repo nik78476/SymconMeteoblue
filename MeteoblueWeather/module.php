@@ -15,7 +15,7 @@ class SymconMeteoblue extends IPSModule
         $this->createVariableProfileUVIndex();
         
         // Configuration Values
-        $this->RegisterPropertyString("MBW_APIKEY", "");
+        $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
@@ -26,6 +26,7 @@ class SymconMeteoblue extends IPSModule
         
         // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
+        $this->RegisterVariableString("MBW_V_FORECASTDATE", "Vorhersagedatum");
         $this->RegisterVariableString("MBW_V_PICTOCODEURL", "Wetterpictogramm","~HTMLBox",1);
         $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index", "MBW.UVIndex");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MAX", "Temp (max)", "~Temperature");
@@ -146,7 +147,8 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_TEMPFELTMIN = $weatherDataJSON->{'data_day'}->{'felttemperature_min'};
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         
-		$this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
+		$this->SetValueString("MBW_V_FORECASTDATE", date("d.m.Y", strtotime($ARRAY_DATA_DAY_TIME[0])));
+        $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
