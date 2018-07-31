@@ -94,7 +94,7 @@ class SymconMeteoblue extends IPSModule
         }
         
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "API-Key: " $myAPIKey);
+            IPS_LogMessage("SymconMeteoblue", "API-Key: " .$myAPIKey);
 		}
         
         //http://my.meteoblue.com/packages/basic-day?//apikey=936c81471c23&lat=47.7154&lon=9.0715&asl=403&tz=Europe%2FBerlin&city=Allensbach
