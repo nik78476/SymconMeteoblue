@@ -15,7 +15,7 @@ class SymconMeteoblue extends IPSModule
         $this->createVariableProfileUVIndex();
         
         // Configuration Values
-        $this->RegisterPropertyString("MBW_APIKEY", "41f2dd49fb6a");
+        $this->RegisterPropertyString("MBW_APIKEY", "");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
@@ -56,6 +56,7 @@ class SymconMeteoblue extends IPSModule
         
         $weatherstring .= '<img src="/hook/SymconMeteoblue/' .$forecast[$i]->code .'.png" style="height:' .$this->ReadPropertyInteger("YWHImageZoom") .'%;width:auto;">';
         
+        <img src="/hook/SymconMeteoblue/wi-cloud-down.svg" width="200" height="160">
         
         */
         
@@ -80,7 +81,10 @@ class SymconMeteoblue extends IPSModule
     }
     public function Update()
     {
-        /*
+        
+        
+        //http://my.meteoblue.com/packages/basic-day?//apikey=936c81471c23&lat=47.7154&lon=9.0715&asl=403&tz=Europe%2FBerlin&city=Allensbach
+        
         $url  = "http://my.meteoblue.com/packages/basic-day?";
         $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
         $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
@@ -88,8 +92,8 @@ class SymconMeteoblue extends IPSModule
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
-        */
-        $url = "http://ip-symcon.familie-froehlich.org/data.json";
+        
+        //$url = "http://ip-symcon.familie-froehlich.org/data.json";
   
         $rawWeatherData = file_get_contents($url);
         $weatherDataJSON = json_decode($rawWeatherData);
