@@ -26,7 +26,7 @@ class SymconMeteoblue extends IPSModule
         
         // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
-        $this->RegisterVariableString("MBW_V_PICTOCODEURL", "Wetterpictogramm", "~HMTLBox");
+        $this->RegisterVariableString("MBW_V_PICTOCODEURL", "Wetterpictogramm");
         $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index", "MBW.UVIndex");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MAX", "Temp (max)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MIN", "Temp (min)", "~Temperature");
