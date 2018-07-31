@@ -5,6 +5,7 @@
     { "type": "ValidationTextBox", "name": "MBW_LATITUDE", "caption": "T_LATITUDE" },
     { "type": "ValidationTextBox", "name": "MBW_LONGITUDE", "caption": "T_LONGITUDE" },
     { "type": "ValidationTextBox", "name": "MBW_ASL", "caption": "T_ASL" },
+    { "type": "ValidationTextBox", "name": "MBW_DATE_FORMAT", "caption": "T_FORMAT_DATE" },  
     { "type": "IntervalBox", "name": "MBW_UPDATEINTERVALL", "caption": "T_UPDATEINTERVALL" },
 	{ "type": "Select", "name": "MBW_LANGUAGE", "caption": "T_LANGSELECT",
 		"options": [
@@ -14,7 +15,9 @@
             { "label": "T_LANG_IT", "value":"it" },
             { "label": "T_LANG_FR", "value":"fr" }
 		]
-	},{ "type": "Select", "name": "MBW_TEMPERATURE", "caption": "T_TEMPERATURE",
+	},
+    
+    { "type": "Select", "name": "MBW_TEMPERATURE", "caption": "T_TEMPERATURE",
 		"options": [
 			{ "label": "T_TEMPERATURE_C", "value":"C" },
 			{ "label": "T_TEMPERATURE_F", "value":"F" }
