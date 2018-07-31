@@ -104,6 +104,7 @@ class SymconMeteoblue extends IPSModule
 			return;
 		}
         
+        IPS_LogMessage($_IPS['SELF'], "Error reading external data");
         /* Print current temperature in Basel */
         $ARRAY_DATA_DAY_TIME = $weatherDataJSON->{'data_day'}->{'time'};
         $ARRAY_DATA_DAY_PICTOCODE = $weatherDataJSON->{'data_day'}->{'pictocode'};
