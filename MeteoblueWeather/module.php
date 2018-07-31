@@ -84,7 +84,11 @@ class SymconMeteoblue extends IPSModule
     }
     public function Update()
     {
-        
+        $myAPIKey = $this->ReadPropertyString("MBW_APIKEY");
+        if($myAPIKey == NULL || $myAPIKey == "Your API-Key"){
+            IPS_LogMessage($_IPS['SELF'], "Set your API Key first to aquire data.");
+            return;
+        }
         
         //http://my.meteoblue.com/packages/basic-day?//apikey=936c81471c23&lat=47.7154&lon=9.0715&asl=403&tz=Europe%2FBerlin&city=Allensbach
         
@@ -161,7 +165,7 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
         $date = new DateTime('now');
-        $last_update = $date->format($this->ReadPropertyString("MBW_DATE_FORMAT"));
+        $last_update = $date->format("d.m.Y H:m:s");
 		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
         $this->SetStatus(102);
     }
