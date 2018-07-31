@@ -16,7 +16,7 @@
             "T_TEMPERATURE": "Temperatureinheit",
             "T_TEMPERATURE_C": "Celsius",
             "T_TEMPERATURE_F": "Fahrenheit",
-            "T_FORECASTDAYS": "Anzahl Tage",
+            "T_FORECASTDAYS": "Tag anzeigen",
             "T_FORECASTDAYS_0": "Heute anzeigen",
             "T_FORECASTDAYS_1": "Tag+1 anzeigen (heute)",
             "T_FORECASTDAYS_2": "Tag+2 anzeigen (morgen)",
