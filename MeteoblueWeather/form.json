@@ -5,7 +5,11 @@
     { "type": "ValidationTextBox", "name": "MBW_LATITUDE", "caption": "T_LATITUDE" },
     { "type": "ValidationTextBox", "name": "MBW_LONGITUDE", "caption": "T_LONGITUDE" },
     { "type": "ValidationTextBox", "name": "MBW_ASL", "caption": "T_ASL" },
-    { "type": "ValidationTextBox", "name": "MBW_DATE_FORMAT", "caption": "T_FORMAT_DATE" },  
+    { "type": "ValidationTextBox", "name": "MBW_DATE_FORMAT", "caption": "T_FORMAT_DATE" },
+    { "type": "ValidationTextBox", "name": "MBW_IMAGE_WIDTH", "caption": "T_IMAGE_WIDTH" },
+    { "type": "ValidationTextBox", "name": "MBW_IMAGE_HEIGHT", "caption": "T_IMAGE_HEIGHT" },
+    
+      
     { "type": "IntervalBox", "name": "MBW_UPDATEINTERVALL", "caption": "T_UPDATEINTERVALL" },
 	{ "type": "Select", "name": "MBW_LANGUAGE", "caption": "T_LANGSELECT",
 		"options": [

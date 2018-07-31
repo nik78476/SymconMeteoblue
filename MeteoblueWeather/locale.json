@@ -23,6 +23,10 @@
             "T_FORECASTDAYS_3": "Tag+3 anzeigen",
             "T_FORECASTDAYS_4": "Tag+4 anzeigen (max)",
             "T_UPDATESETTINGS": "Einstellungen speichern",
+            "T_IMAGE_WIDTH": "Bildbreite (px)",
+            "T_IMAGE_HEIGHT": "Bildhöhe (px)",
+            
+            
             "T_ICON_101": "Instanz erzeugt",
             "T_ICON_102": "Einstellungen OK",
             "T_ICON_104": "Update fehlerhaft, Einstellungen kontrollieren",
