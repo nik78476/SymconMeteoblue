@@ -104,8 +104,38 @@ class SymconMeteoblue extends IPSModule
 			return;
 		}
         
+        /*
         IPS_LogMessage($_IPS['SELF'], "URL-DATA: " .$url);
-        /* Print current temperature in Basel */
+        
+        time": ["2018-07-31", "2018-08-01", "2018-08-02", "2018-08-03", "2018-08-04", "2018-08-05", "2018-08-06"], 
+		"pictocode": [2, 8, 2, 1, 1, 8, 8], 
+		"uvindex": [4, 8, 8, 8, 8, 8, null], 
+		"temperature_max": [34.05, 33.27, 32.01, 33.28, 33.77, 31.81, 31.25], 
+		"temperature_min": [18.43, 19.98, 19.38, 19.21, 19.41, 21.02, 18.14], 
+		"temperature_mean": [27.05, 26.30, 25.64, 26.50, 26.84, 26.06, 24.76], 
+		"felttemperature_max": [38.83, 36.80, 34.78, 37.08, 37.46, 35.64, 32.91], 
+		"felttemperature_min": [18.53, 20.36, 21.63, 21.23, 21.46, 24.16, 19.78], 
+		"winddirection": [0, 45, 45, 45, 45, 135, 270], 
+		"precipitation_probability": [11, 38, 29, 14, 15, 41, 30], 
+		"rainspot": ["0000000000000000000000000000000000000000000000001", "1212110111122100011100001110100001110111111111111", "0000000000000000000000000000000000000100000112210", "0000000000000000000000000000000000000000000000000", "0000000000000000000000000000000000000000000000000", "1112111222210111111002122219222011101211000001100", "0001000001100000111000001000001221000002000000000"], 
+		"predictability_class": [5, 3, 4, 5, 5, 3, 3], 
+		"predictability": [91, 55, 68, 89, 81, 50, 48], 
+		"precipitation": [0.00, 0.40, 0.00, 0.00, 0.00, 2.32, 0.40], 
+		"snowfraction": [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00], 
+		"sealevelpressure_max": [1018, 1020, 1023, 1023, 1021, 1021, 1019], 
+		"sealevelpressure_min": [1016, 1017, 1020, 1019, 1018, 1018, 1015], 
+		"sealevelpressure_mean": [1016, 1018, 1021, 1021, 1020, 1019, 1017], 
+		"windspeed_max": [1.60, 3.12, 2.62, 3.12, 2.59, 1.90, 3.35], 
+		"windspeed_mean": [1.03, 1.85, 1.72, 2.04, 1.34, 0.83, 1.67], 
+		"windspeed_min": [0.00, 0.57, 0.08, 1.01, 0.09, 0.00, 0.04], 
+		"relativehumidity_max": [76, 75, 97, 92, 93, 88, 84], 
+		"relativehumidity_min": [40, 44, 46, 50, 46, 44, 44], 
+		"relativehumidity_mean": [58, 63, 70, 70, 68, 64, 65], 
+		"convective_precipitation": [0.00, 0.40, 0.00, 0.00, 0.00, 2.32, 0.40], 
+		"precipitation_hours": [0.00, 1.00, 0.00, 0.00, 0.00, 2.00, 1.00], 
+		"humiditygreater90_hours": [0.00, 0.00, 5.00, 2.00, 1.00, 0.00, 0.00]
+        */
+        
         $ARRAY_DATA_DAY_TIME = $weatherDataJSON->{'data_day'}->{'time'};
         $ARRAY_DATA_DAY_PICTOCODE = $weatherDataJSON->{'data_day'}->{'pictocode'};
         $ARRAY_DATA_DAY_UVINDEX = $weatherDataJSON->{'data_day'}->{'uvindex'};
@@ -118,7 +148,7 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
-        $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
+        $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[0]);
         
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
