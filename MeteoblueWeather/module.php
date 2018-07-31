@@ -151,7 +151,7 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[0]);
-        $this->SetValueString("MBW_V_PICTOCODEURL"","<img src='https://www.meteoblue.com/website/images/picto/" .$ARRAY_DATA_DAY_PICTOCODE[0] ."_iday_monochrome_hollow.svg">");
+        $this->SetValueString("MBW_V_PICTOCODEURL","<img src='https://www.meteoblue.com/website/images/picto/" .$ARRAY_DATA_DAY_PICTOCODE[0] ."_iday_monochrome_hollow.svg'>");
         
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
