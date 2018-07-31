@@ -12,6 +12,7 @@
             "T_LANG_ES": "Spanisch",
             "T_LANG_IT": "Italienisch",
             "T_LANG_FR": "Franzoesisch",
+            "T_FORMAT_DATE": "Datumsformat",
             "T_TEMPERATURE": "Temperatureinheit",
             "T_TEMPERATURE_C": "Celsius",
             "T_TEMPERATURE_F": "Fahrenheit",

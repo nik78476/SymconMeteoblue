@@ -21,6 +21,7 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterPropertyString("MBW_ASL","402");
 		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 100);
 		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
+        $this->RegisterPropertyString("MBW_DATE_FORMAT", "d.m.Y");
         $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "1");
         
@@ -147,7 +148,7 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_TEMPFELTMIN = $weatherDataJSON->{'data_day'}->{'felttemperature_min'};
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         
-		$this->SetValueString("MBW_V_FORECASTDATE", date("d.m.Y", strtotime($ARRAY_DATA_DAY_TIME[0])));
+		$this->SetValueString("MBW_V_FORECASTDATE", date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[0])));
         $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
@@ -160,7 +161,7 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
         $date = new DateTime('now');
-        $last_update = $date->format('Y-m-d H:i:s');
+        $last_update = $date->format($this->ReadPropertyString("MBW_DATE_FORMAT"));
 		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
         $this->SetStatus(102);
     }
