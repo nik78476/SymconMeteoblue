@@ -19,6 +19,8 @@
 7. [Befehlsreferenz](#7-befehlsreferenz)
 8. [Lizenz](#8-lizenz) 
 9. [Changelog](#9-changelog) 
+10. [GUIDs](#10-GUIDs) 
+11. [Author](#11-author) 
 
 ---
 ## 1. Funktionsumfang
@@ -63,7 +65,7 @@ API Key | Persönlicher API-Key
 Latitude | Latitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
 Longitude | Longitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
 ASL Code | ASL Code des Auswerteortes (ASL = Above Sea Level, m über Meereshöhe) (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
-Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.y oder d-m-y)
+Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.Y oder d-m-Y)
 Bildbreite (px) | Definition der Bildbreite des Pictrogramms
 Bildhöhe (px) | Definition der Bildhöhe des Pictrogramms
 Intervall | Aktualisierungsintervall in Sek. (Standard: 100)
@@ -95,6 +97,8 @@ MBW_V_TEMPERATURE_MIN|Float | Temp (min) | ~Temperature | Minimale Temperatur
 MBW_V_FELTTEMPERATURE_MIN|Float | Gef. Temp (min) | ~Temperature | Gefühlte Minimaltemperatur 
 MBW_V_FELTTEMPERATURE_Max|Float | Gef. Temp (max) | ~Temperature | Gefühlte Maximaltemperatur 
 MBW_V_WINDDIRECTION|Integer | Windrichtung | MBW.WindDirection | Windrichtung 
+MBW_V_FORECASTDATE|String|Vorhersagedatum||Anzeige Vorhersagedatum
+MBW_V_PICTOCODEURL|String|Wetterpictogramm|~HTMLBox|Wetterpictogramm
 
 ---
 ## 7. Befehlsreferenz
@@ -106,7 +110,7 @@ MBW_Update('ID der Instanz');
 ---
 ## 8. Lizenz
 
-[![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 Darf gerne geteilt, geforkt, geliked, darauf verlinkt, für gut und für schlecht befunden, ignoriert werden.
 
 
@@ -114,10 +118,7 @@ Darf gerne geteilt, geforkt, geliked, darauf verlinkt, für gut und für schlech
 
 Version     | Datum      | Beschreibung
 ----------- | -----------| -------------------
-1.1        | xx.xx.xxxx | Modulerstellung
-1.2        | 30.07.2018 | Doku update
-1.3        | 31.07.2018 | Debug-Variable
-1.4        | 31.07.2018 | Aktualisierung der Vars für Pegeldaten
+1.0        | 01.08.2018 | Modulerstellung
 
 
 ### 10. GUIDs
@@ -134,8 +135,3 @@ Modul       | {351DDB8A-8A18-4604-943D-6BA4BEE026C2} | Module GUID  |
 
 Mike Fröhlich
 https://github.com/nik78476
----
-## 9. Changelog
-
-v1.0 first release
-
