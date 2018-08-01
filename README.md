@@ -5,7 +5,6 @@
 ![Version](https://img.shields.io/badge/Code-PHP-blue.svg)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![StyleCI](https://github.styleci.io/repos/136796530/shield?branch=master)](https://github.styleci.io/repos/136796530)
-## Dokumentation
 
 ## Dokumentation
 
@@ -39,8 +38,7 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 
 ---
 ## 3. Installation
-###### **Mach' ein Backup!** 
-###### *Die Installation erfolgt auf eigene Verantwortung!*
+###### **Mach' ein Backup! Die Installation erfolgt auf eigene Verantwortung!*
 
 Über die Kern-Instanz "Module Control" folgende URL hinzufügen:
 
@@ -64,11 +62,14 @@ Parameter | Beschreibung
 API Key | Persönlicher API-Key
 Latitude | Latitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
 Longitude | Longitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
-ASL Code | ASL Code des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
+ASL Code | ASL Code des Auswerteortes (ASL = Above Sea Level, m über Meereshöhe) (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
+Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.y oder d-m-y)
+Bildbreite (px) | Definition der Bildbreite des Pictrogramms
+Bildhöhe (px) | Definition der Bildhöhe des Pictrogramms
 Intervall | Aktualisierungsintervall in Sek. (Standard: 100)
 Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
-Anzahl Tage | noch nicht unterstützt (Standard: 1 Tag)
+Tag anzeigen | Auswahl Tag (heute, morgen, Tag+x)
 
 ---
 ## 5. Profile
@@ -108,8 +109,31 @@ MBW_Update('ID der Instanz');
 [![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/) [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 Darf gerne geteilt, geforkt, geliked, darauf verlinkt, für gut und für schlecht befunden, ignoriert werden.
 
-Bilder: [http://weathericons.io](http://weathericons.io)!
 
+## 9. Changelog
+
+Version     | Datum      | Beschreibung
+----------- | -----------| -------------------
+1.1        | xx.xx.xxxx | Modulerstellung
+1.2        | 30.07.2018 | Doku update
+1.3        | 31.07.2018 | Debug-Variable
+1.4        | 31.07.2018 | Aktualisierung der Vars für Pegeldaten
+
+
+### 10. GUIDs
+
+__Modul GUIDs__:
+
+ Name       | GUID                                   | Bezeichnung  |
+------------| -------------------------------------- | -------------|
+Bibliothek  | {351DDB8A-8A18-4604-943D-6BA4BEE026C2} | Library GUID |
+Modul       | {351DDB8A-8A18-4604-943D-6BA4BEE026C2} | Module GUID  |
+
+
+### 11. Author
+
+Mike Fröhlich
+https://github.com/nik78476
 ---
 ## 9. Changelog
 
