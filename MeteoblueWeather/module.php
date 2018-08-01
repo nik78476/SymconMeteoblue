@@ -19,7 +19,7 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
-		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 100);
+		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 3600);
 		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
         $this->RegisterPropertyString("MBW_DATE_FORMAT", "d.m.Y");
         $this->RegisterPropertyString("MBW_TEMPERATURE", "C");

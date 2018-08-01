@@ -68,7 +68,7 @@ ASL Code | ASL Code des Auswerteortes (ASL = Above Sea Level, m über Meereshöh
 Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.Y oder d-m-Y)
 Bildbreite (px) | Definition der Bildbreite des Pictrogramms
 Bildhöhe (px) | Definition der Bildhöhe des Pictrogramms
-Intervall | Aktualisierungsintervall in Sek. (Standard: 100)
+Intervall | Aktualisierungsintervall in Sek. (Standard: 3600) - Die kostenlose Version unterstützt nur 100 Abfragen pro Tag, daher auf diese Einstellung achten
 Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Tag anzeigen | Auswahl Tag (heute, morgen, Tag+x)
