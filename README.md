@@ -113,15 +113,15 @@ MBW_Update('ID der Instanz');
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 Darf gerne geteilt, geforkt, geliked, darauf verlinkt, für gut und für schlecht befunden, ignoriert werden.
 
-
+---
 ## 9. Changelog
 
 Version     | Datum      | Beschreibung
 ----------- | -----------| -------------------
 1.0        | 01.08.2018 | Modulerstellung
 
-
-### 10. GUIDs
+---
+## 10. GUIDs
 
 __Modul GUIDs__:
 
@@ -130,8 +130,8 @@ __Modul GUIDs__:
 Bibliothek  | {351DDB8A-8A18-4604-943D-6BA4BEE026C2} | Library GUID |
 Modul       | {351DDB8A-8A18-4604-943D-6BA4BEE026C2} | Module GUID  |
 
-
-### 11. Author
+---
+## 11. Author
 
 Mike Fröhlich
 https://github.com/nik78476
