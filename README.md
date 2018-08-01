@@ -1,5 +1,12 @@
 ### IP-Symcon Modul SymconMeteoblue Weather
 
+[![Version](https://img.shields.io/badge/Symcon_Version-5.0-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
+![Version](https://img.shields.io/badge/Modul_Version-1.0-blue.svg)
+![Version](https://img.shields.io/badge/Code-PHP-blue.svg)
+[![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![StyleCI](https://github.styleci.io/repos/136796530/shield?branch=master)](https://github.styleci.io/repos/136796530)
+## Dokumentation
+
 ## Dokumentation
 
 **Inhaltsverzeichnis**
@@ -25,7 +32,10 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 
 ---
 ## 2. Systemanforderungen
-- IP-Symcon ab Version 4.2
+- IP-Symcon ab Version 5.x+
+- API-Key von Meteoblue, dieser ist für die 1-Tages-Vorhersage kostenlos und
+  muss bei Meteoblue beantragt werden: 
+  https://content.meteoblue.com/de/produkte/servicezugang/meteoblue-wetter-api
 
 ---
 ## 3. Installation
@@ -43,9 +53,10 @@ Die neue Instanz findet ihr dort, wo ihr sie angelegt habt.
 ---
 ## 4. Konfiguration:
 
-Die Konfiguration ist eigentlich selbsterklärend. Über die Homepage von Meteoblue
+Die Konfiguration ist weitestgehend selbsterklärend. Über die Homepage von Meteoblue
 muss ein API-Key beantragt werden, dieser ist dann 1 Jahr gültig. Die Homepage bietet
-auch die Möglichkeit die Positionsbestimmung durchzuführen. 
+auch die Möglichkeit die Positionsbestimmung durchzuführen. Ohne eingetragenen API-Key
+werden keine Werte abgefragt und es erfolgen Fehlermeldungen.
 
 
 Parameter | Beschreibung
@@ -67,7 +78,7 @@ Das Modul legt folgende Profile an:
 Name | Typ | Verwendung
 ------ | ------ | ---------------------------------
 MBW.WindDirection | Integer | Darstellung der Gradzahlen in Himmelsrichtungen
-MBW.UVIndex | Integer | Farbkodierung des UVIndex (Transparent, Grün, Rot, Lila) - angelehnt an Warnstufen
+MBW.UVIndex | Integer | Farbkodierung des UVIndex (Transparent, Grün, Rot, Lila) - angelehnt an Warnstufen von https://de.wikipedia.org/wiki/UV-Index
 
 ---
 ## 6. Variablen
