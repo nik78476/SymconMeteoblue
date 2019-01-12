@@ -136,13 +136,21 @@ class SymconMeteoblue extends IPSModule
             }
             $forecastdata .= "</tr>";
             
-            
+            // day
+            $forecastdata .= "<tr>";
+            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $forecastdata .= "<td align='center'>";
+                if( $i <= 2){
+                    $forecastdata .= getDayAsString( $i );
+                } else $forecastdata .= date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$i]);
+                $forecastdata .= "</td>";
+            }
+            $forecastdata .= "</tr>";
+                
             // temperature min
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
-                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
-                
                 $forecastdata .= "min. ";
                 $forecastdata .= $ARRAY_DATA_DAY_TEMPMIN[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</td>";
@@ -153,8 +161,6 @@ class SymconMeteoblue extends IPSModule
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
-                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
-                
                 $forecastdata .= "max. ";
                 $forecastdata .= $ARRAY_DATA_DAY_TEMPMAX[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</td>";
@@ -316,6 +322,16 @@ class SymconMeteoblue extends IPSModule
 				"47" => "Einzelne Gewitterschauer",
 				);
 			return $weathercondition[$condition];
+		}
+    
+    private function getDayAsString( $daycount ){
+			
+			$days = array (
+				"0" => "Heute",
+				"1" => "Morgen", 
+				"2" => "Übermorgen"
+            );
+			return $days[$daycount];
 		}
     
     private function createVariableProfileWindDirection(){
