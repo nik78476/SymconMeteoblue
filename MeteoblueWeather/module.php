@@ -33,6 +33,7 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
         $this->RegisterVariableString("MBW_V_FORECASTDATE", "Vorhersagedatum");
         $this->RegisterVariableString("MBW_V_PICTOCODEURL", "Wetterpictogramm","~HTMLBox",1);
+        $this->RegisterVariableString("MBW_V_FORECASTHTML", "Vorhersage","~HTMLBox",1);
         $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index", "MBW.UVIndex");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MAX", "Temp (max)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MIN", "Temp (min)", "~Temperature");
@@ -99,12 +100,18 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_TEMPFELTMIN = $weatherDataJSON->{'data_day'}->{'felttemperature_min'};
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         
+        if ($loggingActive){
+            IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
+		}
+        
 		$this->SetValueString("MBW_V_FORECASTDATE", date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$this->ReadPropertyInteger("MBW_FORECASTDAYS")])));
         $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
+        
+        
         
         $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$this->ReadPropertyInteger("MBW_FORECASTDAYS")], 2 ,'0', STR_PAD_LEFT);
         $this->SetValueString("MBW_V_PICTOCODEURL","<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
