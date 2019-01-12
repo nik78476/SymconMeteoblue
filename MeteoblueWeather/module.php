@@ -135,7 +135,18 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "</td>";
             }
             
-            // data
+            // temperature data
+            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $forecastdata .= "<td>";
+                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
+                
+                $forecastdata .= $ARRAY_DATA_DAY_TEMPMIN[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
+                $forecastdata .= " / ";
+                $forecastdata .= $ARRAY_DATA_DAY_TEMPMAX[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
+                
+                $forecastdata .= "</td>";
+            }
+            
             
             $forecastdata .= "</tr>";
             $forecastdata .= "</table>";
