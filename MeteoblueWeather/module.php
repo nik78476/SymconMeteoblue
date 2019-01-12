@@ -116,6 +116,10 @@ class SymconMeteoblue extends IPSModule
         $last_update = $date->format("d.m.Y H:m:s");
 		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
         $this->SetStatus(102);
+        
+        if ($loggingActive){
+            IPS_LogMessage("SymconMeteoblue", "Weatherdata updated: " .$last_update);
+		}
     }
 
     private function SetValueInt($Ident, $Value){

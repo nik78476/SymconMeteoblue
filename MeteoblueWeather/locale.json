@@ -20,9 +20,9 @@
             "T_FORECASTDAYS_0": "Heute anzeigen",
             "T_FORECASTDAYS_1": "Tag+1 anzeigen (morgen)",
             "T_FORECASTDAYS_2": "Tag+2 anzeigen",
-            "T_FORECASTDAYS_3": "Tag+3 anzeigen",
+            "T_FORECASTDAYS_3": "Tag+3 anzeigen (max)",
             "T_FORECASTDAYS_4": "Tag+4 anzeigen (max)",
-            "T_UPDATESETTINGS": "Einstellungen speichern",
+            "T_UPDATESETTINGS": "Einstellungen speichern u. Daten aktualisieren",
             "T_IMAGE_WIDTH": "Bildbreite (px)",
             "T_IMAGE_HEIGHT": "Bildhöhe (px)",
             
