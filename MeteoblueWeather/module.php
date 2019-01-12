@@ -282,24 +282,24 @@ class SymconMeteoblue extends IPSModule
     private function getWeatherCondition( $condition ){
 			
 			$weathercondition = array (
-				"0" => "Tornado",
-                "1" => "Sunny, cloudless sky",
-                "2" => "Sunny and few clouds",
+				"0" => "undef.",
+                "1" => "Sonnig",
+                "2" => "Sonnig m. Schauern",
                 "3" => "Teilw. bewölkt",
                 "4" => "Bedeckt",
                 "5" => "Nebel",
                 "6" => "Bedeckt m. Regen",
-                "7" => "Mixed with showers",
-                "8" => "Showers, thunderstorms likely",
-                "9" => "Overcast with snow",
-                "10" => "Mixed with snow showers",
-                "11" => "Mostly cloudy with a mixture of snow and rain",
-                "12" => "Overcast with light rain",
-                "13" => "Overcast with light snow",
-                "14" => "Mostly cloudy with rain",
-                "15" => "Mostly cloudy with snow",
-                "16" => "Mostly cloudy with light rain",
-                "17" => "Mostly cloudy with light snow"
+                "7" => "Unbeständig m. Regen",
+                "8" => "Regen, Sturm mögl.",
+                "9" => "Bedeckt m. Schnee",
+                "10" => "Unbest. m. Schnee",
+                "11" => "Bewölkt m. Schneee u. Regen",
+                "12" => "Bedeckt, leichter Regen",
+                "13" => "Bedeckt, leichter Schnee",
+                "14" => "Teilw. bewölkt m. Regen",
+                "15" => "Teilw. bewölkt m. Schnee",
+                "16" => "Teilw. bewölkt m. leichtem Regen",
+                "17" => "Teilw. bewölkt m. leichtem Schnee"
 				);
 			return $weathercondition[$condition];
 		}
