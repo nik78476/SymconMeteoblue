@@ -135,6 +135,9 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "</td>";
             }
             
+            $forecastdata .= "</tr>";
+            $forecastdata .= "<tr>";
+            
             // temperature data
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td>";
