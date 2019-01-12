@@ -65,6 +65,10 @@ class SymconMeteoblue extends IPSModule
         $myAPIKey = $this->ReadPropertyString("MBW_APIKEY");
         $loggingActive = $this->ReadPropertyBoolean("MBW_DEBUG");
         
+        if ($loggingActive){
+            IPS_LogMessage("SymconMeteoblue", "--------------------------------------");
+		}
+        
         if($myAPIKey == NULL || $myAPIKey == "Your API-Key"){
             IPS_LogMessage("SymconMeteoblue", "Set your API Key first to aquire data.");
             return;
@@ -104,21 +108,29 @@ class SymconMeteoblue extends IPSModule
             IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
 		}
         
-		$this->SetValueString("MBW_V_FORECASTDATE", date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$this->ReadPropertyInteger("MBW_FORECASTDAYS")])));
-        $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
-        $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
-        $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
-        $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
-        $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
-        
-        
-        
-        $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$this->ReadPropertyInteger("MBW_FORECASTDAYS")], 2 ,'0', STR_PAD_LEFT);
+        // actual weather data (today)
+		$this->SetValueString("MBW_V_FORECASTDATE", date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[0])));
+        $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
+        $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
+        $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
+        $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
+        $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[0]);
+        $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[0], 2 ,'0', STR_PAD_LEFT);
         $this->SetValueString("MBW_V_PICTOCODEURL","<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
-        
-        
-        $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[$this->ReadPropertyInteger("MBW_FORECASTDAYS")]);
+        $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
+        // forecast weather data
+        $forecastdata = "";
+        if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
+            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $forecastdata .= str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
+                if ($loggingActive){
+                    IPS_LogMessage("SymconMeteoblue", "forecastdata: " .$forecastdata);
+                }
+            }
+        }
+        $this->SetValueString("MBW_V_FORECASTHTML", $forecastdata);
+        
         $date = new DateTime('now');
         $last_update = $date->format("d.m.Y H:m:s");
 		$this->SetValueString("MBW_V_LASTUPDATE", $last_update, "");
