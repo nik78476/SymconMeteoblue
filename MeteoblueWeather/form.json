@@ -48,6 +48,7 @@
         { "code": 101, "icon": "error", "caption": "T_ICON_101" },
         { "code": 102, "icon": "active", "caption": "T_ICON_102" },
         { "code": 104, "icon": "inactive", "caption": "T_ICON_104" },
+        { "code": 201, "icon": "inactive", "caption": "T_ICON_201" },
         { "code": 202, "icon": "error", "caption": "T_ICON_202" }
     ]
 }
