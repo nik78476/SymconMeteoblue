@@ -124,26 +124,26 @@ class SymconMeteoblue extends IPSModule
         if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
             
             $forecastdata .= "<table border='0' width='0'>";
-            $forecastdata .= "<tr>";
-            
-            // pictogram
-            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td>";
-                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
-                
-                $forecastdata .= "<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
-                $forecastdata .= "</td>";
-            }
-            $forecastdata .= "</tr>";
             
             // day
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
                 if( $i <= 2){
-                    $forecastdata .= $this->getDayAsString( $i );
+                    $forecastdata .= "<br>" .$this->getDayAsString( $i );
                 } 
                 //else $forecastdata .= date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$i]);
+                $forecastdata .= "</td>";
+            }
+            $forecastdata .= "</tr>";
+                        
+            // pictogram
+            $forecastdata .= "<tr>";
+            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $forecastdata .= "<td>";
+                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
+                
+                $forecastdata .= "<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
@@ -168,8 +168,17 @@ class SymconMeteoblue extends IPSModule
             }
             $forecastdata .= "</tr>";
             
-            $forecastdata .= "</table>";
+            // forecast text
+            $forecastdata .= "<tr>";
+            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
+                $forecastdata .= "<td align='center'>";
+                $forecastdata .= $this->getWeatherCondition($pictoCode);
+                $forecastdata .= "</td>";
+            }
+            $forecastdata .= "</tr>";
             
+            $forecastdata .= "</table>";
             if ($loggingActive){
                 IPS_LogMessage("SymconMeteoblue", "forecastdata: " .$forecastdata);
             }
@@ -274,53 +283,23 @@ class SymconMeteoblue extends IPSModule
 			
 			$weathercondition = array (
 				"0" => "Tornado",
-				"1" => "Tropischer Sturm", 
-				"2" => "Orkan", 
-				"3" => "Heftiges Gewitter", 
-				"4" => "Gewitter", 
-				"5" => "Regen und Schnee", 
-				"6" => "Regen und Eisregen", 
-				"7" => "Schnee und Eisregen", 
-				"8" => "Gefrierender Nieselregen", 
-				"9" => "Nieselregen", 
-				"10" => "Gefrierender Regen", 
-				"11" => "Schauer", 
-				"12" => "Schauer", 
-				"13" => "Schneeflocken", 
-				"14" => "Leichte Schneeschauer", 
-				"15" => "St&uuml;rmiger Schneefall", 
-				"16" => "Schnee", 
-				"17" => "Hagel", 
-				"18" => "Eisregen", 
-				"19" => "Staub", 
-				"20" => "Neblig", 
-				"21" => "Dunst", 
-				"22" => "Staubig", 
-				"23" => "St&uuml,rmisch", 
-				"24" => "Windig", 
-				"25" => "Kalt", 
-				"26" => "Bew&ouml;lkt", 
-				"27" => "Gr&ouml;&szlig;tenteils bew&ouml;lkt (nachts)", 
-				"28" => "Gr&ouml;&szlig;tenteils bew&ouml;lkt (tags&uuml;ber)", 
-				"29" => "Teilweise bew&ouml;lkt (nachts)", 
-				"30" => "Teilweise bew&ouml;lkt (tags&uuml;ber)", 
-				"31" => "Klar (nachts)", 
-				"32" => "Sonnig", 
-				"33" => "Sch&ouml;n (nachts)", 
-				"34" => "Sch&ouml;n (tags&uuml;ber)", 
-				"35" => "Regen und Hagel", 
-				"36" => "Hei&szlig;", 
-				"37" => "Einzelne Gewitter", 
-				"38" => "Vereinzelte Gewitter", 
-				"39" => "Vereinzelte Gewitter", 
-				"40" => "Vereinzelte Schauer", 
-				"41" => "Starker Schneefall", 
-				"42" => "Vereinzelte Schneeschauer", 
-				"43" => "Starker Schneefall", 
-				"44" => "Teilweise bew&ouml;lkt", 
-				"45" => "Donnerregen", 
-				"46" => "Schneeschauer", 
-				"47" => "Einzelne Gewitterschauer",
+                "1" => "Sunny, cloudless sky",
+                "2" => "Sunny and few clouds",
+                "3" => "Teilw. bewölkt",
+                "4" => "Bedeckt",
+                "5" => "Nebel",
+                "6" => "Bedeckt m. Regen",
+                "7" => "Mixed with showers",
+                "8" => "Showers, thunderstorms likely",
+                "9" => "Overcast with snow",
+                "10" => "Mixed with snow showers",
+                "11" => "Mostly cloudy with a mixture of snow and rain",
+                "12" => "Overcast with light rain",
+                "13" => "Overcast with light snow",
+                "14" => "Mostly cloudy with rain",
+                "15" => "Mostly cloudy with snow",
+                "16" => "Mostly cloudy with light rain",
+                "17" => "Mostly cloudy with light snow"
 				);
 			return $weathercondition[$condition];
 		}
