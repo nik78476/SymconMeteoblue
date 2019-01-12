@@ -122,15 +122,29 @@ class SymconMeteoblue extends IPSModule
         // forecast weather data
         $forecastdata = "";
         if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
+            
+            $forecastdata .= "<table border='0' width='0'>";
+            $forecastdata .= "<tr>";
+            
+            // pictogram
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $forecastdata .= "<td>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
-                $forecastdata .= "<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>&nbsp;";
-                    
-                if ($loggingActive){
-                    IPS_LogMessage("SymconMeteoblue", "forecastdata: " .$forecastdata);
-                }
+                
+                $forecastdata .= "<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
+                $forecastdata .= "</td>";
+            }
+            
+            // data
+            
+            $forecastdata .= "</tr>";
+            $forecastdata .= "</table>";
+            
+            if ($loggingActive){
+                IPS_LogMessage("SymconMeteoblue", "forecastdata: " .$forecastdata);
             }
         }
+        
         $this->SetValueString("MBW_V_FORECASTHTML", $forecastdata);
         
         $date = new DateTime('now');
