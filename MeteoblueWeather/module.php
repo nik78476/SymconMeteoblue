@@ -123,7 +123,7 @@ class SymconMeteoblue extends IPSModule
         $forecastdata = "";
         if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
             
-            $forecastdata .= "<table border='0'>";
+            $forecastdata .= "<table border='0' width='320px'>";
             
             // day
             $forecastdata .= "<tr>";
