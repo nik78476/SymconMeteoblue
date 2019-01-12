@@ -140,7 +140,7 @@ class SymconMeteoblue extends IPSModule
             // temperature min
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td>";
+                $forecastdata .= "<td align='center'>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 
                 $forecastdata .= "min. ";
@@ -152,7 +152,7 @@ class SymconMeteoblue extends IPSModule
             // temperature max
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td>";
+                $forecastdata .= "<td align='center'>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 
                 $forecastdata .= "max. ";
