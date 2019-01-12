@@ -134,24 +134,33 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
                 $forecastdata .= "</td>";
             }
-            
             $forecastdata .= "</tr>";
-            $forecastdata .= "<tr>";
             
-            // temperature data
+            
+            // temperature min
+            $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 
+                $forecastdata .= "min. ";
                 $forecastdata .= $ARRAY_DATA_DAY_TEMPMIN[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
-                $forecastdata .= " / ";
-                $forecastdata .= $ARRAY_DATA_DAY_TEMPMAX[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
-                
                 $forecastdata .= "</td>";
             }
-            
-            
             $forecastdata .= "</tr>";
+            
+            // temperature max
+            $forecastdata .= "<tr>";
+            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
+                $forecastdata .= "<td>";
+                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
+                
+                $forecastdata .= "max. ";
+                $forecastdata .= $ARRAY_DATA_DAY_TEMPMAX[$i] ."°" .$weatherDataJSON->{'units'}->{'temperature'};
+                $forecastdata .= "</td>";
+            }
+            $forecastdata .= "</tr>";
+            
             $forecastdata .= "</table>";
             
             if ($loggingActive){
