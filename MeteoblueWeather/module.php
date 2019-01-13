@@ -116,7 +116,7 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[0]);
         $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[0], 2 ,'0', STR_PAD_LEFT);
-        $this->SetValueString("MBW_V_PICTOCODEURL","<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
+        $this->SetValueString("MBW_V_PICTOCODEURL","<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
         // forecast weather data
