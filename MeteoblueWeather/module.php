@@ -127,8 +127,8 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueString("MBW_V_PICTOCODEURL","<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
-        $this->SetValueFloat("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
-        $this->SetValueFloat("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
+        $this->SetValueInt("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
+        $this->SetValueInt("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
         
         
         
