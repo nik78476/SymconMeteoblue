@@ -34,12 +34,17 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterVariableString("MBW_V_FORECASTDATE", "Vorhersagedatum");
         $this->RegisterVariableString("MBW_V_PICTOCODEURL", "Wetterpictogramm","~HTMLBox",1);
         $this->RegisterVariableString("MBW_V_FORECASTHTML", "Vorhersage","~HTMLBox",1);
+        
         $this->RegisterVariableInteger("MBW_V_UVINDEX", "UV Index", "MBW.UVIndex");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MAX", "Temp (max)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_TEMPERATURE_MIN", "Temp (min)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_FELTTEMPERATURE_MIN", "Gef. Temp (min)", "~Temperature");
         $this->RegisterVariableFloat("MBW_V_FELTTEMPERATURE_MAX", "Gef. Temp (max)", "~Temperature");
         $this->RegisterVariableInteger("MBW_V_WINDDIRECTION", "Windrichtung","MBW.WindDirection");
+        
+        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMIN", "Luftdruck (min)");
+        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMAX", "Luftdruck (max)");
+        
         
         $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
@@ -103,6 +108,9 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_TEMPFELTMAX = $weatherDataJSON->{'data_day'}->{'felttemperature_max'};
         $ARRAY_DATA_DAY_TEMPFELTMIN = $weatherDataJSON->{'data_day'}->{'felttemperature_min'};
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
+        $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN = $weatherDataJSON->{'data_day'}->{'sealevelpressure_min'};
+        $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX = $weatherDataJSON->{'data_day'}->{'sealevelpressure_max'};
+        
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
@@ -119,6 +127,11 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueString("MBW_V_PICTOCODEURL","<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
+        $this->SetValueFloat("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
+        $this->SetValueFloat("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
+        
+        
+        
         // forecast weather data
         $forecastdata = "";
         if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
