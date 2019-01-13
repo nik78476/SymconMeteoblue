@@ -122,6 +122,7 @@ Darf gerne geteilt, geforkt, geliked, darauf verlinkt, für gut und für schlech
 Version     | Datum      | Beschreibung
 ----------- | -----------| -------------------
 1.0        | 01.08.2018 | Modulerstellung
+1.1        | 13.01.2019 | Div. Erweiterungen
 
 ---
 ## 10. GUIDs
