@@ -143,7 +143,7 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "<td>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 
-                $forecastdata .= "<img src='https://www.meteoblue.com/website/images/picto/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
+                $forecastdata .= "<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
