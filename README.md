@@ -71,7 +71,7 @@ Bildhöhe (px) | Definition der Bildhöhe des Pictrogramms
 Intervall | Aktualisierungsintervall in Sek. (Standard: 3600) - Die kostenlose Version unterstützt nur 100 Abfragen pro Tag, daher auf diese Einstellung achten
 Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
-Tag anzeigen | Auswahl Tag (heute, morgen, Tag+x)
+Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x)
 
 ---
 ## 5. Profile
@@ -97,8 +97,11 @@ MBW_V_TEMPERATURE_MIN|Float | Temp (min) | ~Temperature | Minimale Temperatur
 MBW_V_FELTTEMPERATURE_MIN|Float | Gef. Temp (min) | ~Temperature | Gefühlte Minimaltemperatur 
 MBW_V_FELTTEMPERATURE_Max|Float | Gef. Temp (max) | ~Temperature | Gefühlte Maximaltemperatur 
 MBW_V_WINDDIRECTION|Integer | Windrichtung | MBW.WindDirection | Windrichtung 
-MBW_V_FORECASTDATE|String|Vorhersagedatum||Anzeige Vorhersagedatum
+MBW_V_FORECASTHTML|String|Vorhersage|~HTMLBox|Vorhersagedarstellung HTML für Anz. Tage aus den Parametern
 MBW_V_PICTOCODEURL|String|Wetterpictogramm|~HTMLBox|Wetterpictogramm
+MBW_V_SEALEVELPRESSUREMIN|Integer|Luftdruck (min)| |Luftdruck min. in hPa
+MBW_V_SEALEVELPRESSUREMAX|Integer|Luftdruck (max)| |Luftdruck max. in hPa
+       
 
 ---
 ## 7. Befehlsreferenz
