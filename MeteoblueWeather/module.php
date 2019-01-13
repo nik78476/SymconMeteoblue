@@ -31,7 +31,6 @@ class SymconMeteoblue extends IPSModule
         
         // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
-        $this->RegisterVariableString("MBW_V_FORECASTDATE", "Vorhersagedatum");
         $this->RegisterVariableString("MBW_V_PICTOCODEURL", "Wetterpictogramm","~HTMLBox",1);
         $this->RegisterVariableString("MBW_V_FORECASTHTML", "Vorhersage","~HTMLBox",1);
         
@@ -117,7 +116,6 @@ class SymconMeteoblue extends IPSModule
 		}
         
         // actual weather data (today)
-		$this->SetValueString("MBW_V_FORECASTDATE", date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[0])));
         $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPMAX[0]);
         $this->SetValueFloat("MBW_V_TEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPMIN[0]);
@@ -347,7 +345,7 @@ class SymconMeteoblue extends IPSModule
             
         }
     }
-    
+        
     private function createVariableProfileUVIndex(){
         $profile = IPS_GetVariableProfile("MBW.UVIndex");
         if ($profile == false){
