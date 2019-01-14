@@ -129,7 +129,6 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
         
         
-        
         // forecast weather data
         $forecastdata = "";
         if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
