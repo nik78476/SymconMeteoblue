@@ -68,6 +68,7 @@ class SymconMeteoblue extends IPSModule
     {
         $myAPIKey = $this->ReadPropertyString("MBW_APIKEY");
         $loggingActive = $this->ReadPropertyBoolean("MBW_DEBUG");
+        $forecastPrecision = 0;
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "--------------------------------------");
@@ -163,7 +164,7 @@ class SymconMeteoblue extends IPSModule
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
                 $forecastdata .= "min. ";
-                $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMIN[$i], 0, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
+                $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMIN[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
@@ -173,7 +174,7 @@ class SymconMeteoblue extends IPSModule
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
                 $forecastdata .= "max. ";
-                $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMAX[$i], 0, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
+                $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMAX[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
