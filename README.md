@@ -124,6 +124,7 @@ Version     | Datum      | Beschreibung
 ----------- | -----------| -------------------
 1.0        | 01.08.2018 | Modulerstellung
 1.1        | 13.01.2019 | Div. Erweiterungen
+1.2        | 24.01.2019 | Konfigurationsoption MBW_FORECASTPRECISION (Nachkommastellen für Vorhersageanzeige)
 
 ---
 ## 10. GUIDs
