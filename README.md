@@ -72,6 +72,7 @@ Intervall | Aktualisierungsintervall in Sek. (Standard: 3600) - Die kostenlose V
 Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x)
+Nachkommastellen Vorhersage | Anzahl Nachkommastellen in der Vorhersageanzeige
 
 ---
 ## 5. Profile

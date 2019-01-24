@@ -16,6 +16,7 @@
             "T_TEMPERATURE": "Temperatureinheit",
             "T_TEMPERATURE_C": "Celsius",
             "T_TEMPERATURE_F": "Fahrenheit",
+            "T_FORECASTPRECISION": "Nachkommastellen Vorhersage",
             "T_FORECASTDAYS": "Tag anzeigen",
             "T_FORECASTDAYS_0": "Heute anzeigen",
             "T_FORECASTDAYS_1": "Tag+1 anzeigen (morgen)",

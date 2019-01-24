@@ -27,6 +27,7 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyBoolean("MBW_DEBUG", false);
         $this->RegisterPropertyInteger("MBW_IMAGE_HEIGHT", "80");
         $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", "100");
+        $this->RegisterPropertyInteger("MBW_FORECASTPRECISION","0");
         
         
         // Variables
@@ -68,7 +69,7 @@ class SymconMeteoblue extends IPSModule
     {
         $myAPIKey = $this->ReadPropertyString("MBW_APIKEY");
         $loggingActive = $this->ReadPropertyBoolean("MBW_DEBUG");
-        $forecastPrecision = 0;
+        $forecastPrecision = $this->ReadPropertyInteger("MBW_FORECASTPRECISION");
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "--------------------------------------");
