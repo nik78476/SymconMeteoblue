@@ -73,6 +73,7 @@ Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x)
 Nachkommastellen Vorhersage | Anzahl Nachkommastellen in der Vorhersageanzeige
+Schriftgrösse (px) | Regelt die Schriftgrösse in px in der Vorhersageanzeige
 
 ---
 ## 5. Profile
