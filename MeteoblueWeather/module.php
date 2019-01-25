@@ -178,8 +178,10 @@ class SymconMeteoblue extends IPSModule
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
+                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
                 $forecastdata .= "max. ";
                 $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMAX[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
+                $forecastdata .= "</font>";
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
@@ -189,7 +191,9 @@ class SymconMeteoblue extends IPSModule
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 $forecastdata .= "<td align='center'>";
+                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
                 $forecastdata .= $this->getWeatherCondition($pictoCode);
+                $forecastdata .= "<font/>";
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
