@@ -26,7 +26,7 @@
             "T_UPDATESETTINGS": "Einstellungen speichern u. Daten aktualisieren",
             "T_IMAGE_WIDTH": "Bildbreite (px)",
             "T_IMAGE_HEIGHT": "Bildhöhe (px)",
-            
+            "T_FONTSIZE":"Schriftgrösse(px)",
             "T_DAY_0_DE": "Heute",
             
             "T_ICON_101": "Instanz erzeugt",

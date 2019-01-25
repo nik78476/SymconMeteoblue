@@ -28,6 +28,7 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyInteger("MBW_IMAGE_HEIGHT", "80");
         $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", "100");
         $this->RegisterPropertyInteger("MBW_FORECASTPRECISION","0");
+        $this->RegisterPropertyInteger("MBW_FONTSIZE","16");
         
         
         // Variables
@@ -70,6 +71,7 @@ class SymconMeteoblue extends IPSModule
         $myAPIKey = $this->ReadPropertyString("MBW_APIKEY");
         $loggingActive = $this->ReadPropertyBoolean("MBW_DEBUG");
         $forecastPrecision = $this->ReadPropertyInteger("MBW_FORECASTPRECISION");
+        $forecastFontSize = $this->ReadPropertyInteger("MBW_FONTSIZE");
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "--------------------------------------");
@@ -164,7 +166,7 @@ class SymconMeteoblue extends IPSModule
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: 24px;'>";
+                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
                 $forecastdata .= "min. ";
                 $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMIN[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</font>";
