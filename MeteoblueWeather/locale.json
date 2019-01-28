@@ -36,7 +36,7 @@
             "T_ICON_104": "Update fehlerhaft, Einstellungen kontrollieren",
             "T_ICON_201": "Modul aktualisiert, bitte Daten aktualisieren",
             "T_ICON_202": "Einstellungen fehlerhaft oder unvollständig" 
-        }
+        },
         "en": { 
             "T_APIKEY": "API Key",
             "T_LATITUDE": "Latitude",
