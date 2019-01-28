@@ -27,7 +27,9 @@
             "T_IMAGE_WIDTH": "Bildbreite (px)",
             "T_IMAGE_HEIGHT": "Bildhöhe (px)",
             "T_FONTSIZE":"Schriftgrösse(px)",
-            "T_DAY_0_DE": "Heute",
+            "T_DAY_0": "Heute",
+            "T_DAY_1": "Morgen",
+            "T_DAY_2": "Übermorgen",
             
             "T_ICON_101": "Instanz erzeugt",
             "T_ICON_102": "Einstellungen OK",
@@ -35,7 +37,7 @@
             "T_ICON_201": "Modul aktualisiert, bitte Daten aktualisieren",
             "T_ICON_202": "Einstellungen fehlerhaft oder unvollständig" 
         },
-        "de": { 
+        "en": { 
             "T_APIKEY": "API Key",
             "T_LATITUDE": "Latitude",
             "T_LONGITUDE": "Longitude",
@@ -62,7 +64,9 @@
             "T_IMAGE_WIDTH": "Bildbreite (px)",
             "T_IMAGE_HEIGHT": "Bildhöhe (px)",
             "T_FONTSIZE":"Schriftgrösse(px)",
-            "T_DAY_0_DE": "Heute",
+            "T_DAY_0": "Heute",
+            "T_DAY_1": "Morgen",
+            "T_DAY_2": "Übermorgen",
             
             "T_ICON_101": "Instanz erzeugt",
             "T_ICON_102": "Einstellungen OK",
