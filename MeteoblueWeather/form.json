@@ -13,10 +13,7 @@
 	{ "type": "Select", "name": "MBW_LANGUAGE", "caption": "T_LANGSELECT",
 		"options": [
 			{ "label": "T_LANG_DE", "value":"de" },
-			{ "label": "T_LANG_EN", "value":"en" },
-            { "label": "T_LANG_ES", "value":"es" },
-            { "label": "T_LANG_IT", "value":"it" },
-            { "label": "T_LANG_FR", "value":"fr" }
+			{ "label": "T_LANG_EN", "value":"en" }
 		]
 	},
     
