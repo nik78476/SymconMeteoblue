@@ -144,7 +144,9 @@ class SymconMeteoblue extends IPSModule
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
                 if( $i <= 2){
+                    $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
                     $forecastdata .= "<br>" .$this->getDayAsString( $i ) ."<br>";
+                    $forecastdata .= "<font/>";
                 } 
                 //else $forecastdata .= date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$i]);
                 $forecastdata .= "</td>";
