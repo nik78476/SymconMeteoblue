@@ -31,6 +31,21 @@
             "Day after tomorrow": "Übermorgen",
             "undefinded":"undef.",
             "Sunny": "Sonnig, wolkenloser Himmel",
+            "Sunny with some clouds": "Sonnig mit einigen Wolken",
+            "Partly cloudy": "Wechselnd bewölkt",
+            "Cloudy": "Bedeckt",
+            "Foggy": "Nebel",
+            "Covered with rain":"Bedeckt mit Regen",
+            "Impermanent, chill possible": "Unbeständig, Schauer möglich",
+            "Showers, thunderstorms possible": "Schauer, Gewitter möglich",
+            "Covered with snowfall": "Bedeckt mit Schneefall",
+            "Changeable with snow showers": "Wechselhaft mit Schneeschauern",
+            "Mostly cloudy with snow and rain": "Überwiegend bewölkt mit Schnee und Regen",
+            "Covered with light rain": "Bedeckt mit leichtem Regen",
+            "Covered with light snowfall": "Bedeckt mit leichtem Schneefall",
+            "Mostly cloudy with rain": "Überwiegend bewölkt mit Regen",
+            "Mostly cloudy with snow": "Überwiegend bewölkt mit Schneefall",
+            "Mostly cloudy with light rain": "Überwiegend bewölkt mit leichtem Regen",
             "Mostly cloudy with light snowfall":"Überwiegend bewölkt mit leichtem Schneefall"
         }
     }

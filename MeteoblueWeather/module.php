@@ -306,60 +306,23 @@ class SymconMeteoblue extends IPSModule
 			$weathercondition = array (
 				"00" => $this->Translate("undefinded"),
                 "01" => $this->Translate("Sunny"),
-                "02" => "Sonnig, Schauer",
-                "03" => "Teilw. bewölkt",
-                "04" => "Bedeckt",
-                "05" => "Nebel",
-                "06" => "Bedeckt, Regen",
-                "07" => "Unbeständig, Regen",
-                "08" => "Regen, Sturm mögl.",
-                "09" => "Bedeckt, Schnee",
-                "10" => "Unbest., Schnee",
-                "11" => "Bewölkt, Schnee, Regen",
-                "12" => "Bedeckt, leichter Regen",
-                "13" => "Bedeckt, leichter Schnee",
-                "14" => "Teilw. bewölkt m. Regen",
-                "15" => "Teilw. bewölkt m. Schnee",
-                "16" => "Teilw. bewölkt m. leichtem Regen",
+                "02" => $this->Translate("Sunny with some clouds"),
+                "03" => $this->Translate("Partly cloudy"),
+                "04" => $this->Translate("Cloudy"),
+                "05" => $this->Translate("Foggy"),
+                "06" => $this->Translate("Covered with rain"),
+                "07" => $this->Translate("Impermanent, chill possible"),
+                "08" => $this->Translate("Showers, thunderstorms possible"),
+                "09" => $this->Translate("Covered with snowfall"),
+                "10" => $this->Translate("Changeable with snow showers"),
+                "11" => $this->Translate("Mostly cloudy with snow and rain"),
+                "12" => $this->Translate("Covered with light rain"),
+                "13" => $this->Translate("Covered with light snowfall"),
+                "14" => $this->Translate("Mostly cloudy with rain"),
+                "15" => $this->Translate("Mostly cloudy with snow")
+                "16" => $this->Translate("Mostly cloudy with light rain"),
                 "17" => $this->Translate("Mostly cloudy with light snowfall")
 				);
-        
-        /*
-        
-1	Sonnig, wolkenloser Himmel
-Stratocumulus cloud pictogram (1)
-2	Sonnig mit einigen Wolken
-
-3	Wechselnd bewölkt
-Stratocumulus cloud pictogram (2)
-4	Bedeckt
-
-5	Nebel
-
-6	Bedeckt mit Regen
-Cumulus cloud pictogram (1)
-7	Wechselhaft, Schauer möglich
-Cumulonimbus clouds pictogram (1)
-8	Schauer, Gewitter möglich
-
-9	Bedeckt mit Schneefall
-
-10	Wechselhaft mit Schneeschauern
-
-11	Überwiegend bewölkt mit Schnee und Regen
-Nimbostratus cloud pictogram (3)
-12	Bedeckt mit leichtem Regen
-
-13	Bedeckt mit leichtem Schneefall
-
-14	Überwiegend bewölkt mit Regen
-
-15	Überwiegend bewölkt mit Schneefall
-
-16	Überwiegend bewölkt mit leichtem Regen
-
-17	Überwiegend bewölkt mit leichtem Schneefall
-        */
 			return $weathercondition[$condition];
 		}
     
