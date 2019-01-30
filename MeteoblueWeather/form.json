@@ -17,15 +17,15 @@
 			{ "label": "T_TEMPERATURE_F", "value":"F" }
 		]
 	},
-	{ "type": "Select", "name": "MBW_FORECASTDAYS", "caption": "T_FORECASTDAYS",
+	{ "type": "Select", "name": "MBW_FORECASTDAYS", "caption": "Forecast Days",
 		"options": [
-			{ "label": "T_FORECASTDAYS_0", "value":"0" },
-			{ "label": "T_FORECASTDAYS_1", "value":"1" },
-			{ "label": "T_FORECASTDAYS_2", "value":"2" },
-            { "label": "T_FORECASTDAYS_3", "value":"3" }
+			{ "label": "Today", "value":"0" },
+			{ "label": "Today + Tomorrow", "value":"1" },
+			{ "label": "Today + 2 Days", "value":"2" },
+            { "label": "Today + 3 Days (max)", "value":"3" }
 		]
 	},
-    { "type": "Select", "name": "MBW_FORECASTPRECISION", "caption": "T_FORECASTPRECISION",
+    { "type": "Select", "name": "MBW_FORECASTPRECISION", "caption": "Forecast Precision",
 		"options": [
 			{ "label": "0", "value":"0" },
 			{ "label": "1", "value":"1" },
