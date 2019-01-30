@@ -362,7 +362,9 @@ Nimbostratus cloud pictogram (3)
         */
         
         
-        
+        if ($loggingActive){
+            IPS_LogMessage("SymconMeteoblue", "Weathercondition: " .$weathercondition[$condition]);
+		}
 			return $weathercondition[$condition];
 		}
     
@@ -373,6 +375,9 @@ Nimbostratus cloud pictogram (3)
 				"1" => $this->Translate("Tomorrow"), 
 				"2" => $this->Translate("Day after tomorrow")
             );
+            if ($loggingActive){
+                IPS_LogMessage("SymconMeteoblue", "GetDay: " .$days[$daycount]);
+		    }
 			return $days[$daycount];
 		}
     
