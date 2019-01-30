@@ -113,7 +113,7 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN = $weatherDataJSON->{'data_day'}->{'sealevelpressure_min'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX = $weatherDataJSON->{'data_day'}->{'sealevelpressure_max'};
-        
+
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
@@ -132,6 +132,10 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
         
+                
+        if ($loggingActive){
+            IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
+		}
         
         // forecast weather data
         $forecastdata = "";
