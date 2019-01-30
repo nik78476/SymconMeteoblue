@@ -21,8 +21,7 @@
 		"options": [
 			{ "label": "Today", "value":"0" },
 			{ "label": "Today + Tomorrow", "value":"1" },
-			{ "label": "Today + 2 Days", "value":"2" },
-            { "label": "Today + 3 Days (max)", "value":"3" }
+			{ "label": "Today + 2 Days (max)", "value":"2" }
 		]
 	},
     { "type": "Select", "name": "MBW_FORECASTPRECISION", "caption": "Forecast Precision",
