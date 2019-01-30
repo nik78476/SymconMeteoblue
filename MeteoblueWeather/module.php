@@ -304,7 +304,7 @@ class SymconMeteoblue extends IPSModule
     private function getWeatherCondition( $condition ){
 			
 			$weathercondition = array (
-				"00" => "undef.",
+				"00" => $this->Translate("undefinded"),
                 "01" => "Sonnig",
                 "02" => "Sonnig, Schauer",
                 "03" => "Teilw. bewölkt",

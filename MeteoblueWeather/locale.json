@@ -28,8 +28,8 @@
             "Configuration error": "Einstellungen fehlerhaft oder unvollständig",
             "Today": "Heute",
             "Tomorrow": "Morgen",
-            "Day after tomorrow": "Übermorgen"
-            
+            "Day after tomorrow": "Übermorgen",
+            "undefinded":"undef."
         }
     }
 }
