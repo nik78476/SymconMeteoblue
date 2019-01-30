@@ -319,7 +319,7 @@ class SymconMeteoblue extends IPSModule
                 "12" => $this->Translate("Covered with light rain"),
                 "13" => $this->Translate("Covered with light snowfall"),
                 "14" => $this->Translate("Mostly cloudy with rain"),
-                "15" => $this->Translate("Mostly cloudy with snow")
+                "15" => $this->Translate("Mostly cloudy with snow"),
                 "16" => $this->Translate("Mostly cloudy with light rain"),
                 "17" => $this->Translate("Mostly cloudy with light snowfall")
 				);
