@@ -69,7 +69,6 @@ Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.Y od
 Bildbreite (px) | Definition der Bildbreite des Pictrogramms
 Bildhöhe (px) | Definition der Bildhöhe des Pictrogramms
 Intervall | Aktualisierungsintervall in Sek. (Standard: 3600) - Die kostenlose Version unterstützt nur 100 Abfragen pro Tag, daher auf diese Einstellung achten
-Sprache | noch nicht unterstützt
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x)
 Nachkommastellen Vorhersage | Anzahl Nachkommastellen in der Vorhersageanzeige
@@ -126,6 +125,7 @@ Version     | Datum      | Beschreibung
 1.0        | 01.08.2018 | Modulerstellung
 1.1        | 13.01.2019 | Div. Erweiterungen
 1.2        | 24.01.2019 | Konfigurationsoption MBW_FORECASTPRECISION (Nachkommastellen für Vorhersageanzeige)
+1.3        | 30.01.2019 | Übersetzungen, Fehlerkorrekturen
 
 ---
 ## 10. GUIDs
