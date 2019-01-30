@@ -29,7 +29,9 @@
             "Today": "Heute",
             "Tomorrow": "Morgen",
             "Day after tomorrow": "Übermorgen",
-            "undefinded":"undef."
+            "undefinded":"undef.",
+            "Sunny": "Sonnig, wolkenloser Himmel",
+            "Mostly cloudy with light snowfall":"Überwiegend bewölkt mit leichtem Schneefall"
         }
     }
 }

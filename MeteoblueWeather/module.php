@@ -305,7 +305,7 @@ class SymconMeteoblue extends IPSModule
 			
 			$weathercondition = array (
 				"00" => $this->Translate("undefinded"),
-                "01" => "Sonnig",
+                "01" => $this->Translate("Sunny"),
                 "02" => "Sonnig, Schauer",
                 "03" => "Teilw. bewölkt",
                 "04" => "Bedeckt",
@@ -321,8 +321,48 @@ class SymconMeteoblue extends IPSModule
                 "14" => "Teilw. bewölkt m. Regen",
                 "15" => "Teilw. bewölkt m. Schnee",
                 "16" => "Teilw. bewölkt m. leichtem Regen",
-                "17" => "Teilw. bewölkt m. leichtem Schnee"
+                "17" => $this->Translate("Mostly cloudy with light snowfall")
 				);
+        
+        /*
+        
+1	Sonnig, wolkenloser Himmel
+Stratocumulus cloud pictogram (1)
+2	Sonnig mit einigen Wolken
+
+3	Wechselnd bewölkt
+Stratocumulus cloud pictogram (2)
+4	Bedeckt
+
+5	Nebel
+
+6	Bedeckt mit Regen
+Cumulus cloud pictogram (1)
+7	Wechselhaft, Schauer möglich
+Cumulonimbus clouds pictogram (1)
+8	Schauer, Gewitter möglich
+
+9	Bedeckt mit Schneefall
+
+10	Wechselhaft mit Schneeschauern
+
+11	Überwiegend bewölkt mit Schnee und Regen
+Nimbostratus cloud pictogram (3)
+12	Bedeckt mit leichtem Regen
+
+13	Bedeckt mit leichtem Schneefall
+
+14	Überwiegend bewölkt mit Regen
+
+15	Überwiegend bewölkt mit Schneefall
+
+16	Überwiegend bewölkt mit leichtem Regen
+
+17	Überwiegend bewölkt mit leichtem Schneefall
+        */
+        
+        
+        
 			return $weathercondition[$condition];
 		}
     
