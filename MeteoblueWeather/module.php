@@ -329,9 +329,9 @@ class SymconMeteoblue extends IPSModule
     private function getDayAsString( $daycount ){
 			
 			$days = array (
-				"0" => $this->Translate("T_DAY_0"),
-				"1" => $this->Translate("T_DAY_1"), 
-				"2" => $this->Translate("T_DAY_2")
+				"0" => $this->Translate("Today"),
+				"1" => $this->Translate("Tomorrow"), 
+				"2" => $this->Translate("Day after tomorrow")
             );
 			return $days[$daycount];
 		}

@@ -13,8 +13,8 @@
     
     { "type": "Select", "name": "MBW_TEMPERATURE", "caption": "Temperature",
 		"options": [
-			{ "label": "T_TEMPERATURE_C", "value":"C" },
-			{ "label": "T_TEMPERATURE_F", "value":"F" }
+			{ "label": "Celsius", "value":"C" },
+			{ "label": "Fahrenheit", "value":"F" }
 		]
 	},
 	{ "type": "Select", "name": "MBW_FORECASTDAYS", "caption": "Forecast Days",
@@ -32,21 +32,21 @@
 			{ "label": "2", "value":"2" }
 		]
 	},
-    { "type": "IntervalBox", "name": "MBW_FONTSIZE", "caption": "T_FONTSIZE" },
-    { "type": "CheckBox", "name": "MBW_DEBUG", "caption": "Debug-Ausgaben im Log aktivieren" }
+    { "type": "IntervalBox", "name": "MBW_FONTSIZE", "caption": "Fontsize" },
+    { "type": "CheckBox", "name": "MBW_DEBUG", "caption": "Activate Debug-Logging" }
   ], 
   "actions":
   [
 
-    { "type": "Button", "label": "T_UPDATESETTINGS", "onClick": "MBW_Update($id);" }
+    { "type": "Button", "label": "Save and Update", "onClick": "MBW_Update($id);" }
 
   ],
     "status":
     [
-        { "code": 101, "icon": "error", "caption": "T_ICON_101" },
-        { "code": 102, "icon": "active", "caption": "T_ICON_102" },
-        { "code": 104, "icon": "inactive", "caption": "T_ICON_104" },
-        { "code": 201, "icon": "inactive", "caption": "T_ICON_201" },
-        { "code": 202, "icon": "error", "caption": "T_ICON_202" }
+        { "code": 101, "icon": "error", "caption": "Instance created" },
+        { "code": 102, "icon": "active", "caption": "Settings ok" },
+        { "code": 104, "icon": "inactive", "caption": "Update incorrect, check settings" },
+        { "code": 201, "icon": "inactive", "caption": "Module updated, reload data" },
+        { "code": 202, "icon": "error", "caption": "Configuration error" }
     ]
 }
