@@ -65,12 +65,12 @@ API Key | Persönlicher API-Key
 Latitude | Latitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
 Longitude | Longitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
 ASL Code | ASL Code des Auswerteortes (ASL = Above Sea Level, m über Meereshöhe) (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
-Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.Y oder d-m-Y)
+Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.Y oder d-m-Y) - stellt man hier "l" ein, wird der Tag als Name (Montag, Dienstag, Mittwoch....) angezeigt
 Bildbreite (px) | Definition der Bildbreite des Pictrogramms
 Bildhöhe (px) | Definition der Bildhöhe des Pictrogramms
 Intervall | Aktualisierungsintervall in Sek. (Standard: 3600) - Die kostenlose Version unterstützt nur 100 Abfragen pro Tag, daher auf diese Einstellung achten
 Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
-Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x)
+Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x) - Max Heute + 5
 Nachkommastellen Vorhersage | Anzahl Nachkommastellen in der Vorhersageanzeige
 Schriftgrösse (px) | Regelt die Schriftgrösse in px in der Vorhersageanzeige
 
@@ -126,6 +126,8 @@ Version     | Datum      | Beschreibung
 1.1        | 13.01.2019 | Div. Erweiterungen
 1.2        | 24.01.2019 | Konfigurationsoption MBW_FORECASTPRECISION (Nachkommastellen für Vorhersageanzeige)
 1.3        | 30.01.2019 | Übersetzungen, Fehlerkorrekturen
+1.4        | 11.03.2019 | Übersetzungen, Fehlerkorrekturen, Datumshandling, Erweiterung auf 6 Anzeigetage
+
 
 ---
 ## 10. GUIDs
