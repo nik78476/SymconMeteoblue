@@ -19,9 +19,12 @@
 	},
 	{ "type": "Select", "name": "MBW_FORECASTDAYS", "caption": "Forecast Days",
 		"options": [
-			{ "label": "Today", "value":"0" },
+			{ "label": "Only Today", "value":"0" },
 			{ "label": "Today + Tomorrow", "value":"1" },
-			{ "label": "Today + 2 Days (max)", "value":"2" }
+			{ "label": "3 Days", "value":"2" },
+            { "label": "4 Days", "value":"3" },
+            { "label": "5 Days", "value":"4" },
+            { "label": "6 Days", "value":"5" }
 		]
 	},
     { "type": "Select", "name": "MBW_FORECASTPRECISION", "caption": "Forecast Precision",
