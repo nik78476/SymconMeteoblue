@@ -152,7 +152,7 @@ class SymconMeteoblue extends IPSModule
                     $forecastdata .= "<br>" .$this->getDayAsString( $i ) ."<br>";
                     $forecastdata .= "<font/>";
                 } 
-                //else $forecastdata .= date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$i]);
+                else $forecastdata .= date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$i]));
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
@@ -160,7 +160,7 @@ class SymconMeteoblue extends IPSModule
             // pictogram
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td>";
+                $forecastdata .= "<td align='center'>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 
                 $forecastdata .= "<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
@@ -200,7 +200,7 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
                 $forecastdata .= $this->getWeatherCondition($pictoCode);
                 $forecastdata .= "<font/>";
-                $forecastdata .= "</td>";
+                $forecastdata .= "&nbsp;&nbsp;&nbsp;</td>";
             }
             $forecastdata .= "</tr>";
             
