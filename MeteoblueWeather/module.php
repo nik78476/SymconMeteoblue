@@ -11,8 +11,8 @@ class SymconMeteoblue extends IPSModule
         //You cannot use variables here. Just static values.
         
         // VariableProfiles
-        $this->createVariableProfileWindDirection();
-        $this->createVariableProfileUVIndex();
+        if (!IPS_VariableProfileExists("MBW.WindDirection")) $this->createVariableProfileWindDirection();
+        if (!IPS_VariableProfileExists("MBW.UVIndex")) $this->createVariableProfileUVIndex();
         
         // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
