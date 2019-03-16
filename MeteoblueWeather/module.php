@@ -13,6 +13,7 @@ class SymconMeteoblue extends IPSModule
         // VariableProfiles
         if (!IPS_VariableProfileExists("MBW.WindDirection")) $this->createVariableProfileWindDirection();
         if (!IPS_VariableProfileExists("MBW.UVIndex")) $this->createVariableProfileUVIndex();
+        if (!IPS_VariableProfileExists("MBW.Airpressure")) $this->createVariableProfileAirpressure();
         
         // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
@@ -44,14 +45,14 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterVariableFloat("MBW_V_FELTTEMPERATURE_MAX", "Gef. Temp (max)", "~Temperature");
         $this->RegisterVariableInteger("MBW_V_WINDDIRECTION", "Windrichtung","MBW.WindDirection");
         
-        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMIN", "Luftdruck (min)", "~AirPressure.F");
-        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMAX", "Luftdruck (max)", "~AirPressure.F");
+        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMIN", "Luftdruck (min)", "MBW.AirPressure");
+        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMAX", "Luftdruck (max)", "MBW.AirPressure");
         
         $this->RegisterVariableFloat("MBW_V_WINDSPEED_MAX", "Windgeschwindigkeit (max)", "~WindSpeed.kmh");
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
         
-        $this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit");
+        $this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
 		$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
         
         
@@ -436,6 +437,17 @@ class SymconMeteoblue extends IPSModule
             IPS_SetVariableProfileAssociation("MBW.UVIndex", 8, "%.1f", "", 14155808);
             IPS_SetVariableProfileAssociation("MBW.UVIndex", 11, "%.1f", "", 11010176);
             
+        }
+    }
+    
+    private function createVariableProfileAirpressure(){
+        $profile = IPS_GetVariableProfile("MBW.Airpressure");
+        if ($profile == false){
+            IPS_CreateVariableProfile("MBW.Airpressure", 1);
+            IPS_SetVariableProfileText("MBW.Airpressure", "", "hPa");
+            IPS_SetVariableProfileValues("MBW.Airpressure", 850, 1200, 1);
+            IPS_SetVariableProfileDigits("MBW.Airpressure", 0);
+            IPS_SetVariableProfileIcon("MBW.Airpressure", "Gauge");
         }
     }
 }
