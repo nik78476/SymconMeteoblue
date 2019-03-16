@@ -168,6 +168,7 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueFloat("MBW_V_WINDSPEED_MIN", $ARRAY_DATA_DAY_WINDSPEEDMIN[0]);
 		$this->SetValueFloat("MBW_V_WINDSPEED_MEAN", $ARRAY_DATA_DAY_WINDSPEEDMEAN[0]);
         
+        /*
         $this->SetValueInt("MBW_V_PRECIPITATION_PROBABILITY", $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[0]);
 		$this->SetValueFloat("MBW_V_PRECIPITATION", $ARRAY_DATA_DAY_PRECIPITATION[0]);
 		$this->SetValueFloat("MBW_V_PRECIPITATION_CONVECTIVE", $ARRAY_DATA_DAY_PRECIPITATIONCONVECTIVE[0]);
@@ -180,6 +181,7 @@ class SymconMeteoblue extends IPSModule
 
 		$this->SetValueInt("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
 		$this->SetValueInt("MBW_V_PREDICTABILITY_CLASS", $ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
+        */
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
