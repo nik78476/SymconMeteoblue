@@ -67,11 +67,11 @@
 	        "270":"W",
 	        "315":"NW",
 	        "360":"n",
-	        "1":"sehr tief",
-	        "2":"tief",
-	        "3":"mittel",
-	        "4":"hoch",
-	        "5":"sehr hoch"
+	        "P1":"sehr tief",
+	        "P2":"tief",
+	        "P3":"mittel",
+	        "P4":"hoch",
+	        "P5":"sehr hoch"
         }
     }
 }
