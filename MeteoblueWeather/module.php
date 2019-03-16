@@ -185,7 +185,6 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueInt("MBW_V_RELHUMIDITY_MIN", $ARRAY_DATA_DAY_RELHUMIDITYMIN[0]);
 		$this->SetValueInt("MBW_V_RELHUMIDITY_MEAN", $ARRAY_DATA_DAY_RELHUMIDITYMEAN[0]);
         
-        
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
 		}
