@@ -24,7 +24,8 @@
 			{ "label": "3 Days", "value":"2" },
             { "label": "4 Days", "value":"3" },
             { "label": "5 Days", "value":"4" },
-            { "label": "6 Days", "value":"5" }
+            { "label": "6 Days", "value":"5" },
+            { "label": "Everything", "value":"6" }
 		]
 	},
     { "type": "Select", "name": "MBW_FORECASTPRECISION", "caption": "Forecast Precision",
@@ -34,6 +35,16 @@
 			{ "label": "2", "value":"2" }
 		]
 	},
+    { "type": "Select", "name": "MBW_WINDSPEED", "caption": "Windspeed Format",
+		"options": [
+			{ "label": "ms-1", "value":"ms-1" },
+			{ "label": "kmh", "value":"kmh" },
+			{ "label": "mph", "value":"mph" },
+            { "label": "kn", "value":"kn" },
+            { "label": "bft", "value":"bft" }
+		]
+	}, 
+      
     { "type": "IntervalBox", "name": "MBW_FONTSIZE", "caption": "Fontsize" },
     { "type": "CheckBox", "name": "MBW_DEBUG", "caption": "Activate Debug-Logging" }
   ], 

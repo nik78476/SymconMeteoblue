@@ -29,6 +29,7 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", "100");
         $this->RegisterPropertyInteger("MBW_FORECASTPRECISION","0");
         $this->RegisterPropertyInteger("MBW_FONTSIZE","16");
+        $this->RegisterPropertyString("MBW_WINDSPEED", "kmh"); 
         
         
         // Variables
@@ -93,6 +94,7 @@ class SymconMeteoblue extends IPSModule
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
+        $url .= "&windspeed=" .$this->ReadPropertyString("MBW_WINDSPEED");
   
         $rawWeatherData = file_get_contents($url);
         $weatherDataJSON = json_decode($rawWeatherData);
