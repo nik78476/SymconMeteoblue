@@ -248,7 +248,7 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
-            */
+            
             
             // forecast text
             /*
