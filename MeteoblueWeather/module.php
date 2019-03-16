@@ -146,6 +146,7 @@ class SymconMeteoblue extends IPSModule
 		$ARRAY_DATA_DAY_RELHUMIDITYMAX = $weatherDataJSON->{'data_day'}->{'relativehumidity_max'};
 		$ARRAY_DATA_DAY_RELHUMIDITYMIN = $weatherDataJSON->{'data_day'}->{'relativehumidity_min'};
 		$ARRAY_DATA_DAY_RELHUMIDITYMEAN = $weatherDataJSON->{'data_day'}->{'relativehumidity_mean'};
+        
 		$ARRAY_DATA_DAY_PREDICTABILITY = $weatherDataJSON->{'data_day'}->{'predictability'};
 		$ARRAY_DATA_DAY_PREDICTABILITYCLASS = $weatherDataJSON->{'data_day'}->{'predictability_class'};
         
@@ -172,7 +173,7 @@ class SymconMeteoblue extends IPSModule
         
         //String?
         $this->SetValueString("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
-		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", $ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
+		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", $this->Translate($ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
         
         
         $this->SetValueInt("MBW_V_PRECIPITATION_PROBABILITY", $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[0]);
