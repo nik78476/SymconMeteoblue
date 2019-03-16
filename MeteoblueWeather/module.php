@@ -11,9 +11,9 @@ class SymconMeteoblue extends IPSModule
         //You cannot use variables here. Just static values.
         
         // VariableProfiles
-        if (!IPS_VariableProfileExists("MBW.WindDirection")) $this->createVariableProfileWindDirection();
-        if (!IPS_VariableProfileExists("MBW.UVIndex")) $this->createVariableProfileUVIndex();
-        if (!IPS_VariableProfileExists("MBW.Airpressure")) $this->createVariableProfileAirpressure();
+        $this->createVariableProfileWindDirection();
+        $this->createVariableProfileUVIndex();
+        $this->createVariableProfileAirpressure();
         
         // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
@@ -403,8 +403,7 @@ class SymconMeteoblue extends IPSModule
 		}
     
     private function createVariableProfileWindDirection(){
-        $profile = IPS_GetVariableProfile("MBW.WindDirection");
-        if ($profile == false){
+        if (!IPS_VariableProfileExists("MBW.WindDirection")){
             IPS_CreateVariableProfile("MBW.WindDirection", 1);
             IPS_SetVariableProfileText("MBW.WindDirection", "", "");
             IPS_SetVariableProfileValues("MBW.WindDirection", 0, 360, 30);
@@ -424,8 +423,7 @@ class SymconMeteoblue extends IPSModule
     }
         
     private function createVariableProfileUVIndex(){
-        $profile = IPS_GetVariableProfile("MBW.UVIndex");
-        if ($profile == false){
+        if (!IPS_VariableProfileExists("MBW.UVIndex")){
             IPS_CreateVariableProfile("MBW.UVIndex", 1);
             IPS_SetVariableProfileText("MBW.UVIndex", "", "");
             IPS_SetVariableProfileValues("MBW.UVIndex", 0, 12, 0);
@@ -441,8 +439,7 @@ class SymconMeteoblue extends IPSModule
     }
     
     private function createVariableProfileAirpressure(){
-        $profile = IPS_GetVariableProfile("MBW.Airpressure");
-        if ($profile == false){
+        if (!IPS_VariableProfileExists("MBW.Airpressure")){
             IPS_CreateVariableProfile("MBW.Airpressure", 1);
             IPS_SetVariableProfileText("MBW.Airpressure", "", "hPa");
             IPS_SetVariableProfileValues("MBW.Airpressure", 850, 1200, 1);
