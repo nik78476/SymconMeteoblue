@@ -251,7 +251,6 @@ class SymconMeteoblue extends IPSModule
             
             
             // forecast text
-            /*
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
