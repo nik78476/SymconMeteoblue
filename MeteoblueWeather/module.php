@@ -51,7 +51,7 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
         
-        $this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
+        $this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit");
 		$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
         
         
