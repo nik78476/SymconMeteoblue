@@ -51,8 +51,8 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
         
-        //$this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
-		//$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
+        $this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
+		$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
         
         
         $this->RegisterVariableInteger("MBW_V_PRECIPITATION_PROBABILITY", "Regenwahrscheinlichkeit", "~Humidity");
@@ -171,8 +171,8 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueFloat("MBW_V_WINDSPEED_MEAN", $ARRAY_DATA_DAY_WINDSPEEDMEAN[0]);
         
         //String?
-        //$this->SetValueInt("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
-		//$this->SetValueInt("MBW_V_PREDICTABILITY_CLASS", $ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
+        $this->SetValueString("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
+		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", $ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
         
         
         $this->SetValueInt("MBW_V_PRECIPITATION_PROBABILITY", $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[0]);
