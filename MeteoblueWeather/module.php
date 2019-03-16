@@ -51,10 +51,10 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
         
-        $this->RegisterVariableInteger("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
-		$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
+        //$this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
+		//$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
         
-        /*
+        
         $this->RegisterVariableInteger("MBW_V_PRECIPITATION_PROBABILITY", "Regenwahrscheinlichkeit", "~Humidity");
 		$this->RegisterVariableFloat("MBW_V_PRECIPITATION", "Regenmenge", "~Rainfall");
 		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_CONVECTIVE", "Sturm Regenmenge", "~Rainfall");
@@ -66,7 +66,7 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MEAN", "rel. Luftfeuchtigkeit (durchschnitt)", "~Humidity");
 
 		
-        */
+        
         $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
     }
@@ -170,10 +170,11 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueFloat("MBW_V_WINDSPEED_MIN", $ARRAY_DATA_DAY_WINDSPEEDMIN[0]);
 		$this->SetValueFloat("MBW_V_WINDSPEED_MEAN", $ARRAY_DATA_DAY_WINDSPEEDMEAN[0]);
         
-        $this->SetValueInt("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
-		$this->SetValueInt("MBW_V_PREDICTABILITY_CLASS", $ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
+        //String?
+        //$this->SetValueInt("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
+		//$this->SetValueInt("MBW_V_PREDICTABILITY_CLASS", $ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]);
         
-        /*
+        
         $this->SetValueInt("MBW_V_PRECIPITATION_PROBABILITY", $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[0]);
 		$this->SetValueFloat("MBW_V_PRECIPITATION", $ARRAY_DATA_DAY_PRECIPITATION[0]);
 		$this->SetValueFloat("MBW_V_PRECIPITATION_CONVECTIVE", $ARRAY_DATA_DAY_PRECIPITATIONCONVECTIVE[0]);
@@ -183,7 +184,7 @@ class SymconMeteoblue extends IPSModule
 		$this->SetValueInt("MBW_V_RELHUMIDITY_MAX", $ARRAY_DATA_DAY_RELHUMIDITYMAX[0]);
 		$this->SetValueInt("MBW_V_RELHUMIDITY_MIN", $ARRAY_DATA_DAY_RELHUMIDITYMIN[0]);
 		$this->SetValueInt("MBW_V_RELHUMIDITY_MEAN", $ARRAY_DATA_DAY_RELHUMIDITYMEAN[0]);
-        */
+        
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
