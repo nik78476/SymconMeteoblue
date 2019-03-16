@@ -66,8 +66,6 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MIN", "rel. Luftfeuchtigkeit (min)", "~Humidity");
 		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MEAN", "rel. Luftfeuchtigkeit (durchschnitt)", "~Humidity");
 
-		
-        
         $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
     }
@@ -441,7 +439,7 @@ class SymconMeteoblue extends IPSModule
     private function createVariableProfileAirpressure(){
         if (!IPS_VariableProfileExists("MBW.Airpressure")){
             IPS_CreateVariableProfile("MBW.Airpressure", 1);
-            IPS_SetVariableProfileText("MBW.Airpressure", "", "hPa");
+            IPS_SetVariableProfileText("MBW.Airpressure", "", " hPa");
             IPS_SetVariableProfileValues("MBW.Airpressure", 850, 1200, 1);
             IPS_SetVariableProfileDigits("MBW.Airpressure", 0);
             IPS_SetVariableProfileIcon("MBW.Airpressure", "Gauge");
