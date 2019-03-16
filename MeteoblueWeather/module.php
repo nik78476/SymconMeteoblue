@@ -172,7 +172,7 @@ class SymconMeteoblue extends IPSModule
         
         //String?
         $this->SetValueString("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
-		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", "P" .$this->Translate($ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]));
+		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", $this->Translate("P" .$ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]));
         
         
         $this->SetValueInt("MBW_V_PRECIPITATION_PROBABILITY", $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[0]);
