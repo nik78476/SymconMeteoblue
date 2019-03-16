@@ -51,7 +51,8 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
 		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
         
-        $this->RegisterVariableInteger("MBW_V_PRECIPITATION_PROBABILITY", "Regen Wahrscheinlichkeit", "~Humidity");
+        /*
+        $this->RegisterVariableInteger("MBW_V_PRECIPITATION_PROBABILITY", "Regenwahrscheinlichkeit", "~Humidity");
 		$this->RegisterVariableFloat("MBW_V_PRECIPITATION", "Regenmenge", "~Rainfall");
 		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_CONVECTIVE", "Sturm Regenmenge", "~Rainfall");
 		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_HOURS", "Regenstunden");
@@ -63,7 +64,7 @@ class SymconMeteoblue extends IPSModule
 
 		$this->RegisterVariableInteger("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit", "~Humidity");
 		$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognose-Genauigkeit", "~Humidity");
-        
+        */
         $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
     }
