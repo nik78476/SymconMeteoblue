@@ -14,6 +14,7 @@ class SymconMeteoblue extends IPSModule
         $this->createVariableProfileWindDirection();
         $this->createVariableProfileUVIndex();
         $this->createVariableProfileAirpressure();
+        $this->createVariableProfilePredictability();
         
         // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
@@ -442,6 +443,16 @@ class SymconMeteoblue extends IPSModule
             IPS_SetVariableProfileValues("MBW.Airpressure", 850, 1200, 1);
             IPS_SetVariableProfileDigits("MBW.Airpressure", 0);
             IPS_SetVariableProfileIcon("MBW.Airpressure", "Gauge");
+        }
+    }
+    
+    private function createVariableProfilePredictability(){
+        if (!IPS_VariableProfileExists("MBW.Predictability")){
+            IPS_CreateVariableProfile("MBW.Predictability", 3);
+            IPS_SetVariableProfileText("MBW.Predictability", "", " %");
+            IPS_SetVariableProfileValues("MBW.Predictability", 0, 0, 0);
+            IPS_SetVariableProfileDigits("MBW.Predictability", 0);
+            IPS_SetVariableProfileIcon("MBW.Predictability", "Information");
         }
     }
 }
