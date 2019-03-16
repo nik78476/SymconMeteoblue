@@ -119,6 +119,20 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN = $weatherDataJSON->{'data_day'}->{'sealevelpressure_min'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX = $weatherDataJSON->{'data_day'}->{'sealevelpressure_max'};
         
+        $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY = $weatherDataJSON->{'data_day'}->{'precipitation_probability'};
+		$ARRAY_DATA_DAY_PRECIPITATION = $weatherDataJSON->{'data_day'}->{'precipitation'};
+		$ARRAY_DATA_DAY_PRECIPITATIONHOURS =  $weatherDataJSON->{'data_day'}->{'precipitation_hours'};
+		$ARRAY_DATA_DAY_PRECIPITATIONCONVECTIVE =  $weatherDataJSON->{'data_day'}->{'convective_precipitation'};
+		$ARRAY_DATA_DAY_SNOWFRACTION = $weatherDataJSON->{'data_day'}->{'snowfraction'};
+		$ARRAY_DATA_DAY_WINDSPEEDMAX = $weatherDataJSON->{'data_day'}->{'windspeed_max'};
+		$ARRAY_DATA_DAY_WINDSPEEDMIN = $weatherDataJSON->{'data_day'}->{'windspeed_min'};
+		$ARRAY_DATA_DAY_WINDSPEEDMEAN = $weatherDataJSON->{'data_day'}->{'windspeed_mean'};
+		$ARRAY_DATA_DAY_RELHUMIDITYMAX = $weatherDataJSON->{'data_day'}->{'relativehumidity_max'};
+		$ARRAY_DATA_DAY_RELHUMIDITYMIN = $weatherDataJSON->{'data_day'}->{'relativehumidity_min'};
+		$ARRAY_DATA_DAY_RELHUMIDITYMEAN = $weatherDataJSON->{'data_day'}->{'relativehumidity_mean'};
+		$ARRAY_DATA_DAY_PREDICTABILITY = $weatherDataJSON->{'data_day'}->{'predictability'};
+		$ARRAY_DATA_DAY_PREDICTABILITYCLASS = $weatherDataJSON->{'data_day'}->{'predictability_class'};
+        
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
 		}
