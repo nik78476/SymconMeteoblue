@@ -47,6 +47,9 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMIN", "Luftdruck (min)");
         $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMAX", "Luftdruck (max)");
         
+        $this->RegisterVariableFloat("MBW_V_WINDSPEED_MAX", "Windgeschwindigkeit (max)", "~WindSpeed.kmh");
+		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
+		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
         
         $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
@@ -115,7 +118,6 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN = $weatherDataJSON->{'data_day'}->{'sealevelpressure_min'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX = $weatherDataJSON->{'data_day'}->{'sealevelpressure_max'};
-
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
@@ -134,7 +136,11 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
         
-                
+        $this->SetValueFloat("MBW_V_WINDSPEED_MAX", $ARRAY_DATA_DAY_WINDSPEEDMAX[0]);
+		$this->SetValueFloat("MBW_V_WINDSPEED_MIN", $ARRAY_DATA_DAY_WINDSPEEDMIN[0]);
+		$this->SetValueFloat("MBW_V_WINDSPEED_MEAN", $ARRAY_DATA_DAY_WINDSPEEDMEAN[0]);
+        
+        
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
 		}
