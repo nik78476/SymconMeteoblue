@@ -237,7 +237,7 @@ class SymconMeteoblue extends IPSModule
             $forecastdata .= "</tr>";
             
             // temperature max
-            /*
+            
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
@@ -262,76 +262,9 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "&nbsp;&nbsp;&nbsp;</td>";
             }
             $forecastdata .= "</tr>";
-            */
             
-            // add from juerg
-            //temperature
-			$forecastdata .= "<tr>";
-			for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
-                $forecastdata .= "Temp </font><font style='font-size: " .$forecastFontSize ."px;'>min. ";
-                $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMIN[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
-				$forecastdata .= " / max. ";
-				$forecastdata .= round( $ARRAY_DATA_DAY_TEMPMAX[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
-                $forecastdata .= "&nbsp;&nbsp;</font>";
-                $forecastdata .= "</td>";
-            }
-            $forecastdata .= "</tr>";
-
-			//rainfall
-			$forecastdata .= "<tr>";
-			for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
-                $forecastdata .= "Regen </font></td><td><font style='font-size: " .$forecastFontSize ."px;'>";
-                $forecastdata .= round( $ARRAY_DATA_DAY_PRECIPITATION[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) .$weatherDataJSON->{'units'}->{'precipitation'};
-				$forecastdata .= " / ";
-				$forecastdata .= $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[$i] ."%";
-                $forecastdata .= "&nbsp;&nbsp;</font>";
-                $forecastdata .= "</td>";
-            }
-            $forecastdata .= "</tr>";
-
-			//wind
-			$forecastdata .= "<tr>";
-			for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
-                $forecastdata .= "Wind </font></td><td><font style='font-size: " .$forecastFontSize ."px;'>max. ";
-                $forecastdata .= round( $ARRAY_DATA_DAY_WINDSPEEDMAX[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) .$weatherDataJSON->{'units'}->{'windspeed'};
-				$forecastdata .= " / &empty; ";
-				$forecastdata .= round( $ARRAY_DATA_DAY_WINDSPEEDMEAN[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) .$weatherDataJSON->{'units'}->{'windspeed'};
-				$forecastdata .=  " / ". $this->Translate($ARRAY_DATA_DAY_WINDDIRECTION[$i]);
-                $forecastdata .= "&nbsp;&nbsp;</font>";
-                $forecastdata .= "</td>";
-            }
-            $forecastdata .= "</tr>";
-
-			//prognose
-			$forecastdata .= "<tr>";
-			for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $forecastdata .= "<td align='center' colspan='2'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
-                $forecastdata .= "Zuverlässigkeit ";
-                $forecastdata .= $this->Translate($ARRAY_DATA_DAY_PREDICTABILITYCLASS[$i]);
-                $forecastdata .= "&nbsp;&nbsp;</font>";
-                $forecastdata .= "</td>";
-            }
-            $forecastdata .= "</tr>";
-
-			//-------
-
-            // forecast text
-            $forecastdata .= "<tr>";
-            for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
-                $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
-                $forecastdata .= "<td align='center' colspan='2'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
-                $forecastdata .= $this->getWeatherCondition($pictoCode);
-                $forecastdata .= "<font/>";
-                $forecastdata .= "&nbsp;&nbsp;&nbsp;</td>";
-            }
+            
+            
             
             $forecastdata .= "</table>";
             if ($loggingActive){
