@@ -6,11 +6,7 @@
     "compatibility": {
         "version": "5.0"
     },
-<<<<<<< Updated upstream
-    "version": "1.4",
-=======
     "version": "1.51",
->>>>>>> Stashed changes
     "build": 0,
     "date": 0
 }

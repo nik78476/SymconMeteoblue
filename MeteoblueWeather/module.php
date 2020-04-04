@@ -11,8 +11,10 @@ class SymconMeteoblue extends IPSModule
         //You cannot use variables here. Just static values.
         
         // VariableProfiles
-        if (!IPS_VariableProfileExists("MBW.WindDirection")) $this->createVariableProfileWindDirection();
-        if (!IPS_VariableProfileExists("MBW.UVIndex")) $this->createVariableProfileUVIndex();
+        $this->createVariableProfileWindDirection();
+        $this->createVariableProfileUVIndex();
+        $this->createVariableProfileAirpressure();
+        $this->createVariableProfilePredictability();
         
         // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
@@ -29,6 +31,7 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", "100");
         $this->RegisterPropertyInteger("MBW_FORECASTPRECISION","0");
         $this->RegisterPropertyInteger("MBW_FONTSIZE","16");
+        $this->RegisterPropertyString("MBW_WINDSPEED", "kmh"); 
         
         
         // Variables
@@ -43,10 +46,27 @@ class SymconMeteoblue extends IPSModule
         $this->RegisterVariableFloat("MBW_V_FELTTEMPERATURE_MAX", "Gef. Temp (max)", "~Temperature");
         $this->RegisterVariableInteger("MBW_V_WINDDIRECTION", "Windrichtung","MBW.WindDirection");
         
-        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMIN", "Luftdruck (min)");
-        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMAX", "Luftdruck (max)");
+        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMIN", "Luftdruck (min)", "MBW.Airpressure");
+        $this->RegisterVariableInteger("MBW_V_SEALEVELPRESSUREMAX", "Luftdruck (max)", "MBW.Airpressure");
+        
+        $this->RegisterVariableFloat("MBW_V_WINDSPEED_MAX", "Windgeschwindigkeit (max)", "~WindSpeed.kmh");
+		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MIN", "Windgeschwindigkeit (min)", "~WindSpeed.kmh");
+		$this->RegisterVariableFloat("MBW_V_WINDSPEED_MEAN", "Windgeschwindigkeit (durchschnitt)", "~WindSpeed.kmh");
+        
+        $this->RegisterVariableString("MBW_V_PREDICTABILITY", "Prognose-Genauigkeit");
+		$this->RegisterVariableString("MBW_V_PREDICTABILITY_CLASS", "Prognosegenauigkeitsklasse");
         
         
+        $this->RegisterVariableInteger("MBW_V_PRECIPITATION_PROBABILITY", "Regenwahrscheinlichkeit", "~Humidity");
+		$this->RegisterVariableFloat("MBW_V_PRECIPITATION", "Regenmenge", "~Rainfall");
+		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_CONVECTIVE", "Sturm Regenmenge", "~Rainfall");
+		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_HOURS", "Regenstunden");
+		$this->RegisterVariableFloat("MBW_V_SNOWFRACTION", "Schneewahrscheinlichkeit", "~Humidity.F");
+
+		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MAX", "rel. Luftfeuchtigkeit (max)", "~Humidity");
+		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MIN", "rel. Luftfeuchtigkeit (min)", "~Humidity");
+		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MEAN", "rel. Luftfeuchtigkeit (durchschnitt)", "~Humidity");
+
         $this->RegisterTimer("UpdateSymconMeteoblue", $this->ReadPropertyInteger("MBW_UPDATEINTERVALL") * 1000, 'MBW_Update($_IPS[\'TARGET\']);');
 		
     }
@@ -93,6 +113,7 @@ class SymconMeteoblue extends IPSModule
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
+        $url .= "&windspeed=" .$this->ReadPropertyString("MBW_WINDSPEED");
   
         $rawWeatherData = file_get_contents($url);
         $weatherDataJSON = json_decode($rawWeatherData);
@@ -113,7 +134,21 @@ class SymconMeteoblue extends IPSModule
         $ARRAY_DATA_DAY_WINDDIRECTION = $weatherDataJSON->{'data_day'}->{'winddirection'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN = $weatherDataJSON->{'data_day'}->{'sealevelpressure_min'};
         $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX = $weatherDataJSON->{'data_day'}->{'sealevelpressure_max'};
-
+        
+        $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY = $weatherDataJSON->{'data_day'}->{'precipitation_probability'};
+		$ARRAY_DATA_DAY_PRECIPITATION = $weatherDataJSON->{'data_day'}->{'precipitation'};
+		$ARRAY_DATA_DAY_PRECIPITATIONHOURS =  $weatherDataJSON->{'data_day'}->{'precipitation_hours'};
+		$ARRAY_DATA_DAY_PRECIPITATIONCONVECTIVE =  $weatherDataJSON->{'data_day'}->{'convective_precipitation'};
+		$ARRAY_DATA_DAY_SNOWFRACTION = $weatherDataJSON->{'data_day'}->{'snowfraction'};
+		$ARRAY_DATA_DAY_WINDSPEEDMAX = $weatherDataJSON->{'data_day'}->{'windspeed_max'};
+		$ARRAY_DATA_DAY_WINDSPEEDMIN = $weatherDataJSON->{'data_day'}->{'windspeed_min'};
+		$ARRAY_DATA_DAY_WINDSPEEDMEAN = $weatherDataJSON->{'data_day'}->{'windspeed_mean'};
+		$ARRAY_DATA_DAY_RELHUMIDITYMAX = $weatherDataJSON->{'data_day'}->{'relativehumidity_max'};
+		$ARRAY_DATA_DAY_RELHUMIDITYMIN = $weatherDataJSON->{'data_day'}->{'relativehumidity_min'};
+		$ARRAY_DATA_DAY_RELHUMIDITYMEAN = $weatherDataJSON->{'data_day'}->{'relativehumidity_mean'};
+        
+		$ARRAY_DATA_DAY_PREDICTABILITY = $weatherDataJSON->{'data_day'}->{'predictability'};
+		$ARRAY_DATA_DAY_PREDICTABILITYCLASS = $weatherDataJSON->{'data_day'}->{'predictability_class'};
         
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
@@ -132,7 +167,25 @@ class SymconMeteoblue extends IPSModule
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMIN", $ARRAY_DATA_DAY_SEALEVELPRESSUREMIN[0]);
         
-                
+        $this->SetValueFloat("MBW_V_WINDSPEED_MAX", $ARRAY_DATA_DAY_WINDSPEEDMAX[0]);
+		$this->SetValueFloat("MBW_V_WINDSPEED_MIN", $ARRAY_DATA_DAY_WINDSPEEDMIN[0]);
+		$this->SetValueFloat("MBW_V_WINDSPEED_MEAN", $ARRAY_DATA_DAY_WINDSPEEDMEAN[0]);
+        
+        //String?
+        $this->SetValueString("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
+		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", $this->Translate("P" .$ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]));
+        
+        
+        $this->SetValueInt("MBW_V_PRECIPITATION_PROBABILITY", $ARRAY_DATA_DAY_PRECIPITATIONPROBABILITY[0]);
+		$this->SetValueFloat("MBW_V_PRECIPITATION", $ARRAY_DATA_DAY_PRECIPITATION[0]);
+		$this->SetValueFloat("MBW_V_PRECIPITATION_CONVECTIVE", $ARRAY_DATA_DAY_PRECIPITATIONCONVECTIVE[0]);
+		$this->SetValueFloat("MBW_V_PRECIPITATION_HOURS", $ARRAY_DATA_DAY_PRECIPITATIONHOURS[0]);
+		$this->SetValueFloat("MBW_V_SNOWFRACTION", $ARRAY_DATA_DAY_SNOWFRACTION[0]);
+
+		$this->SetValueInt("MBW_V_RELHUMIDITY_MAX", $ARRAY_DATA_DAY_RELHUMIDITYMAX[0]);
+		$this->SetValueInt("MBW_V_RELHUMIDITY_MIN", $ARRAY_DATA_DAY_RELHUMIDITYMIN[0]);
+		$this->SetValueInt("MBW_V_RELHUMIDITY_MEAN", $ARRAY_DATA_DAY_RELHUMIDITYMEAN[0]);
+        
         if ($loggingActive){
             IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
 		}
@@ -149,7 +202,7 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "<td align='center'>";
                 $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
                 if( $i <= 2){ 
-                    $forecastdata .= "<br>" .$this->getDayAsString( $i ) ."<br>";
+                    $forecastdata .= $this->getDayAsString( $i ) ."<br>";
                 } 
                 else { 
                     $forecastdata .= $this->Translate(date($this->ReadPropertyString("MBW_DATE_FORMAT"), strtotime($ARRAY_DATA_DAY_TIME[$i])));
@@ -183,6 +236,7 @@ class SymconMeteoblue extends IPSModule
             $forecastdata .= "</tr>";
             
             // temperature max
+            
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
@@ -193,6 +247,7 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";
+            
             
             // forecast text
             $forecastdata .= "<tr>";
@@ -205,6 +260,9 @@ class SymconMeteoblue extends IPSModule
                 $forecastdata .= "&nbsp;&nbsp;&nbsp;</td>";
             }
             $forecastdata .= "</tr>";
+            
+            
+            
             
             $forecastdata .= "</table>";
             if ($loggingActive){
@@ -343,8 +401,7 @@ class SymconMeteoblue extends IPSModule
 		}
     
     private function createVariableProfileWindDirection(){
-        $profile = IPS_GetVariableProfile("MBW.WindDirection");
-        if ($profile == false){
+        if (!IPS_VariableProfileExists("MBW.WindDirection")){
             IPS_CreateVariableProfile("MBW.WindDirection", 1);
             IPS_SetVariableProfileText("MBW.WindDirection", "", "");
             IPS_SetVariableProfileValues("MBW.WindDirection", 0, 360, 30);
@@ -364,8 +421,7 @@ class SymconMeteoblue extends IPSModule
     }
         
     private function createVariableProfileUVIndex(){
-        $profile = IPS_GetVariableProfile("MBW.UVIndex");
-        if ($profile == false){
+        if (!IPS_VariableProfileExists("MBW.UVIndex")){
             IPS_CreateVariableProfile("MBW.UVIndex", 1);
             IPS_SetVariableProfileText("MBW.UVIndex", "", "");
             IPS_SetVariableProfileValues("MBW.UVIndex", 0, 12, 0);
@@ -377,6 +433,26 @@ class SymconMeteoblue extends IPSModule
             IPS_SetVariableProfileAssociation("MBW.UVIndex", 8, "%.1f", "", 14155808);
             IPS_SetVariableProfileAssociation("MBW.UVIndex", 11, "%.1f", "", 11010176);
             
+        }
+    }
+    
+    private function createVariableProfileAirpressure(){
+        if (!IPS_VariableProfileExists("MBW.Airpressure")){
+            IPS_CreateVariableProfile("MBW.Airpressure", 1);
+            IPS_SetVariableProfileText("MBW.Airpressure", "", " hPa");
+            IPS_SetVariableProfileValues("MBW.Airpressure", 850, 1200, 1);
+            IPS_SetVariableProfileDigits("MBW.Airpressure", 0);
+            IPS_SetVariableProfileIcon("MBW.Airpressure", "Gauge");
+        }
+    }
+    
+    private function createVariableProfilePredictability(){
+        if (!IPS_VariableProfileExists("MBW.Predictability")){
+            IPS_CreateVariableProfile("MBW.Predictability", 3);
+            IPS_SetVariableProfileText("MBW.Predictability", "", " %");
+            IPS_SetVariableProfileValues("MBW.Predictability", 0, 0, 0);
+            IPS_SetVariableProfileDigits("MBW.Predictability", 0);
+            IPS_SetVariableProfileIcon("MBW.Predictability", "Information");
         }
     }
 }

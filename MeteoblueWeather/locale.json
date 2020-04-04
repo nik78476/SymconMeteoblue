@@ -12,12 +12,14 @@
             "Fahrenheit": "Fahrenheit",
             "Forecast Precision": "Nachkommastellen Vorhersage",
             "Forecast Days": "Tage anzeigen",
+            "Windspeed Format": "Windgeschw. Anzeige",
             "Only Today": "Nur Heute",
             "Today + Tomorrow": "Heute u. morgen",
             "3 Days": "Heute +2 Tage",
             "4 Days": "Heute +3 Tage",
             "5 Days": "Heute +4 Tage",
             "6 Days": "Heute +5 Tage",
+            "Everything": "Alles",
             "Save and Update": "Einstellungen speichern u. Daten aktualisieren",
             "Activate Debug-Logging":"Debug-Ausgaben im Log aktivieren",
             "Image Width": "Bildbreite (px)",
@@ -55,7 +57,12 @@
             "Mostly cloudy with rain": "Überwiegend bewölkt mit Regen",
             "Mostly cloudy with snow": "Überwiegend bewölkt mit Schneefall",
             "Mostly cloudy with light rain": "Überwiegend bewölkt mit leichtem Regen",
-            "Mostly cloudy with light snowfall":"Überwiegend bewölkt mit leichtem Schneefall"
+            "Mostly cloudy with light snowfall":"Überwiegend bewölkt mit leichtem Schneefall",
+	        "P1":"sehr tief",
+	        "P2":"tief",
+	        "P3":"mittel",
+	        "P4":"hoch",
+	        "P5":"sehr hoch"
         }
     }
 }
