@@ -1,4 +1,4 @@
-<?
+<?php
 class SymconMeteoblue extends IPSModule
 {
 	

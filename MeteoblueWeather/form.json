@@ -19,19 +19,29 @@
 	},
 	{ "type": "Select", "name": "MBW_FORECASTDAYS", "caption": "Forecast Days",
 		"options": [
+<<<<<<< Updated upstream
 			{ "label": "Only Today", "value":"0" },
 			{ "label": "Today + Tomorrow", "value":"1" },
 			{ "label": "3 Days", "value":"2" },
             { "label": "4 Days", "value":"3" },
             { "label": "5 Days", "value":"4" },
             { "label": "6 Days", "value":"5" }
+=======
+			{ "label": "Only Today", "value":0 },
+			{ "label": "Today + Tomorrow", "value":1 },
+			{ "label": "3 Days", "value":2 },
+            { "label": "4 Days", "value":3 },
+            { "label": "5 Days", "value":4 },
+            { "label": "6 Days", "value":5 },
+            { "label": "Everything", "value":6 }
+>>>>>>> Stashed changes
 		]
 	},
     { "type": "Select", "name": "MBW_FORECASTPRECISION", "caption": "Forecast Precision",
 		"options": [
-			{ "label": "0", "value":"0" },
-			{ "label": "1", "value":"1" },
-			{ "label": "2", "value":"2" }
+			{ "label": "0", "value":0 },
+			{ "label": "1", "value":1 },
+			{ "label": "2", "value":2 }
 		]
 	},
     { "type": "IntervalBox", "name": "MBW_FONTSIZE", "caption": "Fontsize" },

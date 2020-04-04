@@ -127,6 +127,8 @@ Version     | Datum      | Beschreibung
 1.2        | 24.01.2019 | Konfigurationsoption MBW_FORECASTPRECISION (Nachkommastellen für Vorhersageanzeige)
 1.3        | 30.01.2019 | Übersetzungen, Fehlerkorrekturen
 1.4        | 11.03.2019 | Übersetzungen, Fehlerkorrekturen, Datumshandling, Erweiterung auf 6 Anzeigetage
+1.5        | 21.08.2019 | Fehlerkorrekturen
+1.51       | 04.04.2020 | Fehlerkorrekturen in form.json
 
 
 ---
