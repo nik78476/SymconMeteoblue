@@ -129,6 +129,7 @@ Version     | Datum      | Beschreibung
 1.4        | 11.03.2019 | Übersetzungen, Fehlerkorrekturen, Datumshandling, Erweiterung auf 6 Anzeigetage
 1.5        | 21.08.2019 | Fehlerkorrekturen
 1.51       | 04.04.2020 | Fehlerkorrekturen in form.json
+1.6        | 04.04.2020 | Merge develop und master branch
 
 
 ---
