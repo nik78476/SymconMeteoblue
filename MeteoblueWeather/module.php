@@ -122,6 +122,7 @@ class MeteoblueWeather extends IPSModule
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
         $url .= "&windspeed=" .$this->ReadPropertyString("MBW_WINDSPEED");
+        $url .= "&precipitationamount=mm";
   
         $rawWeatherData = file_get_contents($url);
         $weatherDataJSON = json_decode($rawWeatherData);
