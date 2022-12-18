@@ -33,7 +33,7 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 
 ---
 ## 2. Systemanforderungen
-- IP-Symcon ab Version 5.x+
+- IP-Symcon ab Version 6.x+
 - API-Key von Meteoblue, dieser ist für die 1-Tages-Vorhersage kostenlos und
   muss bei Meteoblue beantragt werden: 
   https://content.meteoblue.com/de/produkte/servicezugang/meteoblue-wetter-api
@@ -42,7 +42,8 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 ## 3. Installation
 ###### **Mach' ein Backup! Die Installation erfolgt auf eigene Verantwortung!*
 
-Über die Kern-Instanz "Module Control" folgende URL hinzufügen:
+Dieses Modul kann über den IPS Module Store bezogen werden oder über die 
+Kern-Instanz "Module Control" folgende URL hinzufügen::
 
 `https://github.com/nik78476/SymconMeteoblue.git`
 
@@ -61,9 +62,8 @@ werden keine Werte abgefragt und es erfolgen Fehlermeldungen.
 
 Parameter | Beschreibung
 ------ | ---------------------------------
-API Key | Persönlicher API-Key
-Latitude | Latitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
-Longitude | Longitude des Auswerteortes (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
+API Key | Persönlicher API-Key (Pflichtfeld)
+Adresse | Symcon-basierte Positionsbestimmung (Pflichtfeld)
 ASL Code | ASL Code des Auswerteortes (ASL = Above Sea Level, m über Meereshöhe) (http://content.meteoblue.com/en/help/global-location-search/find-a-place)
 Datumsformat | PHP-Format konformes Datumsformat für die Anzeige (z.B. d.m.Y oder d-m-Y) - stellt man hier "l" ein, wird der Tag als Name (Montag, Dienstag, Mittwoch....) angezeigt
 Bildbreite (px) | Definition der Bildbreite des Pictrogramms
@@ -131,6 +131,7 @@ Version     | Datum      | Beschreibung
 1.51       | 04.04.2020 | Fehlerkorrekturen in form.json
 1.6        | 04.04.2020 | Merge develop und master branch
 1.61       | 24.05.2022 | Update Namen 
+2.0        | 18.12.2022 | Aktualiserung Übersetzung, Erweiterung gem. https://community.symcon.de/t/yahoo-weather-api-modul/44357/146 
 
 
 ---
