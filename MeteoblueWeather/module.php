@@ -59,9 +59,9 @@ class MeteoblueWeather extends IPSModule
         
         
         $this->RegisterVariableInteger("MBW_V_PRECIPITATION_PROBABILITY", "Regenwahrscheinlichkeit", "~Humidity");
-		$this->RegisterVariableFloat("MBW_V_PRECIPITATION", "Regenmenge", "~Rainfall");
+		$this->RegisterVariableFloat("MBW_V_PRECIPITATION", "Prognostizierte Niederschlagsmenge", "~Rainfall");
 		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_CONVECTIVE", "Sturm Regenmenge", "~Rainfall");
-		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_HOURS", "Regenstunden");
+		$this->RegisterVariableFloat("MBW_V_PRECIPITATION_HOURS", "Prognostizierte Regenstunden");
 		$this->RegisterVariableFloat("MBW_V_SNOWFRACTION", "Schneewahrscheinlichkeit", "~Humidity.F");
 
 		$this->RegisterVariableInteger("MBW_V_RELHUMIDITY_MAX", "rel. Luftfeuchtigkeit (max)", "~Humidity");
