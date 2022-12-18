@@ -1,4 +1,4 @@
-### IP-Symcon Modul SymconMeteoblue Weather
+### IP-Symcon Modul Meteoblue Weather
 
 [![Version](https://img.shields.io/badge/Symcon_Version-5.0-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 ![Version](https://img.shields.io/badge/Modul_Version-1.0-blue.svg)
@@ -130,6 +130,7 @@ Version     | Datum      | Beschreibung
 1.5        | 21.08.2019 | Fehlerkorrekturen
 1.51       | 04.04.2020 | Fehlerkorrekturen in form.json
 1.6        | 04.04.2020 | Merge develop und master branch
+1.61       | 24.05.2022 | Update Namen 
 
 
 ---

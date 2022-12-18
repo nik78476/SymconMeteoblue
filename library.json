@@ -1,12 +1,12 @@
 {
     "id": "{351DDB8A-8A18-4604-943D-6BA4BEE026C2}",
     "author": "nik78476",
-    "name": "SymconMeteoblue",
+    "name": "Meteoblue",
     "url": "https://github.com/nik78476/SymconMeteoblue.git",
     "compatibility": {
         "version": "5.0"
     },
-    "version": "1.6",
+    "version": "1.8",
     "build": 0,
     "date": 0
 }

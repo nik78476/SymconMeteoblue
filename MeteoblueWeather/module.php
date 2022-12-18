@@ -21,17 +21,17 @@ class SymconMeteoblue extends IPSModule
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
 		$this->RegisterPropertyString("MBW_ASL","402");
-		$this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 3600);
+		$this->RegisterPropertyString("MBW_WINDSPEED", "kmh"); 
 		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
         $this->RegisterPropertyString("MBW_DATE_FORMAT", "d.m.Y");
         $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
-        $this->RegisterPropertyInteger("MBW_FORECASTDAYS", "0");
         $this->RegisterPropertyBoolean("MBW_DEBUG", false);
-        $this->RegisterPropertyInteger("MBW_IMAGE_HEIGHT", "80");
-        $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", "100");
-        $this->RegisterPropertyInteger("MBW_FORECASTPRECISION","0");
-        $this->RegisterPropertyInteger("MBW_FONTSIZE","16");
-        $this->RegisterPropertyString("MBW_WINDSPEED", "kmh"); 
+        $this->RegisterPropertyInteger("MBW_FORECASTDAYS", 0);
+        $this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 3600);
+        $this->RegisterPropertyInteger("MBW_IMAGE_HEIGHT", 80);
+        $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", 100);
+        $this->RegisterPropertyInteger("MBW_FORECASTPRECISION",0);
+        $this->RegisterPropertyInteger("MBW_FONTSIZE",16);
         
         
         // Variables
