@@ -3,9 +3,6 @@
   [
     { "type": "ValidationTextBox", "name": "MBW_APIKEY", "caption": "API Key" },
       
-    //{ "type": "ValidationTextBox", "name": "MBW_LATITUDE", "caption": "Latitude" },
-    //{ "type": "ValidationTextBox", "name": "MBW_LONGITUDE", "caption": "Longitude" },
-      
     { "type": "SelectLocation", "name": "MBW_LOCATION", "caption": "Adresse " },
       
     { "type": "ValidationTextBox", "name": "MBW_ASL", "caption": "ASL Code" },
