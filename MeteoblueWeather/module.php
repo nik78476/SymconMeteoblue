@@ -20,6 +20,7 @@ class MeteoblueWeather extends IPSModule
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
+        $this->RegisterPropertyString("MBW_LOCATION", "0");
 		$this->RegisterPropertyString("MBW_ASL","402");
 		$this->RegisterPropertyString("MBW_WINDSPEED", "kmh"); 
 		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
@@ -106,6 +107,10 @@ class MeteoblueWeather extends IPSModule
             IPS_LogMessage("SymconMeteoblue", "API-Key: " .$myAPIKey);
 		}
 
+        $location = json_decode($this->ReadPropertyString('Location'), true);
+        IPS_LogMessage("SymconMeteoblue", "Location: " .$location);
+        
+        
         $url  = "http://my.meteoblue.com/packages/basic-day?";
         $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
         $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
