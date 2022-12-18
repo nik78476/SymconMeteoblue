@@ -109,9 +109,9 @@ class MeteoblueWeather extends IPSModule
 
         //$location = json_decode($this->ReadPropertyString('MBW_LOCATION'), true);
         $location = $this->ReadPropertyString('MBW_LOCATION'); 
-        $lat = $location->{'latitude'};
+        //$lat = $location->{'latitude'};
         
-            IPS_LogMessage("SymconMeteoblue", "Location: " .$lat);
+            IPS_LogMessage("SymconMeteoblue", "Location: " .$location);
         
         
         $url  = "http://my.meteoblue.com/packages/basic-day?";
