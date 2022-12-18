@@ -107,19 +107,14 @@ class MeteoblueWeather extends IPSModule
             IPS_LogMessage("SymconMeteoblue", "API-Key: " .$myAPIKey);
 		}
 
-        //$location = json_decode($this->ReadPropertyString('MBW_LOCATION'), true);
+        
         $location = json_decode($this->ReadPropertyString('MBW_LOCATION')); 
         IPS_LogMessage("SymconMeteoblue", "Location: " .$location->{'latitude'});
-        // 18.12.2022, 10:45:55 | SymconMeteoblue      | Location: {"latitude":47.7203,"longitude":9.0608}
-        
-        
-        
-        
         
         $url  = "http://my.meteoblue.com/packages/basic-day?";
         $url .= "apikey=" .$this->ReadPropertyString("MBW_APIKEY");
-        $url .= "&lat=" .$this->ReadPropertyString("MBW_LATITUDE");
-        $url .= "&lon=" .$this->ReadPropertyString("MBW_LONGITUDE");
+        $url .= "&lat=" .$location->{'latitude'};
+        $url .= "&lon=" .$location->{'longitude'};
         $url .= "&asl=" .$this->ReadPropertyString("MBW_ASL");
         $url .= "&lang=" .$this->ReadPropertyString("MBW_LANGUAGE");
         $url .= "&temperature=" .$this->ReadPropertyString("MBW_TEMPERATURE");
