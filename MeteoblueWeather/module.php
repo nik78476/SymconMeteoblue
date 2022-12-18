@@ -1,5 +1,5 @@
 <?php
-class SymconMeteoblue extends IPSModule
+class MeteoblueWeather extends IPSModule
 {
 	
 	public function Create()
