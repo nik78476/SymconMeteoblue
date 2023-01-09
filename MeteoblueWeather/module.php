@@ -14,7 +14,7 @@ class MeteoblueWeather extends IPSModule
         $this->createVariableProfileWindDirection();
         $this->createVariableProfileUVIndex();
         $this->createVariableProfileAirpressure();
-        $this->createVariableProfilePredictability();
+        //$this->createVariableProfilePredictability();
         
         // Configuration Values
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
@@ -455,6 +455,7 @@ class MeteoblueWeather extends IPSModule
         }
     }
     
+    /*
     private function createVariableProfilePredictability(){
         if (!IPS_VariableProfileExists("MBW.Predictability")){
             IPS_CreateVariableProfile("MBW.Predictability", 3);
@@ -464,5 +465,6 @@ class MeteoblueWeather extends IPSModule
             IPS_SetVariableProfileIcon("MBW.Predictability", "Information");
         }
     }
+    */
 }
 ?>
