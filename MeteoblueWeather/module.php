@@ -163,6 +163,7 @@ class MeteoblueWeather extends IPSModule
         
         if ($loggingActive){
             $this->LogMessage("Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"), KL_DEBUG);
+        }
         
         // actual weather data (today)
         $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
