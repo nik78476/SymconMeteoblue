@@ -46,7 +46,7 @@
 		]
 	}, 
       
-    { "type": "IntervalBox", "name": "MBW_FONTSIZE", "caption": "Fontsize" },
+    { "type": "NumberSpinner", "name": "MBW_FONTSIZE", "caption": "Fontsize" },
     { "type": "CheckBox", "name": "MBW_DEBUG", "caption": "Activate Debug-Logging" }
   ], 
   "actions":

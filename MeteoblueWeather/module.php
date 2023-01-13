@@ -293,9 +293,6 @@ class MeteoblueWeather extends IPSModule
     }
 
     private function SetValueInt($Ident, $Value){
-        $this->LogMessage("Ident: " .$Ident, KL_DEBUG);
-        $this->LogMessage("Value: " .$Value, KL_DEBUG);
-        
     	$id = $this->GetIDforIdent($Ident);
     	SetValueInteger($id, $Value);
     	return true;	
