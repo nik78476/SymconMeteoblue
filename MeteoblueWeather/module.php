@@ -26,7 +26,9 @@ class MeteoblueWeather extends IPSModule
 		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
         $this->RegisterPropertyString("MBW_DATE_FORMAT", "d.m.Y");
         $this->RegisterPropertyString("MBW_TEMPERATURE", "C");
+        
         $this->RegisterPropertyBoolean("MBW_DEBUG", false);
+        
         $this->RegisterPropertyInteger("MBW_FORECASTDAYS", 0);
         $this->RegisterPropertyInteger("MBW_UPDATEINTERVALL", 3600);
         $this->RegisterPropertyInteger("MBW_IMAGE_HEIGHT", 80);
@@ -290,6 +292,9 @@ class MeteoblueWeather extends IPSModule
     }
 
     private function SetValueInt($Ident, $Value){
+        $this->LogMessage("Ident: " .$Ident, KL_DEBUG);
+        $this->LogMessage("Value: " .$Value, KL_DEBUG);
+        
     	$id = $this->GetIDforIdent($Ident);
     	SetValueInteger($id, $Value);
     	return true;	
