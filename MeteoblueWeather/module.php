@@ -20,7 +20,7 @@ class MeteoblueWeather extends IPSModule
         $this->RegisterPropertyString("MBW_APIKEY", "Your API-Key");
 		$this->RegisterPropertyString("MBW_LATITUDE", "47.660" );
         $this->RegisterPropertyString("MBW_LONGITUDE", "9.176");
-        $this->RegisterPropertyString("MBW_LOCATION", "0");
+        $this->RegisterPropertyString("MBW_LOCATION", '{"longitude": 0, "latitude": 0}');
 		$this->RegisterPropertyString("MBW_ASL","402");
 		$this->RegisterPropertyString("MBW_WINDSPEED", "kmh"); 
 		$this->RegisterPropertyString("MBW_LANGUAGE", "de");
@@ -95,23 +95,23 @@ class MeteoblueWeather extends IPSModule
         $forecastFontSize = $this->ReadPropertyInteger("MBW_FONTSIZE");
         
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "--------------------------------------");
+            $this->LogMessage("Updating .........................", KL_DEBUG);
 		}
         
         if($myAPIKey == NULL || $myAPIKey == "Your API-Key"){
-            IPS_LogMessage("SymconMeteoblue", "Set your API Key first to aquire data.");
+            $this->LogMessage("API Key not entered or missing", KL_DEBUG);
             return;
         }
         
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "API-Key: " .$myAPIKey);
+            $this->LogMessage("API-Key: " .$myAPIKey, KL_DEBUG);
 		}
 
         
         $location = json_decode($this->ReadPropertyString('MBW_LOCATION')); 
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "Latitude: " .$location->{'latitude'});
-            IPS_LogMessage("SymconMeteoblue", "Longitude: " .$location->{'longitude'});
+            $this->LogMessage("Latitude: " .$location->{'latitude'}, KL_DEBUG);
+            $this->LogMessage("Longitude: " .$location->{'longitude'}, KL_DEBUG);
 		}
         
         $url  = "http://my.meteoblue.com/packages/basic-day?";
@@ -129,7 +129,7 @@ class MeteoblueWeather extends IPSModule
 		if ($weatherDataJSON == NULL)
 		{
 			$this->SetStatus(104);
-            IPS_LogMessage("SymconMeteoblue", "Error reading external data");
+            $this->LogMessage("Error reading external data", KL_DEBUG);
 			return;
 		}
 
@@ -160,8 +160,7 @@ class MeteoblueWeather extends IPSModule
 		$ARRAY_DATA_DAY_PREDICTABILITYCLASS = $weatherDataJSON->{'data_day'}->{'predictability_class'};
         
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"));
-		}
+            $this->LogMessage("Forecast days: " .$this->ReadPropertyInteger("MBW_FORECASTDAYS"), KL_DEBUG);
         
         // actual weather data (today)
         $this->SetValueInt("MBW_V_UVINDEX", $ARRAY_DATA_DAY_UVINDEX[0]);
@@ -180,7 +179,6 @@ class MeteoblueWeather extends IPSModule
 		$this->SetValueFloat("MBW_V_WINDSPEED_MIN", $ARRAY_DATA_DAY_WINDSPEEDMIN[0]);
 		$this->SetValueFloat("MBW_V_WINDSPEED_MEAN", $ARRAY_DATA_DAY_WINDSPEEDMEAN[0]);
         
-        //String?
         $this->SetValueString("MBW_V_PREDICTABILITY", $ARRAY_DATA_DAY_PREDICTABILITY[0]);
 		$this->SetValueString("MBW_V_PREDICTABILITY_CLASS", $this->Translate("P" .$ARRAY_DATA_DAY_PREDICTABILITYCLASS[0]));
         
@@ -196,7 +194,7 @@ class MeteoblueWeather extends IPSModule
 		$this->SetValueInt("MBW_V_RELHUMIDITY_MEAN", $ARRAY_DATA_DAY_RELHUMIDITYMEAN[0]);
         
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "Forecast today: " .$pictoCode);
+            $this->LogMessage("Forecast today: " .$pictoCode, KL_DEBUG);
 		}
         
         // forecast weather data
@@ -275,7 +273,7 @@ class MeteoblueWeather extends IPSModule
             
             $forecastdata .= "</table>";
             if ($loggingActive){
-                IPS_LogMessage("SymconMeteoblue", "forecastdata: " .$forecastdata);
+                $this->LogMessage("forecastdata: " .$forecastdata, KL_DEBUG);
             }
         }
         
@@ -287,7 +285,7 @@ class MeteoblueWeather extends IPSModule
         $this->SetStatus(102);
         
         if ($loggingActive){
-            IPS_LogMessage("SymconMeteoblue", "Weatherdata updated: " .$last_update);
+            $this->LogMessage("Weatherdata updated: " .$last_update, KL_DEBUG);
 		}
     }
 

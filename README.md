@@ -131,7 +131,8 @@ Version     | Datum      | Beschreibung
 1.51       | 04.04.2020 | Fehlerkorrekturen in form.json
 1.6        | 04.04.2020 | Merge develop und master branch
 1.61       | 24.05.2022 | Update Namen 
-2.0        | 18.12.2022 | Aktualiserung Übersetzung, Erweiterung gem. https://community.symcon.de/t/yahoo-weather-api-modul/44357/146 
+2.0        | 18.12.2022 | Aktualiserung Übersetzung, Erweiterung gem. https://community.symcon.de/t/yahoo-weather-api-modul/44357/146
+2.1        | 13.01.2023 | Div. kleine Updates, Code beautifying :-)
 
 
 ---

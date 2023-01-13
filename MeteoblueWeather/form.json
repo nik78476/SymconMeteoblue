@@ -7,10 +7,10 @@
       
     { "type": "ValidationTextBox", "name": "MBW_ASL", "caption": "ASL Code" },
     { "type": "ValidationTextBox", "name": "MBW_DATE_FORMAT", "caption": "Date format" },
-    { "type": "ValidationTextBox", "name": "MBW_IMAGE_WIDTH", "caption": "Image Width" },
-    { "type": "ValidationTextBox", "name": "MBW_IMAGE_HEIGHT", "caption": "Image Height" },
+    { "type": "NumberSpinner", "name": "MBW_IMAGE_WIDTH", "caption": "Image Width" },
+    { "type": "NumberSpinner", "name": "MBW_IMAGE_HEIGHT", "caption": "Image Height" },
       
-    { "type": "IntervalBox", "name": "MBW_UPDATEINTERVALL", "caption": "Updateintervall" },
+    { "type": "NumberSpinner", "name": "MBW_UPDATEINTERVALL", "caption": "Updateintervall" },
     
     { "type": "Select", "name": "MBW_TEMPERATURE", "caption": "Temperature",
 		"options": [
