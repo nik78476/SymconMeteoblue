@@ -1,6 +1,6 @@
 ### IP-Symcon Modul Meteoblue Weather
 
-[![Version](https://img.shields.io/badge/Symcon_Version-5.0-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
+[![Version](https://img.shields.io/badge/Symcon_Version-7.0-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 ![Version](https://img.shields.io/badge/Modul_Version-1.0-blue.svg)
 ![Version](https://img.shields.io/badge/Code-PHP-blue.svg)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
@@ -33,7 +33,7 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 
 ---
 ## 2. Systemanforderungen
-- IP-Symcon ab Version 6.x+
+- IP-Symcon ab Version 7.x+
 - API-Key von Meteoblue, dieser ist für die 1-Tages-Vorhersage kostenlos und
   muss bei Meteoblue beantragt werden: 
   https://content.meteoblue.com/de/produkte/servicezugang/meteoblue-wetter-api
