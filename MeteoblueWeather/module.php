@@ -35,7 +35,7 @@ class MeteoblueWeather extends IPSModule
         $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", 100);
         $this->RegisterPropertyInteger("MBW_FORECASTPRECISION",0);
         $this->RegisterPropertyInteger("MBW_FONTSIZE",16);
-        
+        $this->RegisterPropertyString("MBW_ICON_COLOR", "weiss");
         
         // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
@@ -95,6 +95,8 @@ class MeteoblueWeather extends IPSModule
         $loggingActive = $this->ReadPropertyBoolean("MBW_DEBUG");
         $forecastPrecision = $this->ReadPropertyInteger("MBW_FORECASTPRECISION");
         $forecastFontSize = $this->ReadPropertyInteger("MBW_FONTSIZE");
+        
+        $iconColor = $this->ReadPropertyString("MBW_ICON_COLOR");
         
         if ($loggingActive){
             $this->LogMessage("Updating .........................", KL_DEBUG);
@@ -172,7 +174,7 @@ class MeteoblueWeather extends IPSModule
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MAX", $ARRAY_DATA_DAY_TEMPFELTMAX[0]);
         $this->SetValueFloat("MBW_V_FELTTEMPERATURE_MIN", $ARRAY_DATA_DAY_TEMPFELTMIN[0]);
         $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[0], 2 ,'0', STR_PAD_LEFT);
-        $this->SetValueString("MBW_V_PICTOCODEURL","<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
+        $this->SetValueString("MBW_V_PICTOCODEURL","<img src='/hook/SymconMeteoblue/" .$iconColor ."/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>");
         $this->SetValueInt("MBW_V_WINDDIRECTION", $ARRAY_DATA_DAY_WINDDIRECTION[0]);
 
         $this->SetValueInt("MBW_V_SEALEVELPRESSUREMAX", $ARRAY_DATA_DAY_SEALEVELPRESSUREMAX[0]);
@@ -228,7 +230,7 @@ class MeteoblueWeather extends IPSModule
                 $forecastdata .= "<td align='center'>";
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 
-                $forecastdata .= "<img src='/hook/SymconMeteoblue/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
+                $forecastdata .= "<img src='/hook/SymconMeteoblue/" .$iconColor ."/" .$pictoCode ."_iday_monochrome_hollow.svg' width='" .$this->ReadPropertyInteger("MBW_IMAGE_WIDTH") ."' height='" .$this->ReadPropertyInteger("MBW_IMAGE_HEIGHT") ."'>";
                 $forecastdata .= "</td>";
             }
             $forecastdata .= "</tr>";

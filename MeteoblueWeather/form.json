@@ -45,6 +45,12 @@
             { "label": "bft", "value":"bft" }
 		]
 	}, 
+    { "type": "Select", "name": "MBW_ICON_COLOR", "caption": "Image Color",
+		"options": [
+			{ "label": "black", "value":"black" },
+			{ "label": "white", "value":"white" }
+		]
+	}, 
       
     { "type": "NumberSpinner", "name": "MBW_FONTSIZE", "caption": "Fontsize" },
     { "type": "CheckBox", "name": "MBW_DEBUG", "caption": "Activate Debug-Logging" }

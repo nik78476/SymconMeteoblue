@@ -62,7 +62,10 @@
 	        "P2":"tief",
 	        "P3":"mittel",
 	        "P4":"hoch",
-	        "P5":"sehr hoch"
+	        "P5":"sehr hoch",
+            "Image Color": "Icon Farbe",
+            "black":"schwarz",
+            "white":"weiss"
         }
     }
 }
