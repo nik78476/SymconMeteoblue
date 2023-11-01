@@ -34,7 +34,7 @@ http://content.meteoblue.com/en/help/technical-documentation/meteoblue-api
 
 ---
 ## 2. Systemanforderungen
-- IP-Symcon ab Version 7.x+
+- IP-Symcon ab Version 6.x++ / 7.0+
 - API-Key von Meteoblue, dieser ist für die 1-Tages-Vorhersage kostenlos und
   muss bei Meteoblue beantragt werden: 
   https://content.meteoblue.com/de/produkte/servicezugang/meteoblue-wetter-api
@@ -74,7 +74,7 @@ Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x) - Max Heute + 5
 Nachkommastellen Vorhersage | Anzahl Nachkommastellen in der Vorhersageanzeige
 Schriftgrösse (px) | Regelt die Schriftgrösse in px in der Vorhersageanzeige
-Icon Farbe | Regelt die Vorhersage-Icons und Schriftart Farbe
+Icon Farbe | Regelt die Vorhersage-Icons und Schriftart Farbe (dies ist insbesonder ab IPS v7 notwendig)
 
 ---
 ## 5. Profile
