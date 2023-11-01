@@ -209,8 +209,8 @@ class MeteoblueWeather extends IPSModule
             /* Poppins Regular */
 
             @font-face {
-              font-family: "Poppins";
-              src: url("./preview/assets/google_fonts/Poppins-Regular.ttf") format('truetype');
+              font-family: 'Poppins';
+              src: url('./preview/assets/google_fonts/Poppins-Regular.ttf') format('truetype');
               font-weight: 400;
               font-style: normal;
             }</style>";
