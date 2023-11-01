@@ -1,7 +1,8 @@
 ### IP-Symcon Modul Meteoblue Weather
 
+[![Version](https://img.shields.io/badge/Symcon_Version-6.x-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 [![Version](https://img.shields.io/badge/Symcon_Version-7.0-red.svg)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
-![Version](https://img.shields.io/badge/Modul_Version-1.0-blue.svg)
+![Version](https://img.shields.io/badge/Modul_Version-2.2-blue.svg)
 ![Version](https://img.shields.io/badge/Code-PHP-blue.svg)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![StyleCI](https://github.styleci.io/repos/136796530/shield?branch=master)](https://github.styleci.io/repos/136796530)
@@ -73,6 +74,7 @@ Temperatureinheit | Celsius oder Fahrenheit (Standard: Celsius)
 Tage anzeigen | Auswahl Tag (heute, morgen, Tag+x) - Max Heute + 5
 Nachkommastellen Vorhersage | Anzahl Nachkommastellen in der Vorhersageanzeige
 Schriftgrösse (px) | Regelt die Schriftgrösse in px in der Vorhersageanzeige
+Icon Farbe | Regelt die Vorhersage-Icons und Schriftart Farbe
 
 ---
 ## 5. Profile
@@ -133,6 +135,7 @@ Version     | Datum      | Beschreibung
 1.61       | 24.05.2022 | Update Namen 
 2.0        | 18.12.2022 | Aktualiserung Übersetzung, Erweiterung gem. https://community.symcon.de/t/yahoo-weather-api-modul/44357/146
 2.1        | 13.01.2023 | Div. kleine Updates, Code beautifying :-)
+2.2        | 01.11.2023 | Vorbereitungen für IP-Symcon 7.0 Tile-Visu
 
 
 ---
