@@ -250,7 +250,7 @@ class MeteoblueWeather extends IPSModule
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
+                $forecastdata .= "<font style='font-family:Poppins; font-size: " .$forecastFontSize ."px; color: " .$iconColor ."'>";
                 $forecastdata .= "min. ";
                 $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMIN[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</font>";
