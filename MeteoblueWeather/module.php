@@ -35,7 +35,7 @@ class MeteoblueWeather extends IPSModule
         $this->RegisterPropertyInteger("MBW_IMAGE_WIDTH", 100);
         $this->RegisterPropertyInteger("MBW_FORECASTPRECISION",0);
         $this->RegisterPropertyInteger("MBW_FONTSIZE",16);
-        $this->RegisterPropertyString("MBW_ICON_COLOR", "weiss");
+        $this->RegisterPropertyString("MBW_ICON_COLOR", "white");
         
         // Variables
 		$this->RegisterVariableString("MBW_V_LASTUPDATE", "Last Update");
