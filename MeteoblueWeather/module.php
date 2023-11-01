@@ -204,7 +204,18 @@ class MeteoblueWeather extends IPSModule
         
         // forecast weather data
         $forecastdata = "";
-        if($this->ReadPropertyInteger("MBW_FORECASTDAYS") > 0){
+        
+        $forecastdata .= "<style>
+            /* Poppins Regular */
+
+            @font-face {
+              font-family: "Poppins";
+              src: url("./preview/assets/google_fonts/Poppins-Regular.ttf") format('truetype');
+              font-weight: 400;
+              font-style: normal;
+            }</style>";
+        
+        if($this->ReadPropertyInteger("MBW_FORECASTDAYS") >= 0){
             
             $forecastdata .= "<table border='0'>";
             
