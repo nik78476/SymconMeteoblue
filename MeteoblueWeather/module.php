@@ -223,7 +223,7 @@ class MeteoblueWeather extends IPSModule
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font face='' color='" .$iconColor ."' style='font-family:Poppins; font-size: " .$forecastFontSize ."px;'>";
+                $forecastdata .= "<font style='font-family:Poppins; font-size: " .$forecastFontSize ."px; color: " .$iconColor ."'>";
                 if( $i <= 2){ 
                     $forecastdata .= $this->getDayAsString( $i ) ."<br>";
                 } 
