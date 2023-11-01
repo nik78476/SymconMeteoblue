@@ -263,7 +263,7 @@ class MeteoblueWeather extends IPSModule
             $forecastdata .= "<tr>";
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
+                $forecastdata .= "<font style='font-family:Poppins; font-size: " .$forecastFontSize ."px; color: " .$iconColor ."'>";
                 $forecastdata .= "max. ";
                 $forecastdata .= round( $ARRAY_DATA_DAY_TEMPMAX[$i], $forecastPrecision, PHP_ROUND_HALF_DOWN) ."°" .$weatherDataJSON->{'units'}->{'temperature'};
                 $forecastdata .= "</font>";
@@ -277,7 +277,7 @@ class MeteoblueWeather extends IPSModule
             for($i=0; $i <= $this->ReadPropertyInteger("MBW_FORECASTDAYS"); $i++){
                 $pictoCode = str_pad($ARRAY_DATA_DAY_PICTOCODE[$i], 2 ,'0', STR_PAD_LEFT);
                 $forecastdata .= "<td align='center'>";
-                $forecastdata .= "<font style='font-size: " .$forecastFontSize ."px;'>";
+                $forecastdata .= "<font style='font-family:Poppins; font-size: " .$forecastFontSize ."px; color: " .$iconColor ."'>";
                 $forecastdata .= $this->getWeatherCondition($pictoCode);
                 $forecastdata .= "<font/>";
                 $forecastdata .= "&nbsp;&nbsp;&nbsp;</td>";
